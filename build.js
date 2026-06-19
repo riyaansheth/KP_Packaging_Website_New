@@ -494,10 +494,13 @@ function aboutBody() {
         <div class="team-card reveal"><div class="avatar"><img src="${m.photo}" alt="${escAttr(m.name)}, ${escAttr(m.role)}" loading="lazy"></div><h3>${esc(m.name)}</h3><div class="role">${esc(m.role)}</div></div>`).join("");
   return `
   <section class="page-hero">
-    <div class="container">
-      <span class="eyebrow">Who we are</span>
-      <h1>Three decades of packaging, run by one family.</h1>
-      <p>From pioneers in the PVC leather cloth industry to a modern coated-paper and flexible-packaging house, K P Packaging has grown across generations while keeping quality and relationships at its core.</p>
+    <div class="container page-hero-split">
+      <div class="page-hero-copy">
+        <span class="eyebrow">Who we are</span>
+        <h1>Three decades of packaging, run by one family.</h1>
+        <p>From pioneers in the PVC leather cloth industry to a modern coated-paper and flexible-packaging house, K P Packaging has grown across generations while keeping quality and relationships at its core.</p>
+      </div>
+      <div class="page-hero-media"><img src="/assets/about-hero.jpg" alt="Wrapped paper jumbo rolls at K P Packaging" loading="lazy" width="1100" height="884"></div>
     </div>
   </section>
 
