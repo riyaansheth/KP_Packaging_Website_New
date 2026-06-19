@@ -671,8 +671,7 @@ function industriesBody() {
       <div class="split ${idx % 2 ? "split--rev" : ""} reveal" style="margin-bottom:clamp(48px,7vw,96px)">
         <a class="split-media${i.image ? "" : " " + i.art + " roll-art"}" href="${industryUrl(i)}" aria-label="${escAttr(i.name)}">${i.image ? `<img src="${i.image}" alt="${escAttr(i.name)} packaging" loading="lazy">` : ""}</a>
         <div class="split-body">
-          <span class="eyebrow">${esc(i.name)}</span>
-          <h2 style="margin-top:1rem"><a href="${industryUrl(i)}">${esc(i.name)}</a></h2>
+          <h2><a href="${industryUrl(i)}">${esc(i.name)}</a></h2>
           <p>${esc(i.detail)}</p>
           <a class="btn btn--primary" href="${industryUrl(i)}">Explore ${esc(i.name)} ${ICON.arrow}</a>
         </div>
