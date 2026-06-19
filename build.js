@@ -388,7 +388,7 @@ function homeBody() {
           <div class="ic-media${i.image ? "" : " " + i.art + " roll-art"}">${i.image ? `<img src="${i.image}" alt="${escAttr(i.name)} packaging" loading="lazy">` : ""}</div>
           <div class="ic-body"><h3>${esc(i.name)}</h3><p>${esc(i.blurb)}</p></div>
         </a>`).join("");
-  const featured = PRODUCTS.filter((p) => p.featured).slice(0, 6).map(productCard).join("");
+  const featured = PRODUCTS.filter((p) => p.featured).slice(0, 3).map(productCard).join("");
   const why = COMPANY.why.map((w) => `
         <div class="fcard reveal"><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></div>`).join("");
   return `
