@@ -473,13 +473,6 @@ function homeBody() {
     </div>
   </section>
 
-  <section class="section bg-green hide-mobile">
-    <div class="container">
-      <div class="section-head reveal center"><span class="eyebrow" style="color:#B9B8E0">By the numbers</span><h2 style="margin-top:1rem">Three decades of converting expertise.</h2></div>
-      <div class="statstrip">${statStrip()}</div>
-    </div>
-  </section>
-
   <section class="section--tight">
     <div class="container"><div class="section-head reveal center"><span class="eyebrow">Certified & compliant</span></div><div class="cert-logos">${COMPANY.certs.map((c) => `<div class="cert-logo"><img src="${c.logo}" alt="${escAttr(c.name)} certification" loading="lazy"></div>`).join("")}</div></div>
   </section>
@@ -613,7 +606,7 @@ function productsBody() {
   <div class="drawer-backdrop" data-drawer-close hidden></div>
   <div id="drawer-templates" hidden>${templates}</div>
 
-  ${ctaBand("Can't find the exact grade?", "We convert and source a wide range beyond this catalogue. Tell us your spec and we'll match it.")}`;
+  `;
 }
 
 function productBody(p) {
@@ -694,7 +687,7 @@ function industriesBody() {
     </div>
   </section>
   <section class="section--tight"><div class="container">${blocks}</div></section>
-  ${ctaBand("Tell us about your application.", "We'll recommend the right substrate, coating and finish for your industry's demands.")}`;
+  `;
 }
 
 function industryBody(i) {
@@ -719,7 +712,7 @@ function industryBody(i) {
   </section>
 
   ${faqSection(faqs, { title: esc(i.name) + " packaging, FAQ", bg: true })}
-  ${ctaBand("Need " + i.name.toLowerCase() + " packaging?", "Share your specification and we'll recommend the right grade and finish.")}`;
+  `;
 }
 
 function capabilitiesBody() {
