@@ -23,11 +23,18 @@ const COMPANY = {
     { name: "Parksons", logo: "/assets/logos/parksons.png" },
     { name: "Intas", logo: "/assets/logos/intas.png" }
   ],
-  certs: ["ISO Certified", "FSC", "FDA", "Make in India", "MSME", "CE", "IAF"],
+  certs: [
+    { name: "ISO Certified", logo: "/assets/certs/iso.png" },
+    { name: "AEO - Indian Customs", logo: "/assets/certs/custom.jpg" },
+    { name: "Make in India", logo: "/assets/certs/make-in-india.png" },
+    { name: "MSME", logo: "/assets/certs/msme.png" },
+    { name: "CE", logo: "/assets/certs/ce.png" },
+    { name: "IAF", logo: "/assets/certs/iaf.png" }
+  ],
   team: [
-    { name: "Madhukant Vira", role: "Chairman", art: "roll-art--cream" },
-    { name: "Ketan Vira", role: "CEO", art: "roll-art--kraft" },
-    { name: "Prem Vira", role: "Director", art: "roll-art" }
+    { name: "Madhukant Vira", role: "Chairman", photo: "/assets/team/3.png" },
+    { name: "Ketan Vira", role: "CEO", photo: "/assets/team/2.png" },
+    { name: "Prem Vira", role: "Director", photo: "/assets/team/1.png" }
   ],
   offices: [
     {

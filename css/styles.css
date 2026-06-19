@@ -451,7 +451,8 @@ em { font-style: italic; color: var(--green-500); }
 
 /* ---------- Team ---------- */
 .team-card { text-align: center; }
-.team-card .avatar { aspect-ratio: 1/1; border-radius: var(--r); overflow: hidden; margin-bottom: 1rem; box-shadow: var(--shadow-sm); }
+.team-card .avatar { aspect-ratio: 1/1; border-radius: var(--r); overflow: hidden; margin-bottom: 1rem; box-shadow: var(--shadow-sm); background: var(--cream-2); }
+.team-card .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 .avatar--mono { display: grid; place-items: center; background: linear-gradient(150deg, var(--green-500), var(--green)); color: #fff; font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 500; letter-spacing: .03em; }
 .team-card h3 { font-size: 1.2rem; }
 .team-card .role { color: var(--kraft-600); font-size: .85rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin-top: .2rem; }
@@ -460,6 +461,11 @@ em { font-style: italic; color: var(--green-500); }
 .cert-row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 .cert-pill { display: inline-flex; align-items: center; gap: .55rem; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: .7rem 1.2rem; font-weight: 600; font-size: .9rem; box-shadow: var(--shadow-sm); }
 .cert-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--kraft); }
+/* certification logos */
+.cert-logos { display: flex; flex-wrap: wrap; gap: 1.4rem 2.4rem; justify-content: center; align-items: center; }
+.cert-logo { display: inline-flex; align-items: center; justify-content: center; }
+.cert-logo img { height: 64px; width: auto; max-width: 130px; object-fit: contain; }
+@media (max-width: 720px) { .cert-logos { gap: 1.2rem 1.8rem; } .cert-logo img { height: 50px; max-width: 100px; } }
 
 /* ===========================================================
    FAQ (accordion)
@@ -657,8 +663,37 @@ html.lenis, html.lenis body { height: auto; }
   .two-col { grid-template-columns: 1fr; }
   .statstrip { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; }
-  .hero-stats { gap: 1.2rem 1.6rem; flex-wrap: wrap; }
+  .hero-stats { gap: 1.2rem 1.6rem; flex-wrap: wrap; justify-content: center; }
   .hero-visual { aspect-ratio: 16/11; }        /* shorter image on phones, less scrolling */
   .hero { min-height: 0; }                       /* don't force full-height hero on small phones */
   .hero-inner { padding-block: 32px 8px; }
+
+  /* shorten the homepage / about on phones */
+  .hide-mobile { display: none !important; }
+
+  /* centre all headings + their blocks on phones */
+  h1, h2, h3, h4 { text-align: center; }
+  .eyebrow { justify-content: center; }
+  .page-hero, .hero-copy, .section-head, .overview-head, .split-body,
+  .fcard, .pcard-body, .industry-card .ic-body, .overview-facts .fact, .team-card { text-align: center; }
+  .overview-head, .overview-head h2 { max-width: none; }
+  .hero .lead, .page-hero p, .overview-head .lead, .split-body p { margin-inline: auto; }
+  .hero-actions, .pdetail-actions, .split-body .taglist, .chips { justify-content: center; }
+  .fcard .ic { margin-inline: auto; }
+  /* product detail: centre headings but keep lists & spec tables left-aligned */
+  .pdetail-info { text-align: center; }
+  .pdetail-info .checklist, .pdetail-info .spec-table, .pdetail-info .two-col { text-align: left; }
+  .pdetail-info .checklist li { justify-content: flex-start; text-align: left; }
+  .pdetail-info .badges, .pdetail-info .taglist, .pdetail-info .pdetail-actions { justify-content: center; }
+
+  /* product drawer: centre it like a modal instead of right-aligned */
+  .product-drawer {
+    top: 50%; left: 50%; right: auto; bottom: auto;
+    height: auto; max-height: 86vh; width: min(92vw, 460px);
+    border-radius: var(--r-lg);
+    transform: translate(-50%, -50%) scale(.96);
+    transition: transform .35s cubic-bezier(.22,.61,.36,1), opacity .25s ease;
+    opacity: 0; pointer-events: none; box-shadow: var(--shadow-lg);
+  }
+  .catalog-wrap.drawer-open .product-drawer { transform: translate(-50%, -50%) scale(1); opacity: 1; pointer-events: auto; width: min(92vw, 460px); }
 }

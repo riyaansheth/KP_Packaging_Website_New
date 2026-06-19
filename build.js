@@ -454,14 +454,14 @@ function homeBody() {
     </div>
   </section>
 
-  <section class="section">
+  <section class="section hide-mobile">
     <div class="container">
       <div class="section-head reveal center"><span class="eyebrow">Why K P Packaging</span><h2 style="margin-top:1rem">Why companies choose us.</h2></div>
       <div class="grid grid-3">${why}</div>
     </div>
   </section>
 
-  <section class="section bg-green">
+  <section class="section bg-green hide-mobile">
     <div class="container">
       <div class="section-head reveal center"><span class="eyebrow" style="color:#B9B8E0">By the numbers</span><h2 style="margin-top:1rem">Three decades of converting expertise.</h2></div>
       <div class="statstrip">${statStrip()}</div>
@@ -469,7 +469,7 @@ function homeBody() {
   </section>
 
   <section class="section--tight">
-    <div class="container"><div class="section-head reveal center"><span class="eyebrow">Certified & compliant</span></div><div class="cert-row">${COMPANY.certs.map((c) => `<div class="cert-pill"><span class="dot"></span>${esc(c)}</div>`).join("")}</div></div>
+    <div class="container"><div class="section-head reveal center"><span class="eyebrow">Certified & compliant</span></div><div class="cert-logos">${COMPANY.certs.map((c) => `<div class="cert-logo"><img src="${c.logo}" alt="${escAttr(c.name)} certification" loading="lazy"></div>`).join("")}</div></div>
   </section>
 
   ${faqSection(COMPANY.faq, { title: "Frequently asked questions", bg: true })}
@@ -479,7 +479,7 @@ function homeBody() {
 
 function aboutBody() {
   const team = COMPANY.team.map((m) => `
-        <div class="team-card reveal"><div class="avatar avatar--mono">${esc(m.name.split(" ").map((w) => w[0]).join("").slice(0, 2))}</div><h3>${esc(m.name)}</h3><div class="role">${esc(m.role)}</div></div>`).join("");
+        <div class="team-card reveal"><div class="avatar"><img src="${m.photo}" alt="${escAttr(m.name)}, ${escAttr(m.role)}" loading="lazy"></div><h3>${esc(m.name)}</h3><div class="role">${esc(m.role)}</div></div>`).join("");
   return `
   <section class="page-hero">
     <div class="container">
@@ -519,7 +519,7 @@ function aboutBody() {
     </div>
   </section>
 
-  <section class="section bg-green">
+  <section class="section bg-green hide-mobile">
     <div class="container">
       <div class="section-head reveal center"><span class="eyebrow" style="color:#B9B8E0">Our accomplishments</span><h2 style="margin-top:1rem">Trusted, proven, global.</h2></div>
       <div class="statstrip">${statStrip()}</div>
@@ -527,7 +527,7 @@ function aboutBody() {
   </section>
 
   <section class="section--tight">
-    <div class="container"><div class="section-head reveal center"><span class="eyebrow">We are certified with</span></div><div class="cert-row">${COMPANY.certs.map((c) => `<div class="cert-pill"><span class="dot"></span>${esc(c)}</div>`).join("")}</div></div>
+    <div class="container"><div class="section-head reveal center"><span class="eyebrow">We are certified with</span></div><div class="cert-logos">${COMPANY.certs.map((c) => `<div class="cert-logo"><img src="${c.logo}" alt="${escAttr(c.name)} certification" loading="lazy"></div>`).join("")}</div></div>
   </section>
 
   <section class="section bg-cream2">
