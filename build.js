@@ -327,8 +327,8 @@ function productCard(p) {
   const inds = p.industries.map((s) => (industryBySlug(s) || {}).name).filter(Boolean).slice(0, 2);
   const data = `data-industry="${p.industries.join(" ")}" data-construction="${p.cats.construction}" data-coating="${p.cats.coating}" data-fn="${p.cats.fn.join(" ")}"`;
   const media = p.image
-    ? `<div class="pcard-media has-img"><img src="${p.image}" alt="${escAttr(p.name)}, ${escAttr(p.aka)}" loading="lazy" decoding="async"><span class="tag">${p.arm === "Distributed" ? "Distributed" : "Manufactured"}</span></div>`
-    : `<div class="pcard-media ${p.art} roll-art"><span class="tag">${p.arm === "Distributed" ? "Distributed" : "Manufactured"}</span></div>`;
+    ? `<div class="pcard-media has-img"><img src="${p.image}" alt="${escAttr(p.name)}, ${escAttr(p.aka)}" loading="lazy" decoding="async"></div>`
+    : `<div class="pcard-media ${p.art} roll-art"></div>`;
   return `
       <a class="pcard reveal" href="${productUrl(p)}" data-slug="${p.slug}" ${data}>
         ${media}
@@ -562,7 +562,7 @@ function drawerContent(p) {
     <button class="drawer-close" data-drawer-close aria-label="Close details">${ICON.close}</button>
     ${media}
     <div class="drawer-body">
-      <div class="badges"><span class="badge badge--green">${esc(p.arm)}</span>${p.certs.map((c) => `<span class="badge badge--cert">${esc(c)}</span>`).join("")}</div>
+      <div class="badges">${p.certs.map((c) => `<span class="badge badge--cert">${esc(c)}</span>`).join("")}</div>
       <h3>${esc(p.name)}</h3>
       <div class="aka">${esc(p.aka)}</div>
       <p class="desc">${esc(p.desc)}</p>
@@ -640,7 +640,7 @@ function productBody(p) {
           <div class="pdetail-thumbs"><div class="th ${p.art} roll-art"></div><div class="th roll-art"></div><div class="th roll-art--kraft"></div></div>`}
         </div>
         <div class="pdetail-info">
-          <div class="badges"><span class="badge badge--green">${esc(p.arm)}</span>${p.certs.map((c) => `<span class="badge badge--cert">${esc(c)}</span>`).join("")}</div>
+          <div class="badges">${p.certs.map((c) => `<span class="badge badge--cert">${esc(c)}</span>`).join("")}</div>
           <h1>${esc(p.name)}</h1>
           <div class="aka">${esc(p.aka)}</div>
           <p class="desc">${esc(p.desc)}</p>
