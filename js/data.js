@@ -25,7 +25,7 @@ const COMPANY = {
   ],
   certs: [
     { name: "ISO Certified", logo: "/assets/certs/iso.png" },
-    { name: "AEO - Indian Customs", logo: "/assets/certs/custom.jpg" },
+    { name: "AEO Indian Customs", logo: "/assets/certs/custom.jpg" },
     { name: "Make in India", logo: "/assets/certs/make-in-india.png" },
     { name: "MSME", logo: "/assets/certs/msme.png" },
     { name: "CE", logo: "/assets/certs/ce.png" },

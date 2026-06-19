@@ -301,12 +301,25 @@ function quoteModal() {
   </div>`;
 }
 
+// Remove hyphens/dashes from VISIBLE text only (between > and <), leaving tags,
+// attributes, URLs, class names and JSON-LD/script blocks untouched.
+function stripDashesInText(html) {
+  const blocks = [];
+  html = html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, (m) => {
+    blocks.push(m);
+    return ` ${blocks.length - 1} `;
+  });
+  html = html.replace(/>([^<]+)</g, (m, txt) => ">" + txt.replace(/[-‐-―]/g, " ").replace(/ {2,}/g, " ") + "<");
+  html = html.replace(/ (\d+) /g, (m, i) => blocks[+i]);
+  return html;
+}
+
 function pageShell(meta, body) {
-  return head(meta) + header(meta.page) + body + footer() + quoteModal() + `
+  return stripDashesInText(head(meta) + header(meta.page) + body + footer() + quoteModal() + `
   <script src="/js/lenis.min.js?v=${BUILD_VER}" defer></script>
   <script src="/js/app.js?v=${BUILD_VER}" defer></script>
 </body>
-</html>`;
+</html>`);
 }
 
 /* ---------- shared components ---------- */
