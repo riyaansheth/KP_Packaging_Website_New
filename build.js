@@ -486,7 +486,7 @@ function homeBody() {
 
   ${faqSection(COMPANY.faq, { title: "Frequently asked questions", bg: true })}
 
-  ${ctaBand("Let's build your next pack.", "Tell us your substrate, barrier and print needs, we'll recommend the right grade and get you a quote within a business day.")}`;
+  ${ctaBand("Let's create your perfect pack.", "Tell us your substrate, barrier and print needs, we'll recommend the right grade and get you a quote within a business day.")}`;
 }
 
 function aboutBody() {
@@ -513,6 +513,8 @@ function aboutBody() {
           <h2 style="margin-top:1rem">A generational business</h2>
           <p>With over three decades of history, K P Packaging is a generational family business. The company is promoted by <strong>Mr. Ketan Vira</strong>, who, with rich experience in the packaging industry, has grown the business exponentially. Alongside him, his son <strong>Mr. Prem Vira</strong> has taken it upon himself to take K P Packaging international.</p>
           <p>Today we operate across two complementary arms: in-house manufacturing of extrusion-coated laminates, and authorized distribution for leading Indian paper mills.</p>
+          <p>From our state-of-the-art coating and lamination plant in Silvassa to a distribution network spanning India's leading paper mills, we supply pharmaceutical, food, FMCG and medical customers in over 20 countries, the same care across every grade we make and move.</p>
+          <p>What hasn't changed in three decades is how we work: dependable quality, honest pricing, and long-term relationships with the people we package for.</p>
         </div>
       </div>
     </div>
@@ -534,13 +536,6 @@ function aboutBody() {
     </div>
   </section>
 
-  <section class="section bg-green hide-mobile">
-    <div class="container">
-      <div class="section-head reveal center"><span class="eyebrow" style="color:#B9B8E0">Our accomplishments</span><h2 style="margin-top:1rem">Trusted, proven, global.</h2></div>
-      <div class="statstrip">${statStrip()}</div>
-    </div>
-  </section>
-
   <section class="section--tight">
     <div class="container"><div class="section-head reveal center"><span class="eyebrow">We are certified with</span></div><div class="cert-logos">${COMPANY.certs.map((c) => `<div class="cert-logo"><img src="${c.logo}" alt="${escAttr(c.name)} certification" loading="lazy"></div>`).join("")}</div></div>
   </section>
@@ -550,9 +545,7 @@ function aboutBody() {
       <div class="section-head reveal center"><span class="eyebrow">Leadership</span><h2 style="margin-top:1rem">Meet the team</h2></div>
       <div class="grid grid-3">${team}</div>
     </div>
-  </section>
-
-  ${ctaBand("Partner with a packaging veteran.", "Whether you need a single grade or an end-to-end coated laminate, our team is ready to help.")}`;
+  </section>`;
 }
 
 function drawerContent(p) {
