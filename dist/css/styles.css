@@ -409,6 +409,15 @@ em { font-style: italic; color: var(--green-500); }
 .pdetail-info h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: .4rem; }
 .pdetail-info .aka { color: var(--muted-2); font-size: .95rem; margin-bottom: 1.3rem; }
 .pdetail-info .desc { color: var(--muted); font-size: 1.05rem; margin-bottom: 1.6rem; }
+
+/* Centred product text (detail page + drawer) — lists & spec tables stay left */
+.pdetail-info, .drawer-body { text-align: center; }
+.pdetail-info .desc, .drawer-body .desc { margin-inline: auto; }
+.pdetail-info .checklist, .pdetail-info .spec-table, .pdetail-info .two-col,
+.drawer-body .checklist, .drawer-body .spec-table { text-align: left; }
+.pdetail-info .checklist li, .drawer-body .checklist li { justify-content: flex-start; text-align: left; }
+.pdetail-info .badges, .pdetail-info .taglist, .pdetail-info .pdetail-actions,
+.drawer-body .taglist, .drawer-actions { justify-content: center; }
 .pdetail-info .construction { display: inline-flex; align-items: center; gap: .6rem; background: var(--cream-2); border: 1px solid var(--line); border-radius: 10px; padding: .7rem 1rem; font-size: .9rem; margin-bottom: 1.6rem; }
 .pdetail-info .construction strong { color: var(--green); }
 .pdetail-actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: 2rem; }
