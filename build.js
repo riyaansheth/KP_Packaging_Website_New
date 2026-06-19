@@ -462,7 +462,7 @@ function homeBody() {
     <div class="container">
       <div class="section-head reveal center"><span class="eyebrow">Our products</span><h2 style="margin-top:1rem">Coated papers, boards & laminates.</h2><p>A snapshot of our best-selling grades, explore the full catalogue for specs and applications.</p></div>
       <div class="grid grid-3">${featured}</div>
-      <div class="center" style="margin-top:2.5rem"><a href="/products/" class="btn btn--primary btn--lg">View all products</a></div>
+      <div class="center" style="margin-top:1.4rem"><a href="/products/" class="btn btn--primary btn--lg">View all products</a></div>
     </div>
   </section>
 
@@ -661,7 +661,7 @@ function productBody(p) {
       </div>
     </div>
 
-    <section class="section bg-cream2" style="margin-top:clamp(48px,6vw,90px)">
+    <section class="section bg-cream2" style="margin-top:clamp(24px,3vw,44px)">
       <div class="container">
         <div class="section-head reveal center"><span class="eyebrow">FAQ</span><h2 style="margin-top:1rem">${esc(p.name)}, questions answered</h2></div>
         <div class="faq" style="max-width:780px;margin-inline:auto">
