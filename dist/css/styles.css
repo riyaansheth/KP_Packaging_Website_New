@@ -325,6 +325,7 @@ em { font-style: italic; color: var(--green-500); }
 }
 .filter-btn:hover { background: var(--cream-2); color: var(--ink); }
 .filter-btn.active { background: var(--green); color: #fff; font-weight: 600; }
+.filter-btn[hidden] { display: none !important; }
 .catalog-count { font-size: .9rem; color: var(--muted-2); margin-bottom: 1.2rem; }
 .catalog-empty { padding: 2.5rem 0; color: var(--muted); font-size: 1rem; }
 .filters-mobile { display: none; }

@@ -79,15 +79,38 @@
       }
       return true;
     }
+    var allCards = $$(".pcard", grid);
+    // how many products match the current filters from every group EXCEPT `group`, plus `key` in `group`
+    function optionCount(group, key) {
+      return allCards.filter(function (card) {
+        for (var g in state) {
+          if (g === group || !state[g]) continue;
+          if (tokens(card, g).indexOf(state[g]) === -1) return false;
+        }
+        return tokens(card, group).indexOf(key) !== -1;
+      }).length;
+    }
+    // hide filter options that would give zero results
+    function updateFacets() {
+      $$(".filter-group", filters).forEach(function (fg) {
+        var group = fg.getAttribute("data-group");
+        $$(".filter-btn", fg).forEach(function (btn) {
+          var key = btn.getAttribute("data-key");
+          if (!key) return; // always keep "All"
+          btn.hidden = optionCount(group, key) === 0;
+        });
+      });
+    }
     function draw() {
       var shown = 0;
-      $$(".pcard", grid).forEach(function (card) {
+      allCards.forEach(function (card) {
         var ok = matches(card);
         card.hidden = !ok;
         if (ok) { card.classList.add("in"); shown++; } // ensure filtered-in cards are visible (not stuck at reveal opacity:0)
       });
       if (countEl) countEl.textContent = shown + (shown === 1 ? " product" : " products");
       emptyEl.hidden = shown !== 0;
+      updateFacets();
     }
 
     filters.addEventListener("click", function (e) {
