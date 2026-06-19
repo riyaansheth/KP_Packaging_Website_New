@@ -87,7 +87,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); }
   color: var(--kraft-600);
   display: inline-flex; align-items: center; gap: .5rem;
 }
-.eyebrow::before { content: ""; width: 26px; height: 1.5px; background: var(--kraft); display: inline-block; }
+.eyebrow::before { content: none; display: none; }
 .lead { font-size: 1.18rem; color: var(--muted); }
 em { font-style: italic; color: var(--green-500); }
 
