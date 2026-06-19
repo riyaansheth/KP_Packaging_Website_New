@@ -95,10 +95,11 @@ em { font-style: italic; color: var(--green-500); }
 .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-left: max(var(--pad), env(safe-area-inset-left)); padding-right: max(var(--pad), env(safe-area-inset-right)); }
 .section { padding-block: clamp(40px, 4.5vw, 76px); }
 .section--tight { padding-block: clamp(30px, 3.5vw, 52px); }
-.section-head { max-width: 640px; margin-bottom: 2.2rem; }
-.section-head.center { margin-inline: auto; text-align: center; }
+.section-head { max-width: none; margin-bottom: 2.2rem; }
+.section-head.center { margin-inline: auto; text-align: center; max-width: 720px; }
 .section-head .eyebrow { margin-bottom: 1rem; }
-.section-head p { margin-top: 1rem; color: var(--muted); font-size: 1.08rem; }
+.section-head p { margin-top: 1rem; color: var(--muted); font-size: 1.08rem; max-width: 60ch; }
+.section-head.center p { margin-inline: auto; }
 .bg-cream2 { background: var(--cream-2); }
 
 /* Company overview — two-column editorial split */
