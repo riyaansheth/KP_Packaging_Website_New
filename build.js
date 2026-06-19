@@ -234,7 +234,7 @@ function footer() {
       <div class="footer-top">
         <div class="footer-brand">
           <a href="/" class="brand"><span class="mark">KP</span><span>K P Packaging</span></a>
-          <p>A three-decade family business converting and distributing coated papers and flexible packaging for pharma, food and FMCG, in India and 20+ countries.</p>
+          <p>A three-decade-old family business converting and distributing coated papers and flexible packaging for pharma, food and FMCG, in India and 20+ countries.</p>
         </div>
         <div class="footer-col">
           <h4>Explore</h4>
