@@ -100,6 +100,28 @@ em { font-style: italic; color: var(--green-500); }
 .section-head .eyebrow { margin-bottom: 1rem; }
 .section-head p { margin-top: 1rem; color: var(--muted); font-size: 1.08rem; max-width: 60ch; }
 .section-head.center p { margin-inline: auto; }
+
+/* ===========================================================
+   Centered headings throughout (desktop + mobile)
+   =========================================================== */
+h1, h2, h3, h4 { text-align: center; }
+.eyebrow { justify-content: center; }
+.section-head, .page-hero, .hero-copy, .overview-head, .split-body, .pdetail-info,
+.fcard, .pcard-body, .industry-card .ic-body, .overview-facts .fact, .team-card, .drawer-body { text-align: center; }
+.section-head p, .page-hero p, .overview-head .lead, .split-body p { margin-inline: auto; }
+.fcard .ic { margin-inline: auto; }
+.hero-actions, .hero-stats, .btn-row, .cta-band .btn-row,
+.pcard-body .chips, .drawer-actions, .split-body .taglist,
+.pdetail-actions, .pdetail-info .badges, .pdetail-info .taglist,
+.drawer-body .badges, .drawer-body .taglist { justify-content: center; }
+
+/* keep functional blocks left-aligned (centering them reads as broken) */
+.pdetail-info .checklist, .pdetail-info .spec-table, .pdetail-info .two-col,
+.drawer-body .checklist, .drawer-body .spec-table { text-align: left; }
+.pdetail-info .checklist li, .drawer-body .checklist li { justify-content: flex-start; text-align: left; }
+.site-footer .footer-col, .site-footer .footer-brand { text-align: left; }
+.site-footer h4 { text-align: left; }
+.office-card, .office-card h3 { text-align: left; }
 .bg-cream2 { background: var(--cream-2); }
 
 /* Company overview — two-column editorial split */
