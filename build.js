@@ -698,7 +698,7 @@ function industriesBody() {
       </div>`;
   }).join("");
   return `
-  <section class="page-hero">
+  <section class="page-hero center">
     <div class="container">
       <span class="eyebrow">Industries</span>
       <h1>Built for the sectors that depend on packaging.</h1>
