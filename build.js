@@ -227,7 +227,7 @@ function header(active) {
 
 function footer() {
   const o = COMPANY.offices;
-  const prodLinks = PRODUCTS.slice(0, 6).map((p) => `<a href="${productUrl(p)}">${esc(p.name)}</a>`).join("\n          ");
+  const prodLinks = PRODUCTS.slice(0, 3).map((p) => `<a href="${productUrl(p)}">${esc(p.name)}</a>`).join("\n          ");
   return `
   <footer class="site-footer">
     <div class="container">
