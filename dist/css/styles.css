@@ -572,7 +572,7 @@ em { font-style: italic; color: var(--green-500); }
 .page-hero.center h1 { max-width: none; margin-inline: auto; }
 .page-hero.center p { max-width: 78ch; margin-inline: auto; }
 .page-hero.center .eyebrow { justify-content: center; }
-.page-hero p { max-width: 56ch; color: var(--muted); font-size: 1.12rem; }
+.page-hero p { max-width: none; color: var(--muted); font-size: 1.12rem; }
 
 /* ===========================================================
    UTIL / ANIMATION

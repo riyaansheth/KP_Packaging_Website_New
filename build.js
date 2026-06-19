@@ -692,7 +692,6 @@ function industriesBody() {
           <span class="eyebrow">${esc(i.name)}</span>
           <h2 style="margin-top:1rem"><a href="${industryUrl(i)}">${esc(i.name)}</a></h2>
           <p>${esc(i.detail)}</p>
-          <div class="taglist" style="margin-bottom:1.4rem">${prods.map((p) => `<a class="chiplink" href="${productUrl(p)}">${esc(p.name)}</a>`).join("")}</div>
           <a class="btn btn--primary" href="${industryUrl(i)}">Explore ${esc(i.name)} ${ICON.arrow}</a>
         </div>
       </div>`;
