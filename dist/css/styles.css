@@ -686,6 +686,20 @@ html.lenis, html.lenis body { height: auto; }
   .pdetail-info .checklist li { justify-content: flex-start; text-align: left; }
   .pdetail-info .badges, .pdetail-info .taglist, .pdetail-info .pdetail-actions { justify-content: center; }
 
+  /* individual product page: tighter, comfortable mobile padding */
+  #product-detail .breadcrumb { padding-top: 1rem; }
+  #product-detail .pdetail { padding-top: .6rem; gap: 1.5rem; padding-bottom: .5rem; }
+  .pdetail-hero.has-img img { padding: 1.1rem; }
+  .pdetail-info h1 { margin-top: .3rem; }
+  .pdetail-info .desc { font-size: 1rem; margin-bottom: 1.2rem; }
+  .pdetail-info .construction { margin-bottom: 1.2rem; }
+  .pdetail-actions { margin-bottom: 1.2rem; gap: .6rem; }
+  .pdetail-actions .btn { flex: 1 1 auto; justify-content: center; }
+  .spec-block { margin-top: 1.6rem; }
+  .spec-block .two-col { gap: 1.2rem; }
+  #product-detail .section { margin-top: 1.25rem !important; }
+  #product-detail .section .section-head { margin-bottom: 1.4rem; }
+
   /* product drawer: centre it like a modal instead of right-aligned */
   .product-drawer {
     top: 50%; left: 50%; right: auto; bottom: auto;
