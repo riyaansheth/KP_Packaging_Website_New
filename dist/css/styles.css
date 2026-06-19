@@ -682,6 +682,7 @@ html.lenis, html.lenis body { height: auto; }
   .hero-visual { aspect-ratio: 16/11; }        /* shorter image on phones, less scrolling */
   .hero { min-height: 0; }                       /* don't force full-height hero on small phones */
   .hero-inner { padding-block: 32px 8px; }
+  .pcard-body .link-arrow { align-self: center; }  /* centre "View product" on phones */
 
   /* shorten the homepage / about on phones */
   .hide-mobile { display: none !important; }

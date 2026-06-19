@@ -568,7 +568,6 @@ function drawerContent(p) {
       <h3>${esc(p.name)}</h3>
       <div class="aka">${esc(p.aka)}</div>
       <p class="desc">${esc(p.desc)}</p>
-      ${p.construction ? `<div class="construction">Construction: <strong>${esc(p.construction)}</strong></div>` : ""}
       <h4>Applications</h4>
       <ul class="checklist">${p.applications.map((a) => `<li>${CHECK}<span>${esc(a)}</span></li>`).join("")}</ul>
       <h4>Key properties</h4>
@@ -645,7 +644,6 @@ function productBody(p) {
           <h1>${esc(p.name)}</h1>
           <div class="aka">${esc(p.aka)}</div>
           <p class="desc">${esc(p.desc)}</p>
-          ${p.construction ? `<div class="construction">🧩&nbsp; Construction: <strong>${esc(p.construction)}</strong></div>` : ""}
           <div class="pdetail-actions">
             <button class="btn btn--primary btn--lg" data-quote data-product="${escAttr(p.name)}">Request a Quote ${ICON.arrow}</button>
             <a class="btn btn--ghost btn--lg" href="/contact/">Talk to our team</a>
