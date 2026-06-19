@@ -446,14 +446,14 @@ function homeBody() {
 
   <section class="section">
     <div class="container">
-      <div class="section-head reveal"><span class="eyebrow">What we do</span><h2 style="margin-top:1rem">Two arms, one promise: dependable packaging.</h2><p>We manufacture extrusion-coated laminates and distribute a broad range of mill-grade papers, so you can source coating, printing and substrate from a single partner.</p></div>
+      <div class="section-head reveal center"><span class="eyebrow">What we do</span><h2 style="margin-top:1rem">Two arms, one promise: dependable packaging.</h2><p>We manufacture extrusion-coated laminates and distribute a broad range of mill-grade papers, so you can source coating, printing and substrate from a single partner.</p></div>
       <div class="grid grid-4">${capCards(false)}</div>
     </div>
   </section>
 
   <section class="section bg-cream2">
     <div class="container">
-      <div class="section-head reveal"><span class="eyebrow">Shop by industry</span><h2 style="margin-top:1rem">Solutions for the sectors we serve.</h2><p>From moisture barriers for medicine to food-safe cupstock, find the right material by where it's used.</p></div>
+      <div class="section-head reveal center"><span class="eyebrow">Shop by industry</span><h2 style="margin-top:1rem">Solutions for the sectors we serve.</h2><p>From moisture barriers for medicine to food-safe cupstock, find the right material by where it's used.</p></div>
       <div class="grid grid-4">${industries}</div>
     </div>
   </section>
