@@ -567,9 +567,10 @@ em { font-style: italic; color: var(--green-500); }
 .page-hero-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
 @media (max-width: 860px) { .page-hero-split { grid-template-columns: 1fr; } }
 @media (max-width: 720px) { .page-hero-media { display: none; } }
-/* centered page hero variant */
+/* centered page hero variant — heading spans the full width */
 .page-hero.center { text-align: center; }
-.page-hero.center h1, .page-hero.center p { margin-inline: auto; }
+.page-hero.center h1 { max-width: none; margin-inline: auto; }
+.page-hero.center p { max-width: 78ch; margin-inline: auto; }
 .page-hero.center .eyebrow { justify-content: center; }
 .page-hero p { max-width: 56ch; color: var(--muted); font-size: 1.12rem; }
 
