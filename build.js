@@ -336,7 +336,6 @@ function productCard(p) {
           <h3>${esc(p.name)}</h3>
           <div class="aka">${esc(p.aka)}</div>
           <p>${esc(p.tagline)}</p>
-          <div class="chips">${inds.map((i) => `<span class="chip">${esc(i)}</span>`).join("")}</div>
           <span class="link-arrow">View product ${ICON.arrow}</span>
         </div>
       </a>`;
@@ -574,7 +573,6 @@ function drawerContent(p) {
       <ul class="checklist">${p.properties.map((a) => `<li>${CHECK}<span>${esc(a)}</span></li>`).join("")}</ul>
       ${specRows ? `<h4>Specifications</h4><table class="spec-table">${specRows}</table>` : ""}
       ${(p.variants && p.variants.length) ? `<h4>Variants &amp; coatings</h4><div class="taglist">${[...p.variants, ...p.coatings].filter((v) => v && v !== "-").map((v) => `<span class="chip chip--kraft">${esc(v)}</span>`).join("")}</div>` : ""}
-      ${inds.length ? `<h4>Industries</h4><div class="taglist">${inds.map((i) => `<a class="chip" href="${industryUrl(i)}">${esc(i.name)}</a>`).join("")}</div>` : ""}
       <div class="drawer-actions">
         <button class="btn btn--primary" data-quote data-product="${escAttr(p.name)}">Request a Quote ${ICON.arrow}</button>
         <a class="btn btn--ghost" href="${productUrl(p)}">Open full page ${ICON.arrow}</a>
@@ -659,7 +657,6 @@ function productBody(p) {
           </div>
           ${specRows ? `<div class="spec-block"><h3>Specifications</h3><table class="spec-table">${specRows}</table></div>` : ""}
           ${(p.variants && p.variants.length) ? `<div class="spec-block"><h3>Variants &amp; Coatings</h3><div class="taglist">${[...p.variants, ...p.coatings].filter((v) => v && v !== ", ").map((v) => `<span class="chip chip--kraft">${esc(v)}</span>`).join("")}</div></div>` : ""}
-          ${inds.length ? `<div class="spec-block"><h3>Industries Served</h3><div class="taglist">${inds.map((i) => `<a class="chip" href="${industryUrl(i)}">${esc(i.name)}</a>`).join("")}</div></div>` : ""}
         </div>
       </div>
     </div>
