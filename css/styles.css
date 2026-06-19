@@ -39,8 +39,8 @@
   --r-sm: 8px;
   --r:    14px;
   --r-lg: 22px;
-  --container: 1520px;
-  --pad: clamp(12px, 1.8vw, 26px);
+  --container: 1480px;
+  --pad: clamp(18px, 2.4vw, 44px);
 
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
   --font-sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -65,7 +65,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 ul { list-style: none; padding: 0; }
 
 /* ---------- Typography ---------- */
-h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); }
+/* Override ONLY the ampersand glyph (U+0026) so headings use a normal & instead
+   of Fraunces' ornate calligraphic one. Everything else stays Fraunces. */
+@font-face {
+  font-family: "amp-normal";
+  src: local("Georgia"), local("Times New Roman"), local("Times"), local("Arial");
+  unicode-range: U+0026;
+}
+h1, h2, h3, h4 { font-family: "amp-normal", var(--font-display), Georgia, serif; font-weight: 500; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); }
 h1 { font-size: clamp(2.4rem, 5.2vw, 4.2rem); }
 h2 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
 h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); }
@@ -82,13 +89,28 @@ em { font-style: italic; color: var(--green-500); }
 
 /* ---------- Layout ---------- */
 .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--pad); }
-.section { padding-block: clamp(64px, 9vw, 120px); }
-.section--tight { padding-block: clamp(48px, 6vw, 80px); }
-.section-head { max-width: 640px; margin-bottom: 3rem; }
+.section { padding-block: clamp(40px, 4.5vw, 76px); }
+.section--tight { padding-block: clamp(30px, 3.5vw, 52px); }
+.section-head { max-width: 640px; margin-bottom: 2.2rem; }
 .section-head.center { margin-inline: auto; text-align: center; }
 .section-head .eyebrow { margin-bottom: 1rem; }
 .section-head p { margin-top: 1rem; color: var(--muted); font-size: 1.08rem; }
 .bg-cream2 { background: var(--cream-2); }
+
+/* Company overview — two-column editorial split */
+.overview-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: stretch; }
+.overview-head { max-width: 46ch; }
+.overview-head h2 { max-width: 16ch; }
+.overview-body { display: flex; }
+.overview-facts { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.overview-facts .fact { background: var(--paper); padding: 1.3rem 1.4rem; display: flex; flex-direction: column; justify-content: center; }
+.overview-facts .fact strong { display: block; font-family: var(--font-display); font-size: 1.15rem; color: var(--green); margin-bottom: .25rem; }
+.overview-facts .fact span { font-size: .88rem; color: var(--muted); line-height: 1.5; }
+@media (max-width: 860px) {
+  .overview-split { grid-template-columns: 1fr; gap: 1.6rem; }
+  .overview-facts { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) { .overview-facts { grid-template-columns: 1fr; } }
 .bg-green { background: var(--green); color: #E6E6F4; }
 .bg-green h2, .bg-green h3 { color: #fff; }
 
@@ -154,6 +176,14 @@ em { font-style: italic; color: var(--green-500); }
 .hero-inner { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; padding-block: clamp(40px, 5vw, 72px); width: 100%; }
 .hero h1 { margin-bottom: 1.4rem; }
 .hero h1 em { display: inline; }
+
+/* Hero eyebrow: wipes in left-to-right on load (accent line then label) */
+.hero .eyebrow { animation: eyebrow-wipe 1s 0.15s both cubic-bezier(.16,1,.3,1); }
+@keyframes eyebrow-wipe {
+  from { opacity: 0; clip-path: inset(0 100% 0 0); transform: translateY(4px); }
+  to   { opacity: 1; clip-path: inset(0 0 0 0); transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .hero .eyebrow { animation: none; } }
 .hero .lead { max-width: 30ch; margin-bottom: 2rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-bottom: 2.6rem; }
 .hero-stats { display: flex; gap: 2.4rem; }
@@ -195,15 +225,31 @@ em { font-style: italic; color: var(--green-500); }
 .trustbar { border-block: 1px solid var(--line); }
 .trustbar .container { display: flex; flex-direction: column; align-items: center; gap: 1.8rem; padding-block: 2.6rem; }
 .trustbar .tb-label { font-size: .82rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted-2); font-weight: 600; }
-.trustbar .tb-logos { display: flex; flex-wrap: wrap; gap: 2rem 3.4rem; align-items: center; justify-content: center; }
-.trustbar .tb-logo { display: inline-flex; align-items: center; }
-.trustbar .tb-logo img {
-  height: 52px; width: auto; max-width: 190px; object-fit: contain;
+
+/* Infinite logo marquee */
+.marquee {
+  width: 100%; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
+.marquee-track { display: flex; align-items: center; width: max-content; flex-wrap: nowrap; animation: marquee-scroll 20s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-set { display: flex; align-items: center; flex: 0 0 auto; }
+@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.trustbar .tb-logo { display: inline-flex; align-items: center; padding-right: 3.6rem; }
+.trustbar .tb-logo img { height: 50px; width: auto; max-width: 190px; object-fit: contain; }
+
 @media (max-width: 720px) {
   .trustbar .container { padding-block: 2rem; gap: 1.4rem; }
-  .trustbar .tb-logos { gap: 1.5rem 2.2rem; }
-  .trustbar .tb-logo img { height: 40px; max-width: 140px; }
+  .trustbar .tb-logo { padding-right: 2.4rem; }
+  .trustbar .tb-logo img { height: 38px; max-width: 140px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee { -webkit-mask-image: none; mask-image: none; }
+  .marquee-track { animation: none; width: 100%; }
+  .marquee-set { flex-wrap: wrap; justify-content: center; width: 100%; }
+  .marquee-set[aria-hidden] { display: none; }
 }
 
 /* ===========================================================
@@ -248,6 +294,17 @@ em { font-style: italic; color: var(--green-500); }
 .chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
 .chip { font-size: .72rem; font-weight: 600; color: var(--green-500); background: var(--green-50); padding: .25rem .6rem; border-radius: 999px; }
 .chip--kraft { color: var(--kraft-600); background: var(--kraft-soft); }
+/* refined product link pill (industries) */
+.chiplink {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-size: .9rem; font-weight: 600; color: var(--green);
+  background: var(--paper); border: 1px solid var(--line-2);
+  padding: .5rem .95rem; border-radius: 999px;
+  transition: background .2s, border-color .2s, transform .2s, box-shadow .2s;
+}
+.chiplink::after { content: "→"; font-size: .95em; color: var(--green-500); transition: transform .2s; }
+.chiplink:hover { border-color: var(--green); background: var(--green-50); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.chiplink:hover::after { transform: translateX(3px); }
 
 /* ===========================================================
    PRODUCT CATALOGUE (filters)
@@ -364,7 +421,7 @@ em { font-style: italic; color: var(--green-500); }
    INDUSTRIES / SPLIT SECTIONS
    =========================================================== */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,5rem); align-items: center; }
-.split--rev .split-media { order: -1; }
+.split--rev .split-media { order: 2; }
 .split-media { aspect-ratio: 5/4; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); }
 .split-body h2 { margin-bottom: 1rem; }
 .split-body p { color: var(--muted); margin-bottom: 1.2rem; }

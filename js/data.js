@@ -1,5 +1,5 @@
 /* ===========================================================
-   K P Packaging - Site Data
+   K P Packaging, Site Data
    Single source of truth for products, industries, capabilities.
    =========================================================== */
 
@@ -33,7 +33,7 @@ const COMPANY = {
     {
       tag: "Corporate Office",
       city: "Mumbai",
-      address: "A to Z Industrial Estate, Western Wing, Office No 138, Ganpat Rao Kadam Marg, Lower Parel, Mumbai - 400013",
+      address: "A to Z Industrial Estate, Western Wing, Office No 138, Ganpat Rao Kadam Marg, Lower Parel, Mumbai, 400013",
       street: "A to Z Industrial Estate, Western Wing, Office No 138, Ganpat Rao Kadam Marg, Lower Parel",
       locality: "Mumbai", region: "Maharashtra", postal: "400013", country: "IN",
       phone: "+91 85916 56966",
@@ -43,7 +43,7 @@ const COMPANY = {
     {
       tag: "Manufacturing Plant",
       city: "Silvassa",
-      address: "No 7, 8 & 9, Sr No 245/3, Sankeshwar Industrial Estate, Behind Prince Pipe, Silvassa, Dadra and Nagar Haveli - 396230",
+      address: "No 7, 8 & 9, Sr No 245/3, Sankeshwar Industrial Estate, Behind Prince Pipe, Silvassa, Dadra and Nagar Haveli, 396230",
       street: "No 7, 8 & 9, Sr No 245/3, Sankeshwar Industrial Estate, Behind Prince Pipe",
       locality: "Silvassa", region: "Dadra and Nagar Haveli", postal: "396230", country: "IN",
       phone: "+91 85916 94328",
@@ -61,13 +61,13 @@ const COMPANY = {
   summary: "K P Packaging Ltd. is a Mumbai-based manufacturer and distributor of coated papers and flexible packaging with over 30 years of experience. The company runs a Korean-built extrusion coating and lamination plant in Silvassa, India, and supplies pharmaceutical, food & beverage, FMCG and medical/surgical packaging to 425+ clients across 20+ countries.",
   why: [
     { title: "Three decades of converting expertise", text: "Over 30 years in coated paper and flexible packaging, from a PVC leather-cloth pioneer to a modern primary-packaging house." },
-    { title: "Manufacturing + distribution under one roof", text: "In-house extrusion-coated laminates plus authorized distribution for leading Indian paper mills - source coating, printing and substrate from a single partner." },
+    { title: "Manufacturing + distribution under one roof", text: "In-house extrusion-coated laminates plus authorized distribution for leading Indian paper mills, source coating, printing and substrate from a single partner." },
     { title: "State-of-the-art Korean coating line", text: "A modern extrusion lamination and coating plant in Silvassa, with rotogravure printing and multiple slitting & rewinding machines." },
     { title: "Trusted by industry leaders", text: "Supplies Wockhardt, Cipla, Dr. Reddy's, Godrej, Wipro, Zydus, Amul, Parksons and Intas across 20+ countries." },
     { title: "Pharma- and food-grade quality", text: "FSC- and FDA-aligned barrier papers for medicines, ORS sachets, blister packs, paper cups and food packaging." }
   ],
   faq: [
-    { q: "What does K P Packaging do?", a: "K P Packaging manufactures extrusion-coated paper laminates and distributes a wide range of mill-grade papers for primary and flexible packaging - serving the pharmaceutical, food & beverage, FMCG and medical/surgical industries." },
+    { q: "What does K P Packaging do?", a: "K P Packaging manufactures extrusion-coated paper laminates and distributes a wide range of mill-grade papers for primary and flexible packaging, serving the pharmaceutical, food & beverage, FMCG and medical/surgical industries." },
     { q: "Where is K P Packaging located?", a: "Its corporate office is in Lower Parel, Mumbai, Maharashtra, and its manufacturing plant is in Sankeshwar Industrial Estate, Silvassa, Dadra and Nagar Haveli, India." },
     { q: "Is K P Packaging a manufacturer or a distributor?", a: "Both. K P Packaging manufactures extrusion-coated laminates in-house and is also an authorized distributor for multiple Indian paper mills." },
     { q: "Does K P Packaging export internationally?", a: "Yes. K P Packaging serves 425+ clients across more than 20 countries and is actively expanding its international business." },
@@ -83,14 +83,14 @@ const CAPABILITIES = [
     title: "Extrusion Coating & Lamination",
     icon: "layers",
     blurb: "Poly (PE) coating on printed & unprinted Paper, Board, PET, BOPP, Aluminium Foil and Fabric.",
-    detail: "Our state-of-the-art extrusion lamination and coating line - imported from Korea - applies LDPE and specialty polymer layers across a wide range of substrates to deliver moisture, grease and oxygen barriers for primary packaging."
+    detail: "Our state-of-the-art extrusion lamination and coating line, imported from Korea, applies LDPE and specialty polymer layers across a wide range of substrates to deliver moisture, grease and oxygen barriers for primary packaging."
   },
   {
     slug: "rotogravure-printing",
     title: "Rotogravure Printing",
     icon: "printer",
     blurb: "High-resolution, multi-colour gravure printing for sharp, durable, on-brand packaging.",
-    detail: "Our rotogravure press delivers consistent, high-volume print quality on films, foils and papers - ideal for branded flexible packaging and pharmaceutical laminates."
+    detail: "Our rotogravure press delivers consistent, high-volume print quality on films, foils and papers, ideal for branded flexible packaging and pharmaceutical laminates."
   },
   {
     slug: "slitting-rewinding",
@@ -104,7 +104,7 @@ const CAPABILITIES = [
     title: "Paper Distribution",
     icon: "truck",
     blurb: "Authorized distributor for leading Indian paper mills across a broad grade range.",
-    detail: "Beyond manufacturing, we are authorized distributors for multiple Indian paper mills - supplying MG Poster, Maplitho, Cupstock, MG/MF Kraft, Greaseproof, Chromo, Glassine, Duplex, FBB, SBS and more."
+    detail: "Beyond manufacturing, we are authorized distributors for multiple Indian paper mills, supplying MG Poster, Maplitho, Cupstock, MG/MF Kraft, Greaseproof, Chromo, Glassine, Duplex, FBB, SBS and more."
   }
 ];
 
@@ -115,7 +115,7 @@ const INDUSTRIES = [
     art: "roll-art",
     image: "/assets/industries/pharmaceutical.jpg",
     blurb: "Barrier papers and foil laminates for tablet strips, ORS sachets and blister packs.",
-    detail: "We supply the barrier-grade papers and aluminium foil laminates that protect medicines from moisture, light and air - from glassine sachets to 4-ply foil laminates used by leading pharma brands.",
+    detail: "We supply the barrier-grade papers and aluminium foil laminates that protect medicines from moisture, light and air, from glassine sachets to 4-ply foil laminates used by leading pharma brands.",
     products: ["glassine-paper", "4-ply-paper", "3-ply-paper", "folding-box-board", "non-tearable-paper"]
   },
   {
@@ -159,7 +159,7 @@ const PRODUCTS = [
     arm: "Both",
     featured: true,
     construction: "Glassine base + optional PE / VMCH / HSL coating",
-    desc: "Glassine is a smooth, super-calendered glossy paper resistant to air, water and grease - an ideal base for pharmaceutical packaging. It is an extremely niche paper, manufactured by only one paper mill in India, and serves as a base that can be further coated using complex polymers.",
+    desc: "Glassine is a smooth, super-calendered glossy paper resistant to air, water and grease, an ideal base for pharmaceutical packaging. It is an extremely niche paper, manufactured by only one paper mill in India, and serves as a base that can be further coated using complex polymers.",
     applications: ["ORS sachets", "Strip packing of tablets", "Primary medicine packaging (Saridon, Decdan, Practin)"],
     properties: ["Smooth super-calendered glossy finish", "Resistant to air, water & grease", "Passes stringent quality control", "Multiple coating options for varied protection"],
     variants: ["Pure glassine paper", "Poly-coated glassine", "VMCH / HSL-coated glassine", "Plain or printed reels"],
@@ -174,12 +174,12 @@ const PRODUCTS = [
     image: "/assets/products/mg-poster-paper.jpg",
     name: "MG Poster Paper",
     aka: "Machine Glazed / Sandwich Paper",
-    tagline: "Glossy, high-strength poly-coated paper - a best-seller for primary packaging.",
+    tagline: "Glossy, high-strength poly-coated paper, a best-seller for primary packaging.",
     art: "roll-art--kraft",
     arm: "Manufactured",
     featured: true,
     construction: "Poster paper + LDPE coating",
-    desc: "MG Poster Paper - Machine Glazed Poster Paper, known overseas as poly coated poster paper or 'Sandwich Paper' - is one of our best-selling and most sought-after products for primary packaging. Coated with a layer of LDPE during production, it has an extremely glossy appearance, a smooth exterior, high tensile strength and good stiffness. It is an affordable alternative to chromo paper.",
+    desc: "MG Poster Paper, Machine Glazed Poster Paper, known overseas as poly coated poster paper or 'Sandwich Paper', is one of our best-selling and most sought-after products for primary packaging. Coated with a layer of LDPE during production, it has an extremely glossy appearance, a smooth exterior, high tensile strength and good stiffness. It is an affordable alternative to chromo paper.",
     applications: ["Heat-sealable wrapping", "Pouches", "Inner lining in carton boxes", "Food item packaging", "Apparel & glass wrapping", "Sugar & salt packaging", "Band-aid packaging", "Glove pouches"],
     properties: ["High tensile strength", "Stiff construction", "Glossy appearance", "Smooth exterior finish", "Affordable alternative to chromo"],
     variants: ["Coated", "Uncoated", "Custom specifications"],
@@ -218,8 +218,8 @@ const PRODUCTS = [
     art: "roll-art--kraft",
     arm: "Both",
     featured: true,
-    construction: "2 - 3 ply base + PE / PLA / water-based coating",
-    desc: "Cupstock paper is a food-safe paper suitable for both hot and cold food and beverages. The base consists of 2 - 3 plies that prevent liquid penetration into inner layers, and coatings provide effective protection against light, oxygen, humidity, grease and heat.",
+    construction: "2, 3 ply base + PE / PLA / water-based coating",
+    desc: "Cupstock paper is a food-safe paper suitable for both hot and cold food and beverages. The base consists of 2, 3 plies that prevent liquid penetration into inner layers, and coatings provide effective protection against light, oxygen, humidity, grease and heat.",
     applications: ["Paper cups", "Noodle & soup bowls", "Food wrappers", "Grocery bags", "Tray mats & meal boxes", "Fast-food containers", "Dry food trays", "Dairy product packaging"],
     properties: ["High hygiene standards", "Low heat transfer", "Liquid-tight when coated", "Moisture & water resistant", "Good sealing properties", "Sustainable & renewable"],
     variants: ["Bleached / unbleached", "Single-sided PE", "Double-sided PE"],
@@ -239,7 +239,7 @@ const PRODUCTS = [
     arm: "Manufactured",
     featured: true,
     construction: "Paper + Polymer + Aluminium Foil",
-    desc: "3 Ply Paper - composed of Paper, Polymer and Aluminium Foil - is renowned for sustainability and its superior ability to maintain freshness. It is lightweight, durable, recyclable and leak-proof, effectively blocking water, moisture, air and light.",
+    desc: "3 Ply Paper, composed of Paper, Polymer and Aluminium Foil, is renowned for sustainability and its superior ability to maintain freshness. It is lightweight, durable, recyclable and leak-proof, effectively blocking water, moisture, air and light.",
     applications: ["Foil bags", "Green tea sachets", "Meat packaging", "Freshness-critical products"],
     properties: ["Excellent thermal conductivity", "Purity & neutrality", "Grease resistance", "Strong texture for varied designs", "Protects against temperature, air, light & moisture"],
     variants: ["Custom laminate structures"],
@@ -259,7 +259,7 @@ const PRODUCTS = [
     arm: "Manufactured",
     featured: true,
     construction: "Paper + PE + Aluminium Foil + PE",
-    desc: "Enhancing the versatility of 3 Ply Paper, an extra polymer layer creates 4 Ply Paper - a material highly valued in the pharmaceutical industry for packaging tablet strips and ORS powders. It preserves formulation effectiveness by protecting against moisture and harmful elements while maintaining potency over time.",
+    desc: "Enhancing the versatility of 3 Ply Paper, an extra polymer layer creates 4 Ply Paper, a material highly valued in the pharmaceutical industry for packaging tablet strips and ORS powders. It preserves formulation effectiveness by protecting against moisture and harmful elements while maintaining potency over time.",
     applications: ["Pharmaceutical tablet strips", "ORS powders (e.g. Electral)", "Pan masala packaging", "Moisture-sensitive food & medicine"],
     properties: ["Blocks moisture effectively", "Maintains product freshness", "Protects against extreme temperatures", "Preserves formulation potency"],
     variants: ["Glassine 4 Ply", "Chromo 4 Ply", "Kraft 4 Ply"],
@@ -299,9 +299,9 @@ const PRODUCTS = [
     arm: "Distributed",
     featured: false,
     construction: "Chemical pulp / mechanical pulp / chemical pulp layers",
-    desc: "FBB, also known as Folding Box Board, is made up of multiple layers of mechanical pulp between layers of chemical pulp - a low-density material with high stiffness. It features a printable bleached surface, an unbleached yellowish centre layer and a bleached inner layer, making it ideal for scoring and bending without tearing or splitting.",
+    desc: "FBB, also known as Folding Box Board, is made up of multiple layers of mechanical pulp between layers of chemical pulp, a low-density material with high stiffness. It features a printable bleached surface, an unbleached yellowish centre layer and a bleached inner layer, making it ideal for scoring and bending without tearing or splitting.",
     applications: ["Health & beauty packaging", "Frozen foods", "Confectionery", "Pharmaceutical cartons", "Cigarette packaging"],
-    properties: ["Low-density, high stiffness", "Smooth surface for superior print", "Excellent for foil stamping & cold foil", "High thickness with brightness", "Recyclable & eco-friendly", "Lightweight - lowers transport cost"],
+    properties: ["Low-density, high stiffness", "Smooth surface for superior print", "Excellent for foil stamping & cold foil", "High thickness with brightness", "Recyclable & eco-friendly", "Lightweight, lowers transport cost"],
     variants: ["Various grammages"],
     coatings: ["Bleached surface"],
     specs: { structure: "Bleached / yellowish centre / bleached inner", finish: "Smooth, high brightness" },
@@ -334,12 +334,12 @@ const PRODUCTS = [
     image: "/assets/products/non-tearable-paper.jpg",
     name: "Non Tearable Paper",
     aka: "Synthetic Spun-bound Paper",
-    tagline: "Synthetic, breathable, tear-proof - the strength of paper, film and fabric.",
+    tagline: "Synthetic, breathable, tear-proof, the strength of paper, film and fabric.",
     art: "roll-art",
     arm: "Distributed",
     featured: false,
     construction: "High-density spun-bound polyethylene fibres",
-    desc: "Non Tearable Paper is lightweight, breathable and resistant to water, wear and tear. Manufactured from high-density spun-bound polyethylene fibres and completely synthetic, it combines the performance of paper, film and fabric - making it ideal for a wide range of applications.",
+    desc: "Non Tearable Paper is lightweight, breathable and resistant to water, wear and tear. Manufactured from high-density spun-bound polyethylene fibres and completely synthetic, it combines the performance of paper, film and fabric, making it ideal for a wide range of applications.",
     applications: ["Medical & pharmaceutical packaging", "Industrial protective apparel", "Building protection during construction", "Postal envelopes (Priority/Express)", "Lab & pharma sterilization"],
     properties: ["Lightweight & breathable", "Water, wear & tear resistant", "Bacterial penetration resistant", "Dimensionally stable when printed/coated", "Withstands gamma & ethylene-oxide sterilization", "100% recyclable"],
     variants: ["Coated, embossed, hot-foil stamped, laminated, perforated, punched, stitched, welded, heat-sealed"],
@@ -381,7 +381,7 @@ const PRODUCTS = [
     construction: "Cellulose-based, non-stick",
     desc: "Greaseproof paper, often known as butter paper, is a versatile, non-stick, cellulose-based material essential in food packaging. It has a smooth texture, a low water-absorption rate and heat resistance suitable for lining cake tins and baking applications, while preventing oil penetration.",
     applications: ["Packaging butter & margarine", "Wrapping food items", "Lining cake tins & baking", "General cooking use"],
-    properties: ["Non-stick surface", "Heat resistant up to 220°C", "Breathable material", "Food-safe - no harmful leaching", "Prevents oil penetration", "Retains moisture better than foil"],
+    properties: ["Non-stick surface", "Heat resistant up to 220°C", "Breathable material", "Food-safe, no harmful leaching", "Prevents oil penetration", "Retains moisture better than foil"],
     variants: ["Plain", "Printed"],
     coatings: ["Cellulose, non-stick"],
     specs: { heat_resistance: "Up to 220°C", material: "Cellulose-based", water_absorption: "Low rate" },
@@ -399,7 +399,7 @@ const PRODUCTS = [
     arm: "Distributed",
     featured: false,
     construction: "Wood-free, surface-sized",
-    desc: "Maplitho - meaning 'surface size-paper' - is an eco-friendly, wood-free paper distributed by K P Packaging. The nature of the paper used for printing plays an important role in the quality of the final printed product, and Maplitho enables crisp embossing on both sides.",
+    desc: "Maplitho, meaning 'surface size-paper', is an eco-friendly, wood-free paper distributed by K P Packaging. The nature of the paper used for printing plays an important role in the quality of the final printed product, and Maplitho enables crisp embossing on both sides.",
     applications: ["Computer stationery", "Bills, invoices & cashbooks", "Leaflets & mailers", "Calendars & writing pads", "Label printing", "Braille printing", "Laser / inkjet / photocopy"],
     properties: ["Eco-friendly & wood-free", "Embossing on both sides", "Available in multiple sizes", "Available in two shades", "Recyclable"],
     variants: ["Two shades", "Multiple sizes"],
@@ -419,11 +419,11 @@ const PRODUCTS = [
     arm: "Distributed",
     featured: false,
     construction: "Recycled paper pulp",
-    desc: "Tissue paper is a lightweight paper made from recycled paper pulp. Distributed by K P Packaging, it is hygienic and versatile - used in facial tissues, paper napkins, paper towels and bathroom tissues, and can be customized with manufacturer branding.",
+    desc: "Tissue paper is a lightweight paper made from recycled paper pulp. Distributed by K P Packaging, it is hygienic and versatile, used in facial tissues, paper napkins, paper towels and bathroom tissues, and can be customized with manufacturer branding.",
     applications: ["Facial tissues", "Paper napkins", "Paper towels", "Bathroom & toilet tissue", "Wrapping & packaging", "Cushioning fragile items", "Infection control"],
     properties: ["Soft, absorbent & disposable", "Hygienic", "Customizable branding", "Specialty variants available", "Made from recycled pulp"],
     variants: ["Facial", "Napkin", "Towel", "Bathroom"],
-    coatings: [" - "],
+    coatings: [", "],
     specs: { material: "Recycled paper pulp" },
     certs: [],
     industries: ["food-beverage"],
@@ -439,7 +439,7 @@ const PRODUCTS = [
     arm: "Manufactured",
     featured: false,
     construction: "Kraft & polymer reinforced",
-    desc: "Hygienically produced and free from optical brighteners, Bactite paper is developed to fulfil special requirements of heat sealability and is suitable for steam sterilization, giving it a colour indication. Its excellent fluid-repellent quality and bacterial-growth barrier make it ideal for packaging medical products - mainly hand gloves.",
+    desc: "Hygienically produced and free from optical brighteners, Bactite paper is developed to fulfil special requirements of heat sealability and is suitable for steam sterilization, giving it a colour indication. Its excellent fluid-repellent quality and bacterial-growth barrier make it ideal for packaging medical products, mainly hand gloves.",
     applications: ["Medical hand-glove packaging", "Sterilized medical equipment", "Surgical disposables"],
     properties: ["High dry & wet strength", "Lint-free", "Tear-resistant", "Kraft & polymer reinforced", "Colour indication for steam sterilization", "Free from optical brighteners"],
     variants: ["Plain", "Printed"],
@@ -461,7 +461,7 @@ const PRODUCTS = [
     construction: "Extrusion coating lamination",
     desc: "Medical grade Grid Lacquer Paper with extrusion coating lamination is used in the packaging of various medical and surgical gloves, syringes, catheters and needles. It is self-sealing and requires no PE coating, with excellent adhesive strength and a superior printing surface.",
     applications: ["Medical & surgical gloves", "Blister-wrapping of syringes", "Catheters & needles", "Surgical disposables"],
-    properties: ["Excellent adhesive strength & sealability", "High paper strength", "Self-sealing - no PE coating required", "Superior printing-quality surface"],
+    properties: ["Excellent adhesive strength & sealability", "High paper strength", "Self-sealing, no PE coating required", "Superior printing-quality surface"],
     variants: ["Plain", "Printed"],
     coatings: ["Lacquer / extrusion coat"],
     specs: { feature: "Self-sealing, no PE required" },
