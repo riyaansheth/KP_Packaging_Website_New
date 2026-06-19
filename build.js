@@ -529,7 +529,7 @@ function aboutBody() {
 
   <section class="section">
     <div class="container">
-      <div class="section-head reveal"><span class="eyebrow">Areas of expertise</span><h2 style="margin-top:1rem">Converters of paper, board & flexible films.</h2><p>We coat and laminate on various grades of paper, paperboard, cupstock, polyester film, BOPP film, aluminium foils and fabrics. Our products pack medicines, gloves, yeast, sugar, salt, pepper, paper cups, boxes and tea. Our aluminium foil, plain and printed, pairs with rigid and flexible PVC films for blister & strip packing, condom laminates, surgical suture laminates and ORS salts. We also produce a full range of flexible packaging for chips, tea, coffee, salt, noodles, chocolates, detergents, soaps, oils and snacks.</p></div>
+      <div class="section-head reveal center"><span class="eyebrow">Areas of expertise</span><h2 style="margin-top:1rem">Converters of paper, board & flexible films.</h2><p>We coat and laminate on various grades of paper, paperboard, cupstock, polyester film, BOPP film, aluminium foils and fabrics. Our products pack medicines, gloves, yeast, sugar, salt, pepper, paper cups, boxes and tea. Our aluminium foil, plain and printed, pairs with rigid and flexible PVC films for blister & strip packing, condom laminates, surgical suture laminates and ORS salts. We also produce a full range of flexible packaging for chips, tea, coffee, salt, noodles, chocolates, detergents, soaps, oils and snacks.</p></div>
       <div class="grid grid-4">${capCards(false)}</div>
     </div>
   </section>
