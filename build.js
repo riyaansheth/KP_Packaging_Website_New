@@ -565,7 +565,6 @@ function drawerContent(p) {
     <button class="drawer-close" data-drawer-close aria-label="Close details">${ICON.close}</button>
     ${media}
     <div class="drawer-body">
-      <div class="badges">${p.certs.map((c) => `<span class="badge badge--cert">${esc(c)}</span>`).join("")}</div>
       <h3>${esc(p.name)}</h3>
       <div class="aka">${esc(p.aka)}</div>
       <p class="desc">${esc(p.desc)}</p>
@@ -643,7 +642,6 @@ function productBody(p) {
           <div class="pdetail-thumbs"><div class="th ${p.art} roll-art"></div><div class="th roll-art"></div><div class="th roll-art--kraft"></div></div>`}
         </div>
         <div class="pdetail-info">
-          <div class="badges">${p.certs.map((c) => `<span class="badge badge--cert">${esc(c)}</span>`).join("")}</div>
           <h1>${esc(p.name)}</h1>
           <div class="aka">${esc(p.aka)}</div>
           <p class="desc">${esc(p.desc)}</p>
