@@ -355,6 +355,8 @@ em { font-style: italic; color: var(--green-500); }
   flex: 0 0 420px; width: 420px; opacity: 1; pointer-events: auto; box-shadow: var(--shadow-lg);
 }
 .drawer-backdrop { position: fixed; inset: 0; background: rgba(27,27,42,.42); backdrop-filter: blur(2px); z-index: 200; border: 0; }
+/* lock background scroll while the drawer is open in overlay (phone/tablet) mode */
+@media (max-width: 1200px) { html.drawer-lock, html.drawer-lock body { overflow: hidden; height: 100%; } }
 @media (min-width: 1201px) { .drawer-backdrop { display: none; } }
 
 .drawer-inner { padding: 1.4rem; padding-bottom: max(1.4rem, env(safe-area-inset-bottom)); position: relative; }

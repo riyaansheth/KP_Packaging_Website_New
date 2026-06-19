@@ -209,6 +209,7 @@
       drawer.innerHTML = "";
       drawer.appendChild(tpl.content.cloneNode(true));
       cwrap.classList.add("drawer-open");
+      document.documentElement.classList.add("drawer-lock");
       drawer.setAttribute("aria-hidden", "false");
       if (backdrop) backdrop.hidden = false;
       drawer.scrollTop = 0;
@@ -217,6 +218,7 @@
     }
     function closeDrawer() {
       cwrap.classList.remove("drawer-open");
+      document.documentElement.classList.remove("drawer-lock");
       drawer.setAttribute("aria-hidden", "true");
       if (backdrop) backdrop.hidden = true;
       setActive(null);
