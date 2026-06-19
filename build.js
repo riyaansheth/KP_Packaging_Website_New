@@ -169,7 +169,7 @@ function head(meta) {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>${esc(meta.title)}</title>
   <meta name="description" content="${escAttr(meta.desc)}">
   <link rel="canonical" href="${url}">
@@ -188,6 +188,13 @@ function head(meta) {
   <meta name="twitter:description" content="${escAttr(meta.desc)}">
   <meta name="twitter:image" content="${BASE + COMPANY.ogImage}">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="K P Packaging">
+  <meta name="format-detection" content="telephone=no">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -938,6 +945,19 @@ function build() {
   writeFile("robots.txt", robotsTxt());
   writeFile("sitemap.xml", sitemapXml(urls));
   writeFile("llms.txt", llmsTxt());
+  writeFile("manifest.webmanifest", JSON.stringify({
+    name: COMPANY.legal,
+    short_name: "K P Packaging",
+    description: COMPANY.summary,
+    start_url: "/",
+    display: "standalone",
+    background_color: "#F7F7FB",
+    theme_color: "#2E2C7E",
+    icons: [
+      { src: "/assets/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any maskable" },
+      { src: "/assets/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any maskable" }
+    ]
+  }, null, 2));
 
   const pageCount = 5 + PRODUCTS.length + INDUSTRIES.length;
   console.log(`✓ Built ${pageCount} pages + robots.txt, sitemap.xml (${urls.length} urls), llms.txt → ${path.relative(ROOT, OUT)}/`);
