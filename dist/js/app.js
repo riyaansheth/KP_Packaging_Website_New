@@ -64,6 +64,13 @@
     var state = { industry: "", construction: "", coating: "", fn: "" };
     var countEl = $("#catalog-count");
 
+    // empty-state message
+    var emptyEl = document.createElement("p");
+    emptyEl.className = "catalog-empty";
+    emptyEl.textContent = "No products match these filters.";
+    emptyEl.hidden = true;
+    grid.parentNode.insertBefore(emptyEl, grid.nextSibling);
+
     function tokens(card, group) { return (card.getAttribute("data-" + group) || "").split(" ").filter(Boolean); }
     function matches(card) {
       for (var g in state) {
@@ -77,9 +84,10 @@
       $$(".pcard", grid).forEach(function (card) {
         var ok = matches(card);
         card.hidden = !ok;
-        if (ok) shown++;
+        if (ok) { card.classList.add("in"); shown++; } // ensure filtered-in cards are visible (not stuck at reveal opacity:0)
       });
       if (countEl) countEl.textContent = shown + (shown === 1 ? " product" : " products");
+      emptyEl.hidden = shown !== 0;
     }
 
     filters.addEventListener("click", function (e) {
