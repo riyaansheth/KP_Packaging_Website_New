@@ -122,7 +122,7 @@ const INDUSTRIES = [
     art: "roll-art",
     image: "/assets/industries/pharmaceutical.jpg",
     blurb: "Barrier papers and foil laminates for tablet strips, ORS sachets and blister packs.",
-    detail: "We supply the barrier-grade papers and aluminium foil laminates that protect medicines from moisture, light and air, from glassine sachets to 4-ply foil laminates used by leading pharma brands.",
+    detail: "We supply the barrier-grade papers and aluminium foil laminates that protect medicines from moisture, light and air, from glassine sachets to 4-ply foil laminates used by leading pharma brands. Our pharmaceutical-grade substrates safeguard tablet strips, ORS powders, blister and strip packs, condom laminates and surgical sutures, preserving potency and extending shelf life. With FDA- and FSC-aligned quality and consistent print and seal performance, we supply names such as Wockhardt, Cipla, Dr. Reddy's, Zydus and Intas.",
     products: ["glassine-paper", "4-ply-paper", "3-ply-paper", "folding-box-board", "non-tearable-paper"]
   },
   {
@@ -131,7 +131,7 @@ const INDUSTRIES = [
     art: "roll-art--kraft",
     image: "/assets/industries/food-beverage.jpg",
     blurb: "Food-safe, grease- and moisture-resistant papers for cups, wraps and pouches.",
-    detail: "Food-contact-safe cupstock, greaseproof and MG poster papers engineered for hot & cold beverages, bakery, dairy and ready-to-eat packaging.",
+    detail: "Food-contact-safe cupstock, greaseproof and MG poster papers engineered for hot & cold beverages, bakery, dairy and ready-to-eat packaging. PE, PLA and water-based coatings deliver dependable moisture, grease and heat resistance for paper cups, soup bowls, wrappers, trays, meal boxes and pouches. Every grade is produced to food-safe standards so it performs reliably from the production line all the way to the table.",
     products: ["cupstock-paper", "greaseproof-paper", "mg-poster-paper", "mg-kraft", "3-ply-paper"]
   },
   {
@@ -140,7 +140,7 @@ const INDUSTRIES = [
     art: "roll-art--cream",
     image: "/assets/industries/fmcg.jpg",
     blurb: "Printable, durable coated papers and boards for everyday branded products.",
-    detail: "High-gloss, print-ready chromo and poster papers plus folding box board for retail packaging that needs shelf appeal and structural strength.",
+    detail: "High-gloss, print-ready chromo and poster papers plus folding box board for retail packaging that needs shelf appeal and structural strength. From cartons and labels to sachets for tea, tobacco, gutka and personal-care products, our coated papers and boards pair sharp rotogravure printing with the stiffness and durability retail demands. We supply trusted FMCG names including Godrej, Wipro, Amul and Parksons.",
     products: ["chromo-paper", "mg-poster-paper", "folding-box-board", "duplex-board", "maplitho-paper"]
   },
   {
@@ -149,7 +149,7 @@ const INDUSTRIES = [
     art: "roll-art",
     image: "/assets/industries/medical-surgical.jpg",
     blurb: "Sterilizable, bacterial-barrier papers for gloves, syringes and surgical disposables.",
-    detail: "Steam-sterilizable Bactite and grid-lacquer papers with bacterial-barrier and self-sealing properties for medical gloves, syringes, catheters and surgical sutures.",
+    detail: "Steam-sterilizable Bactite and grid-lacquer papers with bacterial-barrier and self-sealing properties for medical gloves, syringes, catheters and surgical sutures. Free from optical brighteners and engineered for steam, EtO and gamma sterilization, these medical-grade papers hold a dependable bacterial barrier and a clean peel for surgical disposables. They are lint-free, fluid-repellent and high in dry and wet strength, trusted across hospital and device supply chains.",
     products: ["bactite", "grid-lacquer", "non-tearable-paper"]
   }
 ];

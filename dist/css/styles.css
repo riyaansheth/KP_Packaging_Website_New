@@ -446,7 +446,7 @@ em { font-style: italic; color: var(--green-500); }
 /* ===========================================================
    INDUSTRIES / SPLIT SECTIONS
    =========================================================== */
-.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,5rem); align-items: center; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,5rem); align-items: start; }
 .split--rev .split-media { order: 2; }
 .split-media { aspect-ratio: 5/4; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); }
 .split-body h2 { margin-bottom: 1rem; }
