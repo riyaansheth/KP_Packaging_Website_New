@@ -76,7 +76,7 @@ ul { list-style: none; padding: 0; }
   src: local("Georgia"), local("Times New Roman"), local("Times"), local("Arial");
   unicode-range: U+0026;
 }
-h1, h2, h3, h4 { font-family: "amp-normal", var(--font-display), Georgia, serif; font-weight: 500; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); }
+h1, h2, h3, h4 { font-family: "amp-normal", var(--font-display), Georgia, serif; font-weight: 500; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); text-transform: capitalize; }
 h1 { font-size: clamp(2.4rem, 5.2vw, 4.2rem); }
 h2 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
 h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); }
@@ -110,11 +110,12 @@ em { font-style: italic; color: var(--green-500); }
 .overview-facts .fact {
   background: var(--paper); border: 1px solid var(--line); border-radius: var(--r);
   padding: 1.6rem; position: relative; overflow: hidden;
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .25s ease;
 }
-.overview-facts .fact::before { content: ""; position: absolute; left: 0; top: 1.3rem; bottom: 1.3rem; width: 3px; border-radius: 3px; background: var(--green); opacity: .85; }
+.overview-facts .fact::before { content: ""; position: absolute; left: 0; top: 1.3rem; bottom: 1.3rem; width: 3px; border-radius: 3px; background: var(--green); opacity: .85; transition: top .35s ease, bottom .35s ease, width .25s ease; }
 .overview-facts .fact { padding-left: 1.9rem; }
-.overview-facts .fact:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--line-2); }
+.overview-facts .fact:hover { transform: translateY(-6px) scale(1.02); box-shadow: var(--shadow-lg); border-color: var(--green-300); }
+.overview-facts .fact:hover::before { top: .8rem; bottom: .8rem; width: 4px; }
 .overview-facts .fact strong { display: block; font-family: var(--font-display); font-size: 1.45rem; color: var(--green); margin-bottom: .35rem; line-height: 1.1; }
 .overview-facts .fact span { font-size: .92rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 860px) {
@@ -185,7 +186,7 @@ em { font-style: italic; color: var(--green-500); }
    =========================================================== */
 .hero { position: relative; overflow: hidden; display: flex; align-items: center; min-height: calc(100svh - 92px); }
 .hero-inner { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; padding-block: clamp(40px, 5vw, 72px); width: 100%; }
-.hero h1 { margin-bottom: 1.4rem; }
+.hero h1 { margin-bottom: 2.2rem; }
 .hero h1 em { display: inline; }
 
 /* Hero eyebrow: wipes in left-to-right on load (accent line then label) */
@@ -195,8 +196,9 @@ em { font-style: italic; color: var(--green-500); }
   to   { opacity: 1; clip-path: inset(0 0 0 0); transform: none; }
 }
 @media (prefers-reduced-motion: reduce) { .hero .eyebrow { animation: none; } }
-.hero .lead { max-width: none; margin-bottom: 2rem; }
+.hero .lead { max-width: none; margin-bottom: 3.4rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-bottom: 2.6rem; justify-content: center; }
+.hero-copy .eyebrow { margin-bottom: 1.4rem; }
 .hero-stats { display: flex; gap: 3rem; justify-content: center; }
 .hero-stats .stat { text-align: center; }
 .hero-stats .stat strong { font-family: var(--font-display); font-size: 2.8rem; display: block; color: var(--green); line-height: 1; }
@@ -274,9 +276,11 @@ em { font-style: italic; color: var(--green-500); }
 
 .fcard {
   background: var(--paper); border: 1px solid var(--line); border-radius: var(--r);
-  padding: 2.4rem 2.1rem; transition: transform .2s, box-shadow .2s, border-color .2s;
+  padding: 2.4rem 2.1rem; transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .25s ease;
 }
-.fcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--line-2); }
+.fcard:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-lg); border-color: var(--green-300); }
+.fcard .ic { transition: transform .35s cubic-bezier(.22,1,.36,1), background .25s ease; }
+.fcard:hover .ic { transform: scale(1.08); background: var(--green); color: #fff; }
 .fcard .ic { width: 60px; height: 60px; border-radius: 14px; background: var(--green-50); color: var(--green); display: grid; place-items: center; margin-bottom: 1.4rem; }
 .fcard .ic svg { width: 30px; height: 30px; }
 .fcard h3 { font-size: 1.5rem; margin-bottom: .6rem; }

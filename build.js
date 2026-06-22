@@ -524,9 +524,6 @@ function aboutBody() {
     </div>
   </section>
 
-  <section class="section--tight">
-    <div class="container"><div class="section-head reveal center"><span class="eyebrow">We are certified with</span></div><div class="cert-logos">${COMPANY.certs.map((c) => `<div class="cert-logo"><img src="${c.logo}" alt="${escAttr(c.name)} certification" loading="lazy"></div>`).join("")}</div></div>
-  </section>
 
   <section class="section bg-cream2">
     <div class="container">
@@ -565,7 +562,7 @@ function drawerContent(p) {
 
 function productsBody() {
   const groupTitles = { industry: "Industry", construction: "Construction", coating: "Coating", fn: "Function" };
-  const filters = Object.keys(FILTERS).map((g) => `
+  const filters = Object.keys(FILTERS).filter((g) => g !== "industry").map((g) => `
         <div class="filter-group" data-group="${g}">
           <h4>${groupTitles[g]}</h4>
           <button class="filter-btn active" data-key="">All</button>
@@ -701,7 +698,7 @@ function industryBody(i) {
     <div class="container">
       <div class="section-head reveal"><span class="eyebrow">Recommended products</span><h2 style="margin-top:1rem">Materials for ${esc(i.name.toLowerCase())} packaging</h2></div>
       <div class="grid grid-3">${prods.map(productCard).join("")}</div>
-      <div style="margin-top:2rem"><a class="btn btn--ghost btn--lg" href="/products/?industry=${i.slug}">Filter all ${esc(i.name)} products ${ICON.arrow}</a></div>
+      <div style="margin-top:2rem"><a class="btn btn--ghost btn--lg" href="/products/">Browse all products ${ICON.arrow}</a></div>
     </div>
   </section>
 
