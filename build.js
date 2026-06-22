@@ -397,10 +397,6 @@ function homeBody() {
         <span class="eyebrow">Coated Paper · Flexible Packaging · Since ${esc(COMPANY.founded)}</span>
         <h1 style="margin-top:1.2rem">Packaging that <em>protects</em> what matters.</h1>
         <p class="lead">A three-decade family business converting and distributing coated papers and flexible laminates for pharmaceuticals, food and FMCG, engineered for barrier, strength and print.</p>
-        <div class="hero-actions">
-          <a href="/products/" class="btn btn--primary btn--lg">Explore Products</a>
-          <button class="btn btn--ghost btn--lg" data-quote>Request a Quote</button>
-        </div>
         <div class="hero-stats">
           <div class="stat"><strong>30+</strong><span>Years of expertise</span></div>
           <div class="stat"><strong>20+</strong><span>Countries served</span></div>
