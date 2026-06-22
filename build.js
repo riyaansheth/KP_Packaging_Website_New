@@ -370,7 +370,7 @@ function faqSection(faqs, heading) {
   return `
   <section class="section${heading.bg ? " bg-cream2" : ""}">
     <div class="container">
-      <div class="section-head reveal center"><span class="eyebrow">FAQ</span><h2 style="margin-top:1rem">${esc(heading.title)}</h2></div>
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">${esc(heading.title)}</h2></div>
       <div class="faq" style="max-width:780px;margin-inline:auto">
         ${faqs.map((f) => `<details class="faq-item"><summary>${esc(f.q)}</summary><div class="faq-a">${esc(f.a)}</div></details>`).join("\n        ")}
       </div>
@@ -448,8 +448,7 @@ function homeBody() {
   <section class="section--tight">
     <div class="container overview-split">
       <div class="overview-head reveal reveal--left">
-        <span class="eyebrow">Company overview</span>
-        <h2 style="margin-top:1rem">Coated paper &amp; flexible packaging, made in India.</h2>
+                <h2 style="margin-top:1rem">Coated paper &amp; flexible packaging, made in India.</h2>
         <p class="lead" style="margin-top:1.3rem">${esc(COMPANY.summary)}</p>
       </div>
       <div class="overview-body reveal reveal--right">
@@ -465,14 +464,14 @@ function homeBody() {
 
   <section class="section">
     <div class="container">
-      <div class="section-head reveal center"><span class="eyebrow">What we do</span><h2 style="margin-top:1rem">Two arms, one promise: dependable packaging.</h2><p>We manufacture extrusion-coated laminates and distribute a broad range of mill-grade papers, so you can source coating, printing and substrate from a single partner.</p></div>
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">Two arms, one promise: dependable packaging.</h2><p>We manufacture extrusion-coated laminates and distribute a broad range of mill-grade papers, so you can source coating, printing and substrate from a single partner.</p></div>
       <div class="grid grid-4">${capCards(false)}</div>
     </div>
   </section>
 
   <section class="section bg-cream2">
     <div class="container">
-      <div class="section-head reveal center"><span class="eyebrow">Shop by industry</span><h2 style="margin-top:1rem">Solutions for the sectors we serve.</h2><p>From moisture barriers for medicine to food-safe cupstock, find the right material by where it's used.</p></div>
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">Solutions for the sectors we serve.</h2><p>From moisture barriers for medicine to food-safe cupstock, find the right material by where it's used.</p></div>
       <div class="grid grid-4">${industries}</div>
     </div>
   </section>
@@ -487,7 +486,7 @@ function homeBody() {
 
   <section class="section hide-mobile">
     <div class="container">
-      <div class="section-head reveal center"><span class="eyebrow">Why K P Packaging</span><h2 style="margin-top:1rem">Why companies choose us.</h2></div>
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">Why companies choose us.</h2></div>
       <div class="grid grid-3">${why}</div>
     </div>
   </section>
@@ -664,7 +663,7 @@ function productBody(p) {
 
     <section class="section bg-cream2" style="margin-top:clamp(24px,3vw,44px)">
       <div class="container">
-        <div class="section-head reveal center"><span class="eyebrow">FAQ</span><h2 style="margin-top:1rem">${esc(p.name)}, questions answered</h2></div>
+        <div class="section-head reveal center"><h2 style="margin-top:1rem">${esc(p.name)}, questions answered</h2></div>
         <div class="faq" style="max-width:780px;margin-inline:auto">
           ${faqs.map((f) => `<details class="faq-item"><summary>${esc(f.q)}</summary><div class="faq-a">${esc(f.a)}</div></details>`).join("\n          ")}
         </div>
