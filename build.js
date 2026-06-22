@@ -751,7 +751,7 @@ function contactBody() {
               <div class="field"><label>Product of interest</label><select name="product"><option value="">General enquiry</option>${opts}</select></div>
               <div class="field"><label>Country</label><input name="country" placeholder="Country"></div>
             </div>
-            <div class="field"><label>Message</label><textarea name="message" placeholder="Quantity, specifications, timeline..."></textarea></div>
+            <div class="field"><label>Message <span class="opt">(optional)</span></label><textarea name="message" placeholder="Quantity, specifications, timeline..."></textarea></div>
             <button type="submit" class="btn btn--primary btn--lg" style="width:100%;justify-content:center">Send Enquiry</button>
             <p class="form-note">By submitting you agree to be contacted about your enquiry.</p>
           </form>
