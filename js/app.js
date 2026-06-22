@@ -132,6 +132,14 @@
       state[group] = btn.getAttribute("data-key") || "";
       $$('[data-group="' + group + '"] .filter-btn', filters).forEach(function (b) { b.classList.remove("active"); });
       btn.classList.add("active");
+      // auto-close any open product drawer when the filter changes
+      var cw = document.getElementById("catalog-wrap");
+      if (cw && cw.classList.contains("drawer-open")) {
+        cw.classList.remove("drawer-open");
+        document.documentElement.classList.remove("drawer-lock");
+        var bd = document.querySelector(".drawer-backdrop"); if (bd) bd.hidden = true;
+        $$("#catalog-grid .pcard.is-active").forEach(function (c) { c.classList.remove("is-active"); });
+      }
       draw();
     });
 
