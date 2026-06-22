@@ -418,8 +418,7 @@ function homeBody() {
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-copy reveal in">
-        <span class="eyebrow">Coated Paper · Flexible Packaging · Since ${esc(COMPANY.founded)}</span>
-        <h1 style="margin-top:1.2rem">Packaging that <em>protects</em> what matters.</h1>
+        <h1>Packaging that <em>protects</em> what matters.</h1>
         <p class="lead">A three-decade family business converting and distributing coated papers and flexible laminates for pharmaceuticals, food and FMCG, engineered for barrier, strength and print.</p>
         <div class="hero-stats">
           <div class="stat"><strong>30+</strong><span>Years of expertise</span></div>
