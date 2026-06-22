@@ -71,7 +71,8 @@ const COMPANY = {
     { title: "Manufacturing + distribution under one roof", text: "In-house extrusion-coated laminates plus authorized distribution for leading Indian paper mills, source coating, printing and substrate from a single partner." },
     { title: "State-of-the-art Korean coating line", text: "A modern extrusion lamination and coating plant in Silvassa, with rotogravure printing and multiple slitting & rewinding machines." },
     { title: "Trusted by industry leaders", text: "Supplies Wockhardt, Cipla, Dr. Reddy's, Godrej, Wipro, Zydus, Amul, Parksons and Intas across 20+ countries." },
-    { title: "Pharma- and food-grade quality", text: "FSC- and FDA-aligned barrier papers for medicines, ORS sachets, blister packs, paper cups and food packaging." }
+    { title: "Pharma- and food-grade quality", text: "FSC- and FDA-aligned barrier papers for medicines, ORS sachets, blister packs, paper cups and food packaging." },
+    { title: "Custom laminates, made to spec", text: "We engineer bespoke coated and laminated structures to your exact barrier, print and substrate requirements, with reliable lead times." }
   ],
   faq: [
     { q: "What does K P Packaging do?", a: "K P Packaging manufactures extrusion-coated paper laminates and distributes a wide range of mill-grade papers for primary and flexible packaging, serving the pharmaceutical, food & beverage, FMCG and medical/surgical industries." },
