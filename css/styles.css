@@ -76,7 +76,7 @@ ul { list-style: none; padding: 0; }
   src: local("Georgia"), local("Times New Roman"), local("Times"), local("Arial");
   unicode-range: U+0026;
 }
-h1, h2, h3, h4 { font-family: "amp-normal", var(--font-display), Georgia, serif; font-weight: 500; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); text-transform: capitalize; }
+h1, h2, h3, h4 { font-family: "amp-normal", var(--font-display), Georgia, serif; font-weight: 500; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); }
 h1 { font-size: clamp(2.4rem, 5.2vw, 4.2rem); }
 h2 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
 h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); }

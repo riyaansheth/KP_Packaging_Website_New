@@ -316,12 +316,36 @@ function stripDashesInText(html) {
   return html;
 }
 
+// Proper Title Case for headings: capitalise each word but keep minor words
+// (the, of, and, for, us...) lowercase, except the first word. Acronyms (FMCG, MG) kept.
+const MINOR_WORDS = new Set("a an and as at but by en for from if in into nor of off on onto or over per so the to up us via vs with yet".split(" "));
+function titleCaseText(text, ctx) {
+  const ents = [];
+  text = text.replace(/&[a-z]+;/gi, (e) => { ents.push(e); return "\u0000" + (ents.length - 1) + "\u0000"; });
+  text = text.replace(/[A-Za-z][A-Za-z'\u2019\u2018]*/g, (w) => {
+    const i = ctx.n++;
+    if (w.length > 1 && w === w.toUpperCase()) return w; // keep acronyms (FMCG, MG, CE)
+    const lower = w.toLowerCase();
+    if (i > 0 && MINOR_WORDS.has(lower)) return lower;
+    return lower.charAt(0).toUpperCase() + lower.slice(1);
+  });
+  return text.replace(/\u0000(\d+)\u0000/g, (m, i) => ents[+i]);
+}
+
+function applyHeadingTitleCase(html) {
+  return html.replace(/<h([1-4])([^>]*)>([\s\S]*?)<\/h\1>/g, (m, n, attr, inner) => {
+    const ctx = { n: 0 };
+    const cased = inner.replace(/(<[^>]+>)|([^<]+)/g, (mm, tag, txt) => tag ? tag : titleCaseText(txt, ctx));
+    return `<h${n}${attr}>${cased}</h${n}>`;
+  });
+}
+
 function pageShell(meta, body) {
-  return stripDashesInText(head(meta) + header(meta.page) + body + footer() + quoteModal() + `
+  return applyHeadingTitleCase(stripDashesInText(head(meta) + header(meta.page) + body + footer() + quoteModal() + `
   <script src="/js/lenis.min.js?v=${BUILD_VER}" defer></script>
   <script src="/js/app.js?v=${BUILD_VER}" defer></script>
 </body>
-</html>`);
+</html>`));
 }
 
 /* ---------- shared components ---------- */
