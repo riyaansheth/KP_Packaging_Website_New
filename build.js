@@ -477,7 +477,7 @@ function homeBody() {
 
   <section class="section">
     <div class="container">
-      <div class="section-head reveal center"><span class="eyebrow">Our products</span><h2 style="margin-top:1rem">Coated papers, boards & laminates.</h2><p>A snapshot of our best-selling grades, explore the full catalogue for specs and applications.</p></div>
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">Coated papers, boards & laminates.</h2><p>A snapshot of our best-selling grades, explore the full catalogue for specs and applications.</p></div>
       <div class="grid grid-3">${featured}</div>
       <div class="center" style="margin-top:1.4rem"><a href="/products/" class="btn btn--primary btn--lg">View all products</a></div>
     </div>
@@ -506,7 +506,7 @@ function aboutBody() {
   <section class="page-hero">
     <div class="container page-hero-split">
       <div class="page-hero-copy">
-        <span class="eyebrow">Who we are</span>
+        
         <h1>Three decades of packaging, run by one family.</h1>
         <p>From pioneers in the PVC leather cloth industry to a modern coated-paper and flexible-packaging house, K P Packaging has grown across generations while keeping quality and relationships at its core.</p>
       </div>
@@ -519,7 +519,7 @@ function aboutBody() {
       <div class="split reveal">
         <div class="split-media"><img src="/assets/our-story.jpg" alt="Paper-making machine reflecting K P Packaging's decades of converting heritage" loading="lazy"></div>
         <div class="split-body">
-          <span class="eyebrow">Our story</span>
+          
           <h2 style="margin-top:1rem">A generational business</h2>
           <p>With over three decades of history, K P Packaging is a generational family business. The company is promoted by <strong>Mr. Ketan Vira</strong>, who, with rich experience in the packaging industry, has grown the business exponentially. Alongside him, his son <strong>Mr. Prem Vira</strong> has taken it upon himself to take K P Packaging international.</p>
           <p>Today we operate across two complementary arms: in-house manufacturing of extrusion-coated laminates, and authorized distribution for leading Indian paper mills.</p>
@@ -549,7 +549,7 @@ function aboutBody() {
 
   <section class="section bg-cream2">
     <div class="container">
-      <div class="section-head reveal center"><span class="eyebrow">Leadership</span><h2 style="margin-top:1rem">Meet the team</h2></div>
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">Meet the team</h2></div>
       <div class="grid grid-3">${team}</div>
     </div>
   </section>`;
@@ -595,7 +595,7 @@ function productsBody() {
   return `
   <section class="page-hero">
     <div class="container">
-      <span class="eyebrow">Our products</span>
+      
       <h1>Coated papers, boards & laminates.</h1>
       <p>Sixteen grades engineered for barrier, strength and print, from pharmaceutical glassine to food-safe cupstock. Click any product for instant details, or filter to find your match.</p>
     </div>
@@ -694,7 +694,7 @@ function industriesBody() {
   return `
   <section class="page-hero center">
     <div class="container">
-      <span class="eyebrow">Industries</span>
+      
       <h1>Built for the sectors that depend on packaging.</h1>
       <p>The same converting expertise, tuned to four very different worlds, from sterile medical disposables to food-contact cups and shelf-ready retail cartons.</p>
     </div>
@@ -743,7 +743,7 @@ function contactBody() {
   return `
   <section class="page-hero">
     <div class="container">
-      <span class="eyebrow">Contact</span>
+      
       <h1>Let's talk packaging.</h1>
       <p>Reach our corporate office in Mumbai or our manufacturing plant in Silvassa, or send an enquiry and we'll reply within one business day.</p>
     </div>
