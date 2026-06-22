@@ -276,7 +276,9 @@ function quoteModal() {
         <button class="modal-close" data-close aria-label="Close">${ICON.close}</button>
       </div>
       <div class="modal-body">
-        <form data-form>
+        <form data-form name="quote" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="quote">
+          <p hidden><label>Leave blank: <input name="bot-field"></label></p>
           <div class="field-row">
             <div class="field"><label>Name</label><input name="name" required placeholder="Your name"></div>
             <div class="field"><label>Company</label><input name="company" placeholder="Company name"></div>
@@ -737,7 +739,9 @@ function contactBody() {
       <div class="contact-grid">
         <div>${offices}</div>
         <div>
-          <form class="form" id="contact-form">
+          <form class="form" id="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact">
+            <p hidden><label>Leave blank: <input name="bot-field"></label></p>
             <h3 style="margin-bottom:1.2rem">Send us an enquiry</h3>
             <div class="field-row">
               <div class="field"><label>Name</label><input name="name" required placeholder="Your name"></div>

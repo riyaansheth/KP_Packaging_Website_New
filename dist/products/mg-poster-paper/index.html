@@ -31,7 +31,7 @@
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="/css/styles.css?v=mqotnic2">
+ <link rel="stylesheet" href="/css/styles.css?v=mqottj7g">
  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://kppackaging.com/#organization","name":"K P Packaging Ltd.","alternateName":"K P Packaging","url":"https://kppackaging.com/","logo":"https://kppackaging.com/assets/kp-logo.png","image":"https://kppackaging.com/assets/og-cover.svg","description":"K P Packaging Ltd. is a Mumbai-based manufacturer and distributor of coated papers and flexible packaging with over 30 years of experience. The company runs a Korean-built extrusion coating and lamination plant in Silvassa, India, and supplies pharmaceutical, food & beverage, FMCG and medical/surgical packaging to 425+ clients across 20+ countries.","foundingDate":"1990","slogan":"Coated paper & flexible packaging, perfected over three decades.","knowsAbout":["Coated paper","Flexible packaging","Extrusion coating & lamination","Rotogravure printing","Pharmaceutical packaging","Food packaging"],"areaServed":{"@type":"Place","name":"Worldwide (20+ countries)"},"contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+918591656966","email":"prem@kppackaging.com","areaServed":"Worldwide","availableLanguage":["en"]},{"@type":"ContactPoint","contactType":"sales","telephone":"+918591694328","email":"sales@kppackaging.com","areaServed":"Worldwide","availableLanguage":["en"]}],"location":[{"@type":"Place","name":"K P Packaging, Corporate Office","address":{"@type":"PostalAddress","streetAddress":"A to Z Industrial Estate, Western Wing, Office No 138, Ganpat Rao Kadam Marg, Lower Parel","addressLocality":"Mumbai","addressRegion":"Maharashtra","postalCode":"400013","addressCountry":"IN"}},{"@type":"Place","name":"K P Packaging, Manufacturing Plant","address":{"@type":"PostalAddress","streetAddress":"No 7, 8 & 9, Sr No 245/3, Sankeshwar Industrial Estate, Behind Prince Pipe","addressLocality":"Silvassa","addressRegion":"Dadra and Nagar Haveli","postalCode":"396230","addressCountry":"IN"}}]}</script>
  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://kppackaging.com/#website","url":"https://kppackaging.com/","name":"K P Packaging","publisher":{"@id":"https://kppackaging.com/#organization"},"inLanguage":"en"}</script>
  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"MG Poster Paper","alternateName":"Machine Glazed / Sandwich Paper","description":"MG Poster Paper, Machine Glazed Poster Paper, known overseas as poly coated poster paper or 'Sandwich Paper', is one of our best-selling and most sought-after products for primary packaging. Coated with a layer of LDPE during production, it has an extremely glossy appearance, a smooth exterior, high tensile strength and good stiffness. It is an affordable alternative to chromo paper.","category":"Coated paper / Packaging material","image":"https://kppackaging.com/assets/products/mg-poster-paper.jpg","url":"https://kppackaging.com/products/mg-poster-paper/","brand":{"@type":"Brand","name":"K P Packaging"},"manufacturer":{"@id":"https://kppackaging.com/#organization"},"material":"Poster paper + LDPE coating","additionalProperty":[{"@type":"PropertyValue","name":"Coating Type","value":"LDPE"},{"@type":"PropertyValue","name":"Finish","value":"Glossy, machine glazed"}],"isRelatedTo":[{"@type":"Thing","name":"Heat-sealable wrapping"},{"@type":"Thing","name":"Pouches"},{"@type":"Thing","name":"Inner lining in carton boxes"},{"@type":"Thing","name":"Food item packaging"},{"@type":"Thing","name":"Apparel & glass wrapping"},{"@type":"Thing","name":"Sugar & salt packaging"}]}</script>
@@ -174,7 +174,9 @@
  <button class="modal-close" data-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
  </div>
  <div class="modal-body">
- <form data-form>
+ <form data-form name="quote" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+ <input type="hidden" name="form-name" value="quote">
+ <p hidden><label>Leave blank: <input name="bot-field"></label></p>
  <div class="field-row">
  <div class="field"><label>Name</label><input name="name" required placeholder="Your name"></div>
  <div class="field"><label>Company</label><input name="company" placeholder="Company name"></div>
@@ -197,7 +199,7 @@
  </div>
  </div>
  </div>
- <script src="/js/lenis.min.js?v=mqotnic2" defer></script>
- <script src="/js/app.js?v=mqotnic2" defer></script>
+ <script src="/js/lenis.min.js?v=mqottj7g" defer></script>
+ <script src="/js/app.js?v=mqottj7g" defer></script>
 </body>
 </html>

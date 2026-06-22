@@ -40,12 +40,14 @@
     var mform = $("[data-form]", modal);
     if (mform) mform.addEventListener("submit", function (e) {
       e.preventDefault();
-      mform.style.display = "none";
-      var ok = $("[data-success]", modal); if (ok) ok.style.display = "block";
-      setTimeout(function () {
-        closeQuote(); mform.reset(); mform.style.display = "block";
-        if (ok) ok.style.display = "none";
-      }, 2600);
+      submitForm(mform).then(function () {
+        mform.style.display = "none";
+        var ok = $("[data-success]", modal); if (ok) ok.style.display = "block";
+        setTimeout(function () {
+          closeQuote(); mform.reset(); mform.style.display = "block";
+          if (ok) ok.style.display = "none";
+        }, 2600);
+      });
     });
   }
 
@@ -53,9 +55,20 @@
   var cf = $("#contact-form");
   if (cf) cf.addEventListener("submit", function (e) {
     e.preventDefault();
-    cf.style.display = "none";
-    var ok = $("#contact-success"); if (ok) ok.style.display = "block";
+    submitForm(cf).then(function () {
+      cf.style.display = "none";
+      var ok = $("#contact-success"); if (ok) ok.style.display = "block";
+    });
   });
+
+  /* POST form data to Netlify Forms (always resolves so the UI still confirms) */
+  function submitForm(form) {
+    return fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function () {}).catch(function () {});
+  }
 
   /* ---------- Catalogue filtering (pre-rendered cards) ---------- */
   var filters = $("#filters");
