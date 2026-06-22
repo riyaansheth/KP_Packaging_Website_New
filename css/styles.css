@@ -753,3 +753,42 @@ html.lenis, html.lenis body { height: auto; }
   }
   .catalog-wrap.drawer-open .product-drawer { transform: translate(-50%, -50%) scale(1); opacity: 1; pointer-events: auto; width: min(92vw, 460px); }
 }
+
+/* ===========================================================
+   Cool hover effects — photos & text boxes (pointer devices only)
+   =========================================================== */
+@media (hover: hover) {
+  /* photo containers: smooth zoom + lift + soft sheen */
+  .split-media, .page-hero-media, .pdetail-hero, .hero-visual,
+  .industry-card .ic-media, .pcard-media, .team-card .avatar {
+    overflow: hidden; position: relative;
+    transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease;
+  }
+  .split-media img, .page-hero-media img, .pdetail-hero.has-img img,
+  .industry-card .ic-media img, .pcard-media.has-img img, .team-card .avatar img {
+    transition: transform .6s cubic-bezier(.22,1,.36,1), filter .4s ease;
+    will-change: transform;
+  }
+  .split-media:hover img, .page-hero-media:hover img, .pdetail-hero.has-img:hover img,
+  .industry-card:hover .ic-media img, .team-card:hover .avatar img { transform: scale(1.06); }
+  .split-media:hover, .page-hero-media:hover, .pdetail-hero:hover,
+  .team-card:hover .avatar { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+
+  /* sheen sweep across photos on hover */
+  .split-media::after, .page-hero-media::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.28) 50%, transparent 70%);
+    transform: translateX(-120%); transition: transform .8s ease;
+  }
+  .split-media:hover::after, .page-hero-media:hover::after { transform: translateX(120%); }
+
+  /* product cards: stronger lift + image zoom + arrow nudge */
+  .pcard { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .25s ease; }
+  .pcard:hover { transform: translateY(-8px) scale(1.015); box-shadow: var(--shadow-lg); border-color: var(--green-300); }
+  .pcard .link-arrow { transition: gap .25s ease, color .2s ease; }
+  .pcard:hover .link-arrow { gap: .7rem; color: var(--green); }
+
+  /* industry cards lift too */
+  .industry-card { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease; }
+  .industry-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+}
