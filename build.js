@@ -374,9 +374,6 @@ function capCards(detailed) {
         <p>${esc(detailed ? c.detail : c.blurb)}</p>
       </div>`).join("");
 }
-function statStrip() {
-  return COMPANY.stats.map((s) => `<div class="s"><strong>${esc(s.value)}</strong><span>${esc(s.label)}</span></div>`).join("");
-}
 
 /* ===========================================================
    PAGE BODIES
@@ -714,47 +711,6 @@ function industryBody(i) {
   `;
 }
 
-function capabilitiesBody() {
-  return `
-  <section class="page-hero">
-    <div class="container">
-      <span class="eyebrow">Capabilities</span>
-      <h1>From substrate to finished reel, in-house.</h1>
-      <p>A Korean-built coating line, rotogravure printing and precision slitting let us control quality end to end, backed by a distribution network across India's leading mills.</p>
-    </div>
-  </section>
-
-  <section class="section--tight"><div class="container"><div class="grid grid-2">${capCards(true)}</div></div></section>
-
-  <section class="section bg-cream2">
-    <div class="container">
-      <div class="split reveal">
-        <div class="split-body">
-          <span class="eyebrow">Substrates we handle</span>
-          <h2 style="margin-top:1rem">One coating line, many materials.</h2>
-          <p>We poly-coat and laminate across a broad substrate range, letting you consolidate barrier, print and structure with one partner.</p>
-          <ul class="checklist">
-            <li>${CHECK}<span>Paper &amp; paperboard (all grades)</span></li>
-            <li>${CHECK}<span>Cupstock paper</span></li>
-            <li>${CHECK}<span>Polyester (PET) &amp; BOPP film</span></li>
-            <li>${CHECK}<span>Aluminium foils, plain &amp; printed</span></li>
-            <li>${CHECK}<span>Fabrics &amp; specialty substrates</span></li>
-          </ul>
-        </div>
-        <div class="split-media"><img src="/assets/substrates.jpg" alt="Paper rolls feeding a coating and converting line" loading="lazy"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-green">
-    <div class="container">
-      <div class="section-head reveal center"><span class="eyebrow" style="color:#B9B8E0">Capacity & reach</span><h2 style="margin-top:1rem">Scaled for serious volume.</h2></div>
-      <div class="statstrip">${statStrip()}</div>
-    </div>
-  </section>
-
-  ${ctaBand("Need a custom coated laminate?", "Share your structure and barrier requirements, we'll engineer the right build.")}`;
-}
 
 function contactBody() {
   const offices = COMPANY.offices.map((o) => `
