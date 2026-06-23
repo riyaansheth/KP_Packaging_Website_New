@@ -13,28 +13,28 @@ const COMPANY = {
     { value: "425+", label: "Clients worldwide" }
   ],
   clients: [
-    { name: "Wockhardt", logo: "/assets/logos/wockhardt.png" },
-    { name: "Cipla", logo: "/assets/logos/cipla.png" },
-    { name: "Dr. Reddy's", logo: "/assets/logos/dr-reddys.png" },
-    { name: "Godrej", logo: "/assets/logos/godrej.png" },
-    { name: "Wipro", logo: "/assets/logos/wipro.png" },
-    { name: "Zydus", logo: "/assets/logos/zydus.png" },
-    { name: "Amul", logo: "/assets/logos/amul.png" },
-    { name: "Parksons", logo: "/assets/logos/parksons.png" },
-    { name: "Intas", logo: "/assets/logos/intas.png" }
+    { name: "Wockhardt", logo: "/assets/logos/wockhardt.webp" },
+    { name: "Cipla", logo: "/assets/logos/cipla.webp" },
+    { name: "Dr. Reddy's", logo: "/assets/logos/dr-reddys.webp" },
+    { name: "Godrej", logo: "/assets/logos/godrej.webp" },
+    { name: "Wipro", logo: "/assets/logos/wipro.webp" },
+    { name: "Zydus", logo: "/assets/logos/zydus.webp" },
+    { name: "Amul", logo: "/assets/logos/amul.webp" },
+    { name: "Parksons", logo: "/assets/logos/parksons.webp" },
+    { name: "Intas", logo: "/assets/logos/intas.webp" }
   ],
   certs: [
-    { name: "ISO Certified", logo: "/assets/certs/iso.png" },
-    { name: "AEO Indian Customs", logo: "/assets/certs/custom.jpg" },
-    { name: "Make in India", logo: "/assets/certs/make-in-india.png" },
-    { name: "MSME", logo: "/assets/certs/msme.png" },
-    { name: "CE", logo: "/assets/certs/ce.png" },
-    { name: "IAF", logo: "/assets/certs/iaf.png" }
+    { name: "ISO Certified", logo: "/assets/certs/iso.webp" },
+    { name: "AEO Indian Customs", logo: "/assets/certs/custom.webp" },
+    { name: "Make in India", logo: "/assets/certs/make-in-india.webp" },
+    { name: "MSME", logo: "/assets/certs/msme.webp" },
+    { name: "CE", logo: "/assets/certs/ce.webp" },
+    { name: "IAF", logo: "/assets/certs/iaf.webp" }
   ],
   team: [
-    { name: "Madhukant Vira", role: "Chairman", photo: "/assets/team/3.png" },
-    { name: "Ketan Vira", role: "CEO", photo: "/assets/team/2.png" },
-    { name: "Prem Vira", role: "Director", photo: "/assets/team/1.png" }
+    { name: "Madhukant Vira", role: "Chairman", photo: "/assets/team/3.webp" },
+    { name: "Ketan Vira", role: "CEO", photo: "/assets/team/2.webp" },
+    { name: "Prem Vira", role: "Director", photo: "/assets/team/1.webp" }
   ],
   offices: [
     {
@@ -121,7 +121,7 @@ const INDUSTRIES = [
     slug: "pharmaceutical",
     name: "Pharmaceutical",
     art: "roll-art",
-    image: "/assets/industries/pharmaceutical.jpg",
+    image: "/assets/industries/pharmaceutical.webp",
     blurb: "Barrier papers and foil laminates for tablet strips, ORS sachets and blister packs.",
     detail: "We supply the barrier-grade papers and aluminium foil laminates that protect medicines from moisture, light and air, from glassine sachets to 4-ply foil laminates used by leading pharma brands. Our pharmaceutical-grade substrates safeguard tablet strips, ORS powders, blister and strip packs, condom laminates and surgical sutures, preserving potency and extending shelf life. With FDA- and FSC-aligned quality and consistent print and seal performance, we supply names such as Wockhardt, Cipla, Dr. Reddy's, Zydus and Intas.",
     products: ["glassine-paper", "4-ply-paper", "3-ply-paper", "folding-box-board", "non-tearable-paper"]
@@ -130,7 +130,7 @@ const INDUSTRIES = [
     slug: "food-beverage",
     name: "Food & Beverage",
     art: "roll-art--kraft",
-    image: "/assets/industries/food-beverage.jpg",
+    image: "/assets/industries/food-beverage.webp",
     blurb: "Food-safe, grease- and moisture-resistant papers for cups, wraps and pouches.",
     detail: "Food-contact-safe cupstock, greaseproof and MG poster papers engineered for hot & cold beverages, bakery, dairy and ready-to-eat packaging. PE, PLA and water-based coatings deliver dependable moisture, grease and heat resistance for paper cups, soup bowls, wrappers, trays, meal boxes and pouches. Every grade is produced to food-safe standards so it performs reliably from the production line all the way to the table.",
     products: ["cupstock-paper", "greaseproof-paper", "mg-poster-paper", "mg-kraft", "3-ply-paper"]
@@ -139,7 +139,7 @@ const INDUSTRIES = [
     slug: "fmcg",
     name: "FMCG & Retail",
     art: "roll-art--cream",
-    image: "/assets/industries/fmcg.jpg",
+    image: "/assets/industries/fmcg.webp",
     blurb: "Printable, durable coated papers and boards for everyday branded products.",
     detail: "High-gloss, print-ready chromo and poster papers plus folding box board for retail packaging that needs shelf appeal and structural strength. From cartons and labels to sachets for tea, tobacco, gutka and personal-care products, our coated papers and boards pair sharp rotogravure printing with the stiffness and durability retail demands. We supply trusted FMCG names including Godrej, Wipro, Amul and Parksons.",
     products: ["chromo-paper", "mg-poster-paper", "folding-box-board", "duplex-board", "maplitho-paper"]
@@ -148,7 +148,7 @@ const INDUSTRIES = [
     slug: "medical-surgical",
     name: "Medical & Surgical",
     art: "roll-art",
-    image: "/assets/industries/medical-surgical.jpg",
+    image: "/assets/industries/medical-surgical.webp",
     blurb: "Sterilizable, bacterial-barrier papers for gloves, syringes and surgical disposables.",
     detail: "Steam-sterilizable Bactite and grid-lacquer papers with bacterial-barrier and self-sealing properties for medical gloves, syringes, catheters and surgical sutures. Free from optical brighteners and engineered for steam, EtO and gamma sterilization, these medical-grade papers hold a dependable bacterial barrier and a clean peel for surgical disposables. They are lint-free, fluid-repellent and high in dry and wet strength, trusted across hospital and device supply chains.",
     products: ["bactite", "grid-lacquer", "non-tearable-paper"]
@@ -179,7 +179,7 @@ const PRODUCTS = [
   },
   {
     slug: "mg-poster-paper",
-    image: "/assets/products/mg-poster-paper.jpg",
+    image: "/assets/products/mg-poster-paper.webp",
     name: "MG Poster Paper",
     aka: "Machine Glazed / Sandwich Paper",
     tagline: "Glossy, high-strength poly-coated paper, a best-seller for primary packaging.",
@@ -199,7 +199,7 @@ const PRODUCTS = [
   },
   {
     slug: "chromo-paper",
-    image: "/assets/products/chromo-paper.jpg",
+    image: "/assets/products/chromo-paper.webp",
     name: "Chromo Paper",
     aka: "Poly Coated Chromo Paper",
     tagline: "Water-resistant, high-gloss coated paper built for premium print.",
@@ -219,7 +219,7 @@ const PRODUCTS = [
   },
   {
     slug: "cupstock-paper",
-    image: "/assets/products/cupstock-paper.jpg",
+    image: "/assets/products/cupstock-paper.webp",
     name: "Cupstock Paper",
     aka: "PE Coated Cupstock",
     tagline: "Food-safe paper for hot & cold cups, bowls and food service.",
@@ -239,7 +239,7 @@ const PRODUCTS = [
   },
   {
     slug: "3-ply-paper",
-    image: "/assets/products/3-ply-paper.jpg",
+    image: "/assets/products/3-ply-paper.webp",
     name: "3 Ply Paper",
     aka: "Paper + Polymer + Aluminium Foil",
     tagline: "Lightweight, leak-proof foil laminate for maximum freshness.",
@@ -279,7 +279,7 @@ const PRODUCTS = [
   },
   {
     slug: "mg-kraft",
-    image: "/assets/products/mg-kraft.jpg",
+    image: "/assets/products/mg-kraft.webp",
     name: "MG Kraft Paper",
     aka: "Machine Glazed Kraft",
     tagline: "High-strength, eco-friendly kraft with a glossy machine-glazed top.",
@@ -299,7 +299,7 @@ const PRODUCTS = [
   },
   {
     slug: "folding-box-board",
-    image: "/assets/products/folding-box-board.jpg",
+    image: "/assets/products/folding-box-board.webp",
     name: "Folding Box Board",
     aka: "FBB Paper",
     tagline: "Low-density, high-stiffness board with a superb print surface.",
@@ -339,7 +339,7 @@ const PRODUCTS = [
   },
   {
     slug: "non-tearable-paper",
-    image: "/assets/products/non-tearable-paper.jpg",
+    image: "/assets/products/non-tearable-paper.webp",
     name: "Non Tearable Paper",
     aka: "Synthetic Spun-bound Paper",
     tagline: "Synthetic, breathable, tear-proof, the strength of paper, film and fabric.",
@@ -359,7 +359,7 @@ const PRODUCTS = [
   },
   {
     slug: "pe-coated-stiffener-paper",
-    image: "/assets/products/pe-coated-stiffener-paper.jpg",
+    image: "/assets/products/pe-coated-stiffener-paper.webp",
     name: "Polyethylene Coated Stiffener Paper",
     aka: "PE Coated Stiffener",
     tagline: "Rigid PE-coated stiffener for shape, support and moisture protection.",
@@ -379,7 +379,7 @@ const PRODUCTS = [
   },
   {
     slug: "greaseproof-paper",
-    image: "/assets/products/greaseproof-paper.jpg",
+    image: "/assets/products/greaseproof-paper.webp",
     name: "Greaseproof Paper",
     aka: "Butter / Bakery Paper",
     tagline: "Non-stick, heat-resistant cellulose paper for food and baking.",
@@ -419,7 +419,7 @@ const PRODUCTS = [
   },
   {
     slug: "tissue-paper",
-    image: "/assets/products/tissue-paper.jpg",
+    image: "/assets/products/tissue-paper.webp",
     name: "Tissue Paper",
     aka: "Hygiene Tissue",
     tagline: "Soft, absorbent, hygienic tissue from recycled pulp.",
@@ -439,7 +439,7 @@ const PRODUCTS = [
   },
   {
     slug: "bactite",
-    image: "/assets/products/bactite.jpg",
+    image: "/assets/products/bactite.webp",
     name: "Bactite Paper",
     aka: "Medical Sterilization Paper",
     tagline: "Steam-sterilizable, bacterial-barrier paper for medical packaging.",
@@ -459,7 +459,7 @@ const PRODUCTS = [
   },
   {
     slug: "grid-lacquer",
-    image: "/assets/products/grid-lacquer.jpg",
+    image: "/assets/products/grid-lacquer.webp",
     name: "Grid Lacquer Paper",
     aka: "Medical Grade Lacquer Paper",
     tagline: "Self-sealing, extrusion-coated paper for surgical disposables.",

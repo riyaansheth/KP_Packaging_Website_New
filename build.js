@@ -197,7 +197,8 @@ function head(meta) {
   <meta name="format-detection" content="telephone=no">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/css/styles.css?v=${BUILD_VER}">
   ${ld}
 </head>
@@ -427,7 +428,7 @@ function homeBody() {
         </div>
       </div>
       <div class="hero-visual reveal in" data-tilt>
-        <img class="hero-img" src="/assets/hero.jpg" alt="Jumbo paper roll on the extrusion coating and lamination line at K P Packaging's plant" fetchpriority="high" width="2560" height="1709">
+        <img class="hero-img" src="/assets/hero.webp" alt="Jumbo paper roll on the extrusion coating and lamination line at K P Packaging's plant" fetchpriority="high" width="2560" height="1709">
       </div>
     </div>
   </section>
@@ -510,14 +511,14 @@ function aboutBody() {
         <h1>Three decades of packaging, run by one family.</h1>
         <p>From pioneers in the PVC leather cloth industry to a modern coated-paper and flexible-packaging house, K P Packaging has grown across generations while keeping quality and relationships at its core.</p>
       </div>
-      <div class="page-hero-media"><img src="/assets/about-hero.jpg" alt="Wrapped paper jumbo rolls at K P Packaging" loading="lazy" width="1100" height="884"></div>
+      <div class="page-hero-media"><img src="/assets/about-hero.webp" alt="Wrapped paper jumbo rolls at K P Packaging" loading="lazy" width="1100" height="884"></div>
     </div>
   </section>
 
   <section class="section--tight">
     <div class="container">
       <div class="split reveal">
-        <div class="split-media"><img src="/assets/our-story.jpg" alt="Paper-making machine reflecting K P Packaging's decades of converting heritage" loading="lazy"></div>
+        <div class="split-media"><img src="/assets/our-story.webp" alt="Paper-making machine reflecting K P Packaging's decades of converting heritage" loading="lazy"></div>
         <div class="split-body">
           
           <h2 style="margin-top:1rem">A generational business</h2>
@@ -899,6 +900,25 @@ function build() {
     path: "/contact/", page: "contact",
     jsonld: [...baseLd, ...COMPANY.offices.map(localBusinessLd), { "@context": "https://schema.org", "@type": "ContactPage", url: BASE + "/contact/", about: { "@id": ORG_ID } }, breadcrumbLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }])]
   }, contactBody()));
+
+  // custom 404 (Netlify serves /404.html for unknown paths)
+  const notFoundBody = `
+  <section class="page-hero center" style="min-height:calc(100svh - 92px);display:flex;align-items:center">
+    <div class="container">
+      <p style="font-family:var(--font-display);font-size:clamp(3.5rem,12vw,7rem);color:var(--green);line-height:1;margin-bottom:1rem">404</p>
+      <h1>This page could not be found.</h1>
+      <p style="margin-top:1rem">The page you're looking for may have moved or no longer exists.</p>
+      <div class="btn-row" style="margin-top:2rem">
+        <a class="btn btn--primary btn--lg" href="/">Back to home ${ICON.arrow}</a>
+        <a class="btn btn--ghost btn--lg" href="/products/">Browse products</a>
+      </div>
+    </div>
+  </section>`;
+  writeFile("404.html", pageShell({
+    title: "Page Not Found, K P Packaging",
+    desc: "The page you are looking for could not be found.",
+    path: "/404/", page: ""
+  }, notFoundBody));
 
   // technical files
   const urls = [
