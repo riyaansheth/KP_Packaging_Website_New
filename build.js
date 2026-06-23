@@ -840,7 +840,7 @@ function build() {
 
   // HOME
   writePage(".", pageShell({
-    title: "K P Packaging, Coated Paper & Flexible Packaging Manufacturer, Mumbai",
+    title: "K P Packaging | Coated Paper & Flexible Packaging",
     desc: "K P Packaging is a 30+ year Mumbai-based manufacturer & distributor of coated papers and flexible packaging for pharma, food and FMCG, serving 425+ clients across 20+ countries.",
     path: "/", page: "home",
     jsonld: [...baseLd, faqLd(COMPANY.faq), breadcrumbLd([{ name: "Home", path: "/" }])]
@@ -848,7 +848,7 @@ function build() {
 
   // ABOUT
   writePage("about", pageShell({
-    title: "About K P Packaging, Coated Paper Manufacturers & Exporters",
+    title: "About K P Packaging | Coated Paper Manufacturer",
     desc: "K P Packaging is a generational family business with 30+ years in coated paper and flexible packaging, manufacturing extrusion laminates and distributing mill-grade papers from Mumbai & Silvassa, India.",
     path: "/about/", page: "about", ogType: "website",
     jsonld: [...baseLd, { "@context": "https://schema.org", "@type": "AboutPage", url: BASE + "/about/", about: { "@id": ORG_ID } }, ...COMPANY.team.map(personLd), breadcrumbLd([{ name: "Home", path: "/" }, { name: "About", path: "/about/" }])]
@@ -856,7 +856,7 @@ function build() {
 
   // PRODUCTS listing
   writePage("products", pageShell({
-    title: "Products, Coated Papers, Boards & Foil Laminates | K P Packaging",
+    title: "Coated Paper & Board Products | K P Packaging",
     desc: "Browse 16 grades of coated paper, board and foil laminates from K P Packaging, glassine, MG poster, chromo, cupstock, kraft, 3/4-ply foil and more. Filter by industry, construction and coating.",
     path: "/products/", page: "products",
     jsonld: [...baseLd, itemListLd(PRODUCTS), breadcrumbLd([{ name: "Home", path: "/" }, { name: "Products", path: "/products/" }])]
@@ -866,7 +866,7 @@ function build() {
   for (const p of PRODUCTS) {
     const url = productUrl(p);
     writePage("products/" + p.slug, pageShell({
-      title: `${p.name} Manufacturer & Supplier | K P Packaging`,
+      title: `${p.name} | K P Packaging`,
       desc: `${p.name} (${p.aka}) from K P Packaging, ${p.tagline} ${p.desc}`.slice(0, 300),
       path: url, page: "products", ogType: "product",
       jsonld: [...baseLd, productLd(p, url), faqLd(productFaqs(p)), breadcrumbLd([{ name: "Home", path: "/" }, { name: "Products", path: "/products/" }, { name: p.name, path: url }])]
@@ -875,7 +875,7 @@ function build() {
 
   // INDUSTRIES overview
   writePage("industries", pageShell({
-    title: "Industries We Serve, Pharma, Food, FMCG, Medical | K P Packaging",
+    title: "Industries We Serve | K P Packaging",
     desc: "Packaging solutions for the pharmaceutical, food & beverage, FMCG and medical/surgical industries from K P Packaging, barrier papers, foil laminates, cupstock and sterilizable medical papers.",
     path: "/industries/", page: "industries",
     jsonld: [...baseLd, breadcrumbLd([{ name: "Home", path: "/" }, { name: "Industries", path: "/industries/" }])]
@@ -885,7 +885,7 @@ function build() {
   for (const i of INDUSTRIES) {
     const url = industryUrl(i);
     writePage("industries/" + i.slug, pageShell({
-      title: `${i.name} Packaging Supplier in India | K P Packaging`,
+      title: `${i.name} Packaging | K P Packaging`,
       desc: `${i.name} packaging from K P Packaging, ${i.blurb} Serving 425+ clients across 20+ countries.`,
       path: url, page: "industries",
       jsonld: [...baseLd, serviceLd(i), faqLd(industryFaqs(i)), breadcrumbLd([{ name: "Home", path: "/" }, { name: "Industries", path: "/industries/" }, { name: i.name, path: url }])]
@@ -895,7 +895,7 @@ function build() {
   // CAPABILITIES
   // CONTACT
   writePage("contact", pageShell({
-    title: "Contact K P Packaging, Mumbai Office & Silvassa Plant",
+    title: "Contact K P Packaging | Mumbai & Silvassa",
     desc: "Contact K P Packaging, corporate office in Lower Parel, Mumbai and manufacturing plant in Silvassa, India. Phone, email and enquiry form for quotes.",
     path: "/contact/", page: "contact",
     jsonld: [...baseLd, ...COMPANY.offices.map(localBusinessLd), { "@context": "https://schema.org", "@type": "ContactPage", url: BASE + "/contact/", about: { "@id": ORG_ID } }, breadcrumbLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }])]
