@@ -33,3 +33,74 @@
   for = "/css/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000"
+
+# ── Preserve existing SEO: 301 redirects from the OLD Webflow URLs to the new structure ──
+# (passes ranking equity & backlinks from the old flat URLs to the new pages)
+[[redirects]]
+  from = "/about-us"
+  to = "/about/"
+  status = 301
+[[redirects]]
+  from = "/collection"
+  to = "/products/"
+  status = 301
+[[redirects]]
+  from = "/glassine-paper"
+  to = "/products/glassine-paper/"
+  status = 301
+[[redirects]]
+  from = "/mg-poster-paper"
+  to = "/products/mg-poster-paper/"
+  status = 301
+[[redirects]]
+  from = "/4-ply-paper"
+  to = "/products/4-ply-paper/"
+  status = 301
+[[redirects]]
+  from = "/3-ply-paper"
+  to = "/products/3-ply-paper/"
+  status = 301
+[[redirects]]
+  from = "/cupstock-paper"
+  to = "/products/cupstock-paper/"
+  status = 301
+[[redirects]]
+  from = "/mg-kraft"
+  to = "/products/mg-kraft/"
+  status = 301
+[[redirects]]
+  from = "/chromo-paper"
+  to = "/products/chromo-paper/"
+  status = 301
+[[redirects]]
+  from = "/folding-box-board"
+  to = "/products/folding-box-board/"
+  status = 301
+[[redirects]]
+  from = "/non-tearable-paper"
+  to = "/products/non-tearable-paper/"
+  status = 301
+[[redirects]]
+  from = "/polyethylene-coated-stiffener-paper"
+  to = "/products/pe-coated-stiffener-paper/"
+  status = 301
+[[redirects]]
+  from = "/greaseproof-paper"
+  to = "/products/greaseproof-paper/"
+  status = 301
+[[redirects]]
+  from = "/duplex-board"
+  to = "/products/duplex-board/"
+  status = 301
+[[redirects]]
+  from = "/maplitho-paper"
+  to = "/products/maplitho-paper/"
+  status = 301
+[[redirects]]
+  from = "/tissue-paper"
+  to = "/products/tissue-paper/"
+  status = 301
+[[redirects]]
+  from = "/other-specialised-paper"
+  to = "/products/bactite/"
+  status = 301
