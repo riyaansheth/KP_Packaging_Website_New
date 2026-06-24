@@ -271,4 +271,69 @@
       el.addEventListener("mouseleave", function () { el.style.transform = ""; el.style.boxShadow = ""; });
     });
   }
+
+  var fineHover = !reduceMotion && !(window.matchMedia && window.matchMedia("(hover: none)").matches);
+
+  /* ---------- Count-up numbers when scrolled into view ---------- */
+  var counters = $$(".hero-stats .stat strong, .statstrip .s strong");
+  if (counters.length && "IntersectionObserver" in window && !reduceMotion) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target; cio.unobserve(el);
+        var raw = el.textContent.trim();
+        var target = parseFloat(raw.replace(/[^0-9.]/g, ""));
+        if (isNaN(target)) return;
+        var suffix = raw.replace(/[0-9.,]/g, "");
+        var dur = 1400, t0 = null;
+        function step(t) {
+          if (t0 === null) t0 = t;
+          var p = Math.min((t - t0) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { cio.observe(el); });
+  }
+
+  /* ---------- Magnetic buttons (subtle pull toward cursor) ---------- */
+  if (fineHover) {
+    $$(".btn--lg, .nav .btn--primary").forEach(function (btn) {
+      var strength = 0.3;
+      btn.style.transition = "transform .25s cubic-bezier(.22,1,.36,1)";
+      btn.addEventListener("mousemove", function (e) {
+        var r = btn.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width / 2) * strength;
+        var y = (e.clientY - r.top - r.height / 2) * strength;
+        btn.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px)";
+      });
+      btn.addEventListener("mouseleave", function () { btn.style.transform = ""; });
+    });
+  }
+
+  /* ---------- Subtle parallax on tagged images while scrolling ---------- */
+  if (fineHover) {
+    var plx = $$("[data-parallax]");
+    if (plx.length) {
+      var ticking = false;
+      function moveParallax() {
+        var vh = window.innerHeight;
+        plx.forEach(function (el) {
+          var r = el.getBoundingClientRect();
+          if (r.bottom < 0 || r.top > vh) return;
+          var speed = parseFloat(el.getAttribute("data-parallax")) || 0.12;
+          var offset = ((r.top + r.height / 2) - vh / 2) * -speed;
+          el.style.transform = "translate3d(0," + offset.toFixed(1) + "px,0) scale(1.12)";
+        });
+        ticking = false;
+      }
+      window.addEventListener("scroll", function () {
+        if (!ticking) { requestAnimationFrame(moveParallax); ticking = true; }
+      }, { passive: true });
+      moveParallax();
+    }
+  }
 })();

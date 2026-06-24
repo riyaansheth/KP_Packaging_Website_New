@@ -511,14 +511,14 @@ function aboutBody() {
         <h1>Three decades of packaging, run by one family.</h1>
         <p>From pioneers in the PVC leather cloth industry to a modern coated-paper and flexible-packaging house, K P Packaging has grown across generations while keeping quality and relationships at its core.</p>
       </div>
-      <div class="page-hero-media"><img src="/assets/about-hero.webp" alt="Wrapped paper jumbo rolls at K P Packaging" loading="lazy" width="1100" height="884"></div>
+      <div class="page-hero-media"><img src="/assets/about-hero.webp" alt="Wrapped paper jumbo rolls at K P Packaging" loading="lazy" width="1100" height="884" data-parallax="0.08"></div>
     </div>
   </section>
 
   <section class="section--tight">
     <div class="container">
       <div class="split reveal">
-        <div class="split-media"><img src="/assets/our-story.webp" alt="Paper-making machine reflecting K P Packaging's decades of converting heritage" loading="lazy"></div>
+        <div class="split-media"><img src="/assets/our-story.webp" alt="Paper-making machine reflecting K P Packaging's decades of converting heritage" loading="lazy" data-parallax="0.08"></div>
         <div class="split-body">
           
           <h2 style="margin-top:1rem">A generational business</h2>
