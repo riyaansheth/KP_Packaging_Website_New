@@ -50,9 +50,9 @@ const COMPANY = {
     {
       tag: "Manufacturing Plant",
       city: "Silvassa",
-      address: "No 7, 8 & 9, Sr No 245/3, Sankeshwar Industrial Estate, Behind Prince Pipe, Silvassa, Dadra and Nagar Haveli, 396230",
-      street: "No 7, 8 & 9, Sr No 245/3, Sankeshwar Industrial Estate, Behind Prince Pipe",
-      locality: "Silvassa", region: "Dadra and Nagar Haveli", postal: "396230", country: "IN",
+      address: "792, Apple Insulated, Nr Crown Tapes, Vaibhav Laxmi, Silvassa, India, 396193",
+      street: "792, Apple Insulated, Nr Crown Tapes, Vaibhav Laxmi",
+      locality: "Silvassa", region: "Dadra and Nagar Haveli", postal: "396193", country: "IN",
       phone: "+91 85916 94328",
       phoneRaw: "+918591694328",
       email: "sales@kppackaging.com"
@@ -76,7 +76,7 @@ const COMPANY = {
   ],
   faq: [
     { q: "What does K P Packaging do?", a: "K P Packaging manufactures extrusion-coated paper laminates and distributes a wide range of mill-grade papers for primary and flexible packaging, serving the pharmaceutical, food & beverage, FMCG and medical/surgical industries." },
-    { q: "Where is K P Packaging located?", a: "Its corporate office is in Lower Parel, Mumbai, Maharashtra, and its manufacturing plant is in Sankeshwar Industrial Estate, Silvassa, Dadra and Nagar Haveli, India." },
+    { q: "Where is K P Packaging located?", a: "Its corporate office is in Lower Parel, Mumbai, Maharashtra, and its manufacturing plant is in Silvassa, Dadra and Nagar Haveli, India." },
     { q: "Is K P Packaging a manufacturer or a distributor?", a: "Both. K P Packaging manufactures extrusion-coated laminates in-house and is also an authorized distributor for multiple Indian paper mills." },
     { q: "Does K P Packaging export internationally?", a: "Yes. K P Packaging serves 425+ clients across more than 20 countries and is actively expanding its international business." },
     { q: "What types of coated paper does K P Packaging make?", a: "Glassine, MG Poster, Chromo, Cupstock, MG Kraft, 3-ply and 4-ply foil laminates, Folding Box Board, Duplex Board, Greaseproof, Maplitho, Non-Tearable, PE-coated stiffener, tissue, and medical Bactite and Grid Lacquer papers." },
