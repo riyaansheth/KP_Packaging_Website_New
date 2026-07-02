@@ -40,8 +40,8 @@ const COMPANY = {
     {
       tag: "Corporate Office",
       city: "Mumbai",
-      address: "A to Z Industrial Estate, Western Wing, Office No 138, Ganpat Rao Kadam Marg, Lower Parel, Mumbai, 400013",
-      street: "A to Z Industrial Estate, Western Wing, Office No 138, Ganpat Rao Kadam Marg, Lower Parel",
+      address: "A to Z Industrial Estate, Western Wing, Office No 143, Ganpat Rao Kadam Marg, Lower Parel, Mumbai, 400013",
+      street: "A to Z Industrial Estate, Western Wing, Office No 143, Ganpat Rao Kadam Marg, Lower Parel",
       locality: "Mumbai", region: "Maharashtra", postal: "400013", country: "IN",
       phone: "+91 85916 56966",
       phoneRaw: "+918591656966",
