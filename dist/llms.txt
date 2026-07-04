@@ -29,3 +29,6 @@ Contact: prem@kppackaging.com / +91 85916 56966.
 - [Tissue Paper](https://kppackaging.com/products/tissue-paper/): Soft, absorbent, hygienic tissue from recycled pulp.
 - [Bactite Paper](https://kppackaging.com/products/bactite/): Steam-sterilizable, bacterial-barrier paper for medical packaging.
 - [Grid Lacquer Paper](https://kppackaging.com/products/grid-lacquer/): Self-sealing, extrusion-coated paper for surgical disposables.
+
+## Full content
+For complete product and company details see [llms-full.txt](https://kppackaging.com/llms-full.txt).

@@ -63,7 +63,7 @@ const COMPANY = {
   url: "https://kppackaging.com",
   founded: "1990",                 // "over 3 decades"; replace with exact year when confirmed
   logo: "/assets/kp-logo.png",
-  ogImage: "/assets/og-cover.svg",
+  ogImage: "/assets/og-cover.png",
   sameAs: [],                      // add official LinkedIn/Instagram/Facebook URLs when available
   summary: "K P Packaging Ltd. is a Mumbai-based manufacturer and distributor of coated papers and flexible packaging with over 30 years of experience. The company runs a Korean-built extrusion coating and lamination plant in Silvassa, India, and supplies pharmaceutical, food & beverage, FMCG and medical/surgical packaging to 425+ clients across 20+ countries.",
   why: [

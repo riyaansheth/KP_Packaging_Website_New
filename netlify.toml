@@ -104,3 +104,13 @@
   from = "/other-specialised-paper"
   to = "/products/bactite/"
   status = 301
+
+# Security headers (trust signals; also required by many site audits)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

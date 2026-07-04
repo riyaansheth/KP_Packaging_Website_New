@@ -78,6 +78,12 @@ function orgLd() {
     sameAs: COMPANY.sameAs && COMPANY.sameAs.length ? COMPANY.sameAs : undefined,
     knowsAbout: ["Coated paper", "Flexible packaging", "Extrusion coating & lamination", "Rotogravure printing", "Pharmaceutical packaging", "Food packaging"],
     areaServed: { "@type": "Place", name: "Worldwide (20+ countries)" },
+    foundingLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "Mumbai", addressRegion: "Maharashtra", addressCountry: "IN" } },
+    hasCredential: COMPANY.certs.map((c) => ({ "@type": "EducationalOccupationalCredential", credentialCategory: "certification", name: c.name })),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog", name: "Coated Papers, Boards & Laminates",
+      itemListElement: PRODUCTS.map((p) => ({ "@type": "Offer", itemOffered: { "@type": "Product", name: p.name, url: BASE + productUrl(p) } }))
+    },
     contactPoint: COMPANY.offices.map((o) => ({
       "@type": "ContactPoint", contactType: "sales", telephone: o.phoneRaw, email: o.email, areaServed: "Worldwide", availableLanguage: ["en"]
     })),
@@ -110,6 +116,9 @@ function productLd(p, url) {
     manufacturer: { "@id": ORG_ID },
     material: p.construction || undefined,
     additionalProperty: props.length ? props : undefined,
+    countryOfOrigin: { "@type": "Country", name: "India" },
+    keywords: p.applications.slice(0, 6).join(", "),
+    audience: { "@type": "BusinessAudience", name: "Packaging buyers and converters" },
     isRelatedTo: p.applications.slice(0, 6).map((a) => ({ "@type": "Thing", name: a }))
   };
 }
@@ -164,7 +173,15 @@ function industryFaqs(i) {
    =========================================================== */
 function head(meta) {
   const url = BASE + meta.path;
-  const ld = (meta.jsonld || []).filter(Boolean).map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join("\n  ");
+  // every page carries a WebPage node with dateModified (freshness signal for search + AI)
+  const webpageLd = {
+    "@context": "https://schema.org", "@type": meta.pageType || "WebPage",
+    "@id": url + "#webpage", url, name: meta.title, description: meta.desc,
+    isPartOf: { "@id": SITE_ID }, about: { "@id": ORG_ID },
+    inLanguage: "en", dateModified: BUILD_DATE,
+    primaryImageOfPage: { "@type": "ImageObject", contentUrl: BASE + COMPANY.ogImage }
+  };
+  const ld = (meta.jsonld || []).concat([webpageLd]).filter(Boolean).map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join("\n  ");
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -173,15 +190,21 @@ function head(meta) {
   <title>${esc(meta.title)}</title>
   <meta name="description" content="${escAttr(meta.desc)}">
   <link rel="canonical" href="${url}">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="robots" content="${meta.noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1"}">
   <meta name="theme-color" content="#2E2C7E">
   <meta name="author" content="${escAttr(COMPANY.legal)}">
+  <meta name="geo.region" content="IN-MH">
+  <meta name="geo.placename" content="Mumbai, Maharashtra, India">
   <meta property="og:type" content="${meta.ogType || "website"}">
   <meta property="og:site_name" content="${escAttr(COMPANY.name)}">
   <meta property="og:title" content="${escAttr(meta.title)}">
   <meta property="og:description" content="${escAttr(meta.desc)}">
   <meta property="og:url" content="${url}">
   <meta property="og:image" content="${BASE + COMPANY.ogImage}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="K P Packaging, coated paper and flexible packaging">
   <meta property="og:locale" content="en_IN">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escAttr(meta.title)}">
@@ -815,6 +838,30 @@ function llmsTxt() {
   s += `Founded: ${COMPANY.founded}. Head office: ${COMPANY.offices[0].address}. Plant: ${COMPANY.offices[1].address}.\nContact: ${COMPANY.offices[0].email} / ${COMPANY.offices[0].phone}.\n\n`;
   s += `## Key pages\n- [Home](${BASE}/): overview\n- [About](${BASE}/about/): history, team, certifications\n- [Products](${BASE}/products/): full catalogue\n- [Industries](${BASE}/industries/): pharma, food & beverage, FMCG, medical\n- [Contact](${BASE}/contact/): offices & enquiry\n\n`;
   s += `## Products\n` + PRODUCTS.map((p) => `- [${p.name}](${BASE}${productUrl(p)}): ${p.tagline}`).join("\n") + "\n";
+  s += `\n## Full content\nFor complete product and company details see [llms-full.txt](${BASE}/llms-full.txt).\n`;
+  return s;
+}
+
+// llms-full.txt: complete content dump so LLMs can ingest everything in one fetch
+function llmsFullTxt() {
+  let s = `# K P Packaging, Full Reference\n\n> ${COMPANY.summary}\n\n`;
+  s += `Founded: ${COMPANY.founded}\nCorporate office: ${COMPANY.offices[0].address} | ${COMPANY.offices[0].phone} | ${COMPANY.offices[0].email}\n`;
+  s += `Manufacturing plant: ${COMPANY.offices[1].address} | ${COMPANY.offices[1].phone} | ${COMPANY.offices[1].email}\n`;
+  s += `Certifications: ${COMPANY.certs.map((c) => c.name).join(", ")}\n`;
+  s += `Clients include: ${COMPANY.clients.map((c) => c.name).join(", ")}\n`;
+  s += `Leadership: ${COMPANY.team.map((m) => m.name + " (" + m.role + ")").join(", ")}\n\n`;
+  s += `## Why K P Packaging\n` + COMPANY.why.map((w) => `- ${w.title}: ${w.text}`).join("\n") + "\n\n";
+  s += `## Capabilities\n` + CAPABILITIES.map((c) => `### ${c.title}\n${c.detail}`).join("\n\n") + "\n\n";
+  s += `## Industries\n` + INDUSTRIES.map((i) => `### ${i.name} (${BASE}${industryUrl(i)})\n${i.detail}`).join("\n\n") + "\n\n";
+  s += `## Products\n\n` + PRODUCTS.map((p) => {
+    let t = `### ${p.name} (${BASE}${productUrl(p)})\nAlso known as: ${p.aka}\n${p.desc}\n`;
+    t += `Applications: ${p.applications.join("; ")}\n`;
+    t += `Key properties: ${p.properties.join("; ")}\n`;
+    if (p.variants && p.variants.length) t += `Variants: ${p.variants.join("; ")}\n`;
+    if (p.certs && p.certs.length) t += `Certifications: ${p.certs.join(", ")}\n`;
+    return t;
+  }).join("\n") + "\n";
+  s += `## Frequently asked questions\n\n` + COMPANY.faq.map((f) => `Q: ${f.q}\nA: ${f.a}`).join("\n\n") + "\n";
   return s;
 }
 
@@ -867,7 +914,9 @@ function build() {
     const url = productUrl(p);
     writePage("products/" + p.slug, pageShell({
       title: `${p.name} | K P Packaging`,
-      desc: `${p.name} (${p.aka}) from K P Packaging, ${p.tagline} ${p.desc}`.slice(0, 300),
+      desc: (`${p.name} (${p.aka}) from K P Packaging. ${p.tagline}`.length <= 160
+        ? `${p.name} (${p.aka}) from K P Packaging. ${p.tagline}`
+        : `${p.name} from K P Packaging. ${p.tagline}`).slice(0, 160),
       path: url, page: "products", ogType: "product",
       jsonld: [...baseLd, productLd(p, url), faqLd(productFaqs(p)), breadcrumbLd([{ name: "Home", path: "/" }, { name: "Products", path: "/products/" }, { name: p.name, path: url }])]
     }, productBody(p)));
@@ -917,7 +966,7 @@ function build() {
   writeFile("404.html", pageShell({
     title: "Page Not Found, K P Packaging",
     desc: "The page you are looking for could not be found.",
-    path: "/404/", page: ""
+    path: "/404/", page: "", noindex: true
   }, notFoundBody));
 
   // technical files
@@ -933,6 +982,7 @@ function build() {
   writeFile("robots.txt", robotsTxt());
   writeFile("sitemap.xml", sitemapXml(urls));
   writeFile("llms.txt", llmsTxt());
+  writeFile("llms-full.txt", llmsFullTxt());
   writeFile("manifest.webmanifest", JSON.stringify({
     name: COMPANY.legal,
     short_name: "K P Packaging",
