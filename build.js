@@ -7,7 +7,7 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
-const { COMPANY, CAPABILITIES, INDUSTRIES, PRODUCTS, FILTERS } = require("./js/data.js");
+const { COMPANY, CAPABILITIES, INDUSTRIES, INFRASTRUCTURE, PRODUCTS, FILTERS } = require("./js/data.js");
 
 const ROOT = __dirname;
 const OUT = path.join(ROOT, "dist");
@@ -77,7 +77,7 @@ function orgLd() {
     slogan: COMPANY.tagline,
     sameAs: COMPANY.sameAs && COMPANY.sameAs.length ? COMPANY.sameAs : undefined,
     knowsAbout: ["Coated paper", "Flexible packaging", "Extrusion coating & lamination", "Rotogravure printing", "Pharmaceutical packaging", "Food packaging"],
-    areaServed: { "@type": "Place", name: "Worldwide (20+ countries)" },
+    areaServed: { "@type": "Place", name: "Worldwide (25+ countries)" },
     foundingLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "Mumbai", addressRegion: "Maharashtra", addressCountry: "IN" } },
     hasCredential: COMPANY.certs.map((c) => ({ "@type": "EducationalOccupationalCredential", credentialCategory: "certification", name: c.name })),
     hasOfferCatalog: {
@@ -162,9 +162,9 @@ function productFaqs(p) {
 function industryFaqs(i) {
   const prods = i.products.map(productBySlug).filter(Boolean);
   return [
-    { q: `Who is a good ${i.name.toLowerCase()} packaging supplier in India?`, a: `K P Packaging is a Mumbai-based manufacturer and distributor supplying ${i.name.toLowerCase()} packaging, including ${prods.map((p) => p.name).slice(0, 4).join(", ")}, to clients across 20+ countries.` },
+    { q: `Who is a good ${i.name.toLowerCase()} packaging supplier in India?`, a: `K P Packaging is a Mumbai-based manufacturer and distributor supplying ${i.name.toLowerCase()} packaging, including ${prods.map((p) => p.name).slice(0, 4).join(", ")}, to clients across 25+ countries.` },
     { q: `What packaging materials does the ${i.name.toLowerCase()} industry use?`, a: `${i.detail}` },
-    { q: `Can K P Packaging supply ${i.name.toLowerCase()} packaging for export?`, a: `Yes. K P Packaging serves 425+ clients across more than 20 countries, including ${i.name.toLowerCase()} customers.` }
+    { q: `Can K P Packaging supply ${i.name.toLowerCase()} packaging for export?`, a: `Yes. K P Packaging serves 500+ clients across more than 20 countries, including ${i.name.toLowerCase()} customers.` }
   ];
 }
 
@@ -234,8 +234,8 @@ function header(active) {
   return `
   <header class="site-header">
     <div class="container nav">
-      <a href="/" class="brand" aria-label="K P Packaging Ltd. home">
-        <img src="/assets/kp-logo.png" alt="K P Packaging Ltd." class="brand-logo" width="224" height="122">
+      <a href="/" class="brand" aria-label="KP Packaging home">
+        <img src="/assets/kp-logo.png" alt="KP Packaging" class="brand-logo" width="224" height="122">
       </a>
       <nav class="nav-links" aria-label="Primary">
         ${nav}
@@ -258,7 +258,7 @@ function footer() {
       <div class="footer-top">
         <div class="footer-brand">
           <a href="/" class="brand"><span class="mark">KP</span><span>K P Packaging</span></a>
-          <p>A three-decade-old family business converting and distributing coated papers and flexible packaging for pharma, food and FMCG, in India and 20+ countries.</p>
+          <p>A three-decade-old family business converting and distributing coated papers and flexible packaging for pharma, food and FMCG, in India and 25+ countries.</p>
         </div>
         <div class="footer-col">
           <h4>Explore</h4>
@@ -291,7 +291,10 @@ function footer() {
 }
 
 function quoteModal() {
-  const opts = PRODUCTS.map((p) => `<option value="${escAttr(p.name)}">${esc(p.name)}</option>`).join("");
+  const opts = PRODUCTS.map((p) => {
+    const label = p.name === "Polyethylene Coated Stiffener Paper" ? "Stiffener Paper" : p.name;
+    return `<option value="${escAttr(label)}">${esc(label)}</option>`;
+  }).join("");
   return `
   <div class="modal-overlay" id="quote-modal">
     <div class="modal" role="dialog" aria-modal="true" aria-label="Request a quote" data-lenis-prevent>
@@ -313,13 +316,16 @@ function quoteModal() {
           </div>
           <div class="field-row">
             <div class="field"><label>Product of interest</label>
-              <select name="product" id="modal-product"><option value="">General enquiry</option>${opts}</select>
+              <select name="product" id="modal-product"><option value="">General inquiry</option>${opts}</select>
+            </div>
+            <div class="field"><label>Coating</label>
+              <select name="coating"><option value="">Not sure</option><option>Coated (with PE)</option><option>Uncoated (without PE)</option></select>
             </div>
             <div class="field"><label>Country</label><input name="country" placeholder="Country"></div>
           </div>
           <div class="field"><label>Message</label><textarea name="message" placeholder="Quantity, specifications, timeline..."></textarea></div>
           <button type="submit" class="btn btn--primary btn--lg" style="width:100%;justify-content:center">Send Inquiry ${ICON.arrow}</button>
-          <p class="form-note">By submitting you agree to be contacted about your enquiry.</p>
+          <p class="form-note">By submitting you agree to be contacted about your inquiry.</p>
         </form>
         <div class="form-success" data-success>✓ Thank you, your inquiry has been received. We'll be in touch shortly.</div>
       </div>
@@ -359,7 +365,9 @@ function titleCaseText(text, ctx) {
 function applyHeadingTitleCase(html) {
   return html.replace(/<h([1-4])([^>]*)>([\s\S]*?)<\/h\1>/g, (m, n, attr, inner) => {
     const ctx = { n: 0 };
-    const cased = inner.replace(/(<[^>]+>)|([^<]+)/g, (mm, tag, txt) => tag ? tag : titleCaseText(txt, ctx));
+    let cased = inner.replace(/(<[^>]+>)|([^<]+)/g, (mm, tag, txt) => tag ? tag : titleCaseText(txt, ctx));
+    // no trailing full stops in headings
+    cased = cased.replace(/\.\s*((?:<\/[a-z]+>)*)\s*$/i, "$1");
     return `<h${n}${attr}>${cased}</h${n}>`;
   });
 }
@@ -435,7 +443,7 @@ function homeBody() {
           <div class="ic-media${i.image ? "" : " " + i.art + " roll-art"}">${i.image ? `<img src="${i.image}" alt="${escAttr(i.name)} packaging" loading="lazy">` : ""}</div>
           <div class="ic-body"><h3>${esc(i.name)}</h3><p>${esc(i.blurb)}</p></div>
         </a>`).join("");
-  const featured = PRODUCTS.filter((p) => p.featured).slice(0, 3).map(productCard).join("");
+  const featured = ["4-ply-paper", "mg-poster-paper", "glassine-paper"].map(productBySlug).map(productCard).join("");
   const why = COMPANY.why.map((w) => `
         <div class="fcard reveal"><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></div>`).join("");
   return `
@@ -443,11 +451,11 @@ function homeBody() {
     <div class="container hero-inner">
       <div class="hero-copy reveal in">
         <h1>Packaging that <em>protects</em> what matters.</h1>
-        <p class="lead">A three-decade family business converting and distributing coated papers and flexible laminates for pharmaceuticals, food and FMCG, engineered for barrier, strength and print.</p>
+        <p class="lead">A three-decade-old family business converting and distributing coated papers and flexible laminates for pharmaceuticals, food and FMCG, engineered for sealing, barrier, strength and print.</p>
         <div class="hero-stats">
           <div class="stat"><strong>30+</strong><span>Years of expertise</span></div>
-          <div class="stat"><strong>20+</strong><span>Countries served</span></div>
-          <div class="stat"><strong>425+</strong><span>Clients worldwide</span></div>
+          <div class="stat"><strong>25+</strong><span>Countries served</span></div>
+          <div class="stat"><strong>500+</strong><span>Clients worldwide</span></div>
         </div>
       </div>
       <div class="hero-visual reveal in" data-tilt>
@@ -477,8 +485,8 @@ function homeBody() {
       <div class="overview-body reveal reveal--right">
         <div class="overview-facts">
           <div class="fact"><strong>Two arms</strong><span>In-house manufacturing + authorized mill distribution</span></div>
-          <div class="fact"><strong>16 grades</strong><span>Coated papers, boards &amp; foil laminates</span></div>
-          <div class="fact"><strong>Korean line</strong><span>State-of-the-art extrusion coating &amp; lamination</span></div>
+          <div class="fact"><strong>25+ grades</strong><span>Coated papers, boards &amp; foil laminates</span></div>
+          <div class="fact"><strong>Global machinery</strong><span>Korean, Chinese &amp; American extrusion coating lines</span></div>
           <div class="fact"><strong>Certified</strong><span>FSC, FDA &amp; ISO-aligned quality</span></div>
         </div>
       </div>
@@ -487,14 +495,14 @@ function homeBody() {
 
   <section class="section">
     <div class="container">
-      <div class="section-head reveal center"><h2 style="margin-top:1rem">Two arms, one promise: dependable packaging.</h2><p>We manufacture extrusion-coated laminates and distribute a broad range of mill-grade papers, so you can source coating, printing and substrate from a single partner.</p></div>
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">Two arms, one promise</h2><p class="tagline">Packaging you can rely on</p><p>We manufacture extrusion coated laminates and distribute a broad range of mill-grade papers so you can source coated, printed and plain papers from a single partner.</p></div>
       <div class="grid grid-4">${capCards(false)}</div>
     </div>
   </section>
 
   <section class="section bg-cream2">
     <div class="container">
-      <div class="section-head reveal center"><h2 style="margin-top:1rem">Solutions for the sectors we serve.</h2><p>From moisture barriers for medicine to food-safe cupstock, find the right material by where it's used.</p></div>
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">Solutions for the industries we serve</h2><p>From moisture barriers for medicine to food-safe cupstock, find the right material by where it's used.</p></div>
       <div class="grid grid-4">${industries}</div>
     </div>
   </section>
@@ -514,8 +522,17 @@ function homeBody() {
     </div>
   </section>
 
+  <section class="section bg-cream2">
+    <div class="container">
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">Our infrastructure</h2><p>Eleven machines across extrusion lamination, printing and converting, sourced from the world's best builders.</p></div>
+      <div class="infra-grid">
+        ${INFRASTRUCTURE.map((m) => `<div class="infra-card reveal"><strong>${m.count}</strong><h3>${esc(m.name)}</h3><span>${esc(m.origin)}</span></div>`).join("")}
+      </div>
+    </div>
+  </section>
+
   <section class="section--tight">
-    <div class="container"><div class="section-head reveal center"><span class="eyebrow">Certified & compliant</span></div><div class="cert-logos">${COMPANY.certs.map((c) => `<div class="cert-logo"><img src="${c.logo}" alt="${escAttr(c.name)} certification" loading="lazy"></div>`).join("")}</div></div>
+    <div class="container"><div class="section-head reveal center"><span class="eyebrow">Globally certified</span></div><div class="cert-logos">${COMPANY.certs.map((c) => `<div class="cert-logo"><img src="${c.logo}" alt="${escAttr(c.name)} certification" loading="lazy"></div>`).join("")}</div></div>
   </section>
 
   ${faqSection(COMPANY.faq, { title: "Frequently asked questions", bg: true })}
@@ -557,16 +574,9 @@ function aboutBody() {
   <section class="section bg-cream2">
     <div class="container">
       <div class="grid grid-2">
-        <div class="fcard reveal"><h3>Manufacturing</h3><p>We manufacture extrusion-coated laminates, poly-coating (PE) on printed and unprinted Paper, Board, PET, BOPP, Aluminium Foil, Fabric and other substrates. Our "State of the Art" extrusion lamination and coating plant is imported from Korea, supported by a rotogravure printing machine and multiple slitting and rewinding machines.</p></div>
+        <div class="fcard reveal"><h3>Manufacturing</h3><p>We manufacture extrusion coated laminates, poly (LDPE) coating on printed and unprinted paper, board, aluminium foil, PET, BOPP, fabric and other substrates. Our three state-of-the-art extrusion lamination machines are imported from Korea, China and America, supported by a rotogravure printing machine and multiple slitting, sheeting and rewinding machines.</p></div>
         <div class="fcard reveal"><h3>Distribution</h3><p>We are authorized distributors for multiple Indian paper mills, supplying MG Poster, Maplitho, Cupstock, MG/MF Kraft, Greaseproof (OGR), Chromo (C1S &amp; C2S), Glassine, OLB, Bible, Stiffener, Tissue, Duplex, Folding Box Board (FBB), Solid Bleached Sulphate (SBS), Backtite, LWC, Bleach Kraft and more.</p></div>
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head reveal center"><span class="eyebrow">Areas of expertise</span><h2 style="margin-top:1rem">Converters of paper, board & flexible films.</h2><p>We coat and laminate on various grades of paper, paperboard, cupstock, polyester film, BOPP film, aluminium foils and fabrics. Our products pack medicines, gloves, yeast, sugar, salt, pepper, paper cups, boxes and tea. Our aluminium foil, plain and printed, pairs with rigid and flexible PVC films for blister & strip packing, condom laminates, surgical suture laminates and ORS salts. We also produce a full range of flexible packaging for chips, tea, coffee, salt, noodles, chocolates, detergents, soaps, oils and snacks.</p></div>
-      <div class="grid grid-4">${capCards(false)}</div>
     </div>
   </section>
 
@@ -621,7 +631,7 @@ function productsBody() {
     <div class="container">
       
       <h1>Coated papers, boards & laminates.</h1>
-      <p>Sixteen grades engineered for barrier, strength and print, from pharmaceutical glassine to food-safe cupstock. Click any product for instant details, or filter to find your match.</p>
+      <p>25+ grades engineered for sealing, barrier, strength and print, from pharmaceutical glassine to food-safe cupstock. Click any product for instant details, or filter to find your match.</p>
     </div>
   </section>
 
@@ -711,16 +721,16 @@ function industriesBody() {
         <div class="split-body">
           <h2><a href="${industryUrl(i)}">${esc(i.name)}</a></h2>
           <p>${esc(i.detail)}</p>
-          <a class="btn btn--primary" href="${industryUrl(i)}">Explore ${esc(i.name)} ${ICON.arrow}</a>
+          <div style="text-align:center"><a class="btn btn--primary" href="${industryUrl(i)}">Explore ${esc(i.name)} ${ICON.arrow}</a></div>
         </div>
       </div>`;
   }).join("");
   return `
-  <section class="page-hero center">
+  <section class="page-hero center page-hero--compact">
     <div class="container">
-      
-      <h1>Built for the sectors that depend on packaging.</h1>
-      <p>The same converting expertise, tuned to four very different worlds, from sterile medical disposables to food-contact cups and shelf-ready retail cartons.</p>
+
+      <h1>Built for the industries that depend on packaging.</h1>
+      <p>The same converting expertise, tuned to multiple different worlds. From sterile medical disposables to food contact cups.</p>
     </div>
   </section>
   <section class="section--tight"><div class="container">${blocks}</div></section>
@@ -763,13 +773,16 @@ function contactBody() {
           <div class="row">${ICON.mail}<a href="mailto:${o.email}">${esc(o.email)}</a></div>
           <div class="row">${ICON.pin}<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(o.address)}">View on Google Maps ${ICON.arrow}</a></div>
         </div>`).join("");
-  const opts = PRODUCTS.map((p) => `<option value="${escAttr(p.name)}">${esc(p.name)}</option>`).join("");
+  const opts = PRODUCTS.map((p) => {
+    const label = p.name === "Polyethylene Coated Stiffener Paper" ? "Stiffener Paper" : p.name;
+    return `<option value="${escAttr(label)}">${esc(label)}</option>`;
+  }).join("");
   return `
   <section class="page-hero">
     <div class="container">
       
       <h1>Let's talk packaging.</h1>
-      <p>Reach our corporate office in Mumbai or our manufacturing plant in Silvassa, or send an enquiry and we'll reply within one business day.</p>
+      <p>Reach our corporate office in Mumbai or our manufacturing plant in Silvassa, or send an inquiry and we'll reply within one business day.</p>
     </div>
   </section>
 
@@ -781,7 +794,7 @@ function contactBody() {
           <form class="form" id="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="contact">
             <p hidden><label>Leave blank: <input name="bot-field"></label></p>
-            <h3 style="margin-bottom:1.2rem">Send us an enquiry</h3>
+            <h3 style="margin-bottom:1.2rem">Send us an inquiry</h3>
             <div class="field-row">
               <div class="field"><label>Name</label><input name="name" required placeholder="Your name"></div>
               <div class="field"><label>Company</label><input name="company" placeholder="Company name"></div>
@@ -791,14 +804,15 @@ function contactBody() {
               <div class="field"><label>Phone</label><input name="phone" placeholder="+91 ..."></div>
             </div>
             <div class="field-row">
-              <div class="field"><label>Product of interest</label><select name="product"><option value="">General enquiry</option>${opts}</select></div>
+              <div class="field"><label>Product of interest</label><select name="product"><option value="">General inquiry</option>${opts}</select></div>
               <div class="field"><label>Country</label><input name="country" placeholder="Country"></div>
             </div>
+            <div class="field"><label>Coating</label><select name="coating"><option value="">Not sure</option><option>Coated (with PE)</option><option>Uncoated (without PE)</option></select></div>
             <div class="field"><label>Message <span class="opt">(optional)</span></label><textarea name="message" placeholder="Quantity, specifications, timeline..."></textarea></div>
-            <button type="submit" class="btn btn--primary btn--lg" style="width:100%;justify-content:center">Send Enquiry</button>
-            <p class="form-note">By submitting you agree to be contacted about your enquiry.</p>
+            <button type="submit" class="btn btn--primary btn--lg" style="width:100%;justify-content:center">Send Inquiry</button>
+            <p class="form-note">By submitting you agree to be contacted about your inquiry.</p>
           </form>
-          <div class="form-success" id="contact-success">✓ Thank you, your enquiry has been received. We'll be in touch shortly.</div>
+          <div class="form-success" id="contact-success">✓ Thank you, your inquiry has been received. We'll be in touch shortly.</div>
         </div>
       </div>
     </div>
@@ -815,7 +829,7 @@ function faviconSvg() {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#2E2C7E"/><text x="32" y="43" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="middle">KP</text></svg>`;
 }
 function ogSvg() {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><rect width="1200" height="630" fill="#F7F7FB"/><rect width="1200" height="630" fill="url(#g)" opacity="0.08"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E2C7E"/><stop offset="1" stop-color="#6F7073"/></linearGradient></defs><rect x="80" y="86" width="92" height="92" rx="20" fill="#2E2C7E"/><text x="126" y="148" font-family="Inter,Arial,sans-serif" font-size="40" font-weight="700" fill="#fff" text-anchor="middle">KP</text><text x="80" y="320" font-family="Georgia,serif" font-size="76" font-weight="600" fill="#1B1B2A">K P Packaging</text><text x="80" y="392" font-family="Inter,Arial,sans-serif" font-size="34" fill="#5C5D69">Coated paper &amp; flexible packaging · 30+ years</text><text x="80" y="452" font-family="Inter,Arial,sans-serif" font-size="26" fill="#6F7073">Pharma · Food &amp; Beverage · FMCG · Medical, 20+ countries</text></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><rect width="1200" height="630" fill="#F7F7FB"/><rect width="1200" height="630" fill="url(#g)" opacity="0.08"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E2C7E"/><stop offset="1" stop-color="#6F7073"/></linearGradient></defs><rect x="80" y="86" width="92" height="92" rx="20" fill="#2E2C7E"/><text x="126" y="148" font-family="Inter,Arial,sans-serif" font-size="40" font-weight="700" fill="#fff" text-anchor="middle">KP</text><text x="80" y="320" font-family="Georgia,serif" font-size="76" font-weight="600" fill="#1B1B2A">K P Packaging</text><text x="80" y="392" font-family="Inter,Arial,sans-serif" font-size="34" fill="#5C5D69">Coated paper &amp; flexible packaging · 30+ years</text><text x="80" y="452" font-family="Inter,Arial,sans-serif" font-size="26" fill="#6F7073">Pharma · Food &amp; Beverage · FMCG · Medical, 25+ countries</text></svg>`;
 }
 
 /* ===========================================================
@@ -836,7 +850,7 @@ function sitemapXml(urls) {
 function llmsTxt() {
   let s = `# K P Packaging\n\n> ${COMPANY.summary}\n\n`;
   s += `Founded: ${COMPANY.founded}. Head office: ${COMPANY.offices[0].address}. Plant: ${COMPANY.offices[1].address}.\nContact: ${COMPANY.offices[0].email} / ${COMPANY.offices[0].phone}.\n\n`;
-  s += `## Key pages\n- [Home](${BASE}/): overview\n- [About](${BASE}/about/): history, team, certifications\n- [Products](${BASE}/products/): full catalogue\n- [Industries](${BASE}/industries/): pharma, food & beverage, FMCG, medical\n- [Contact](${BASE}/contact/): offices & enquiry\n\n`;
+  s += `## Key pages\n- [Home](${BASE}/): overview\n- [About](${BASE}/about/): history, team, certifications\n- [Products](${BASE}/products/): full catalogue\n- [Industries](${BASE}/industries/): pharma, food & beverage, FMCG, medical\n- [Contact](${BASE}/contact/): offices & inquiry\n\n`;
   s += `## Products\n` + PRODUCTS.map((p) => `- [${p.name}](${BASE}${productUrl(p)}): ${p.tagline}`).join("\n") + "\n";
   s += `\n## Full content\nFor complete product and company details see [llms-full.txt](${BASE}/llms-full.txt).\n`;
   return s;
@@ -888,7 +902,7 @@ function build() {
   // HOME
   writePage(".", pageShell({
     title: "K P Packaging | Coated Paper & Flexible Packaging",
-    desc: "K P Packaging is a 30+ year Mumbai-based manufacturer & distributor of coated papers and flexible packaging for pharma, food and FMCG, serving 425+ clients across 20+ countries.",
+    desc: "K P Packaging is a 30+ year Mumbai-based manufacturer & distributor of coated papers and flexible packaging for pharma, food and FMCG, serving 500+ clients across 25+ countries.",
     path: "/", page: "home",
     jsonld: [...baseLd, faqLd(COMPANY.faq), breadcrumbLd([{ name: "Home", path: "/" }])]
   }, homeBody()));
@@ -904,7 +918,7 @@ function build() {
   // PRODUCTS listing
   writePage("products", pageShell({
     title: "Coated Paper & Board Products | K P Packaging",
-    desc: "Browse 16 grades of coated paper, board and foil laminates from K P Packaging, glassine, MG poster, chromo, cupstock, kraft, 3/4-ply foil and more. Filter by industry, construction and coating.",
+    desc: "Browse 25+ grades of coated paper, board and foil laminates from K P Packaging, glassine, MG poster, chromo, cupstock, kraft, 3/4-ply foil and more. Filter by industry, construction and coating.",
     path: "/products/", page: "products",
     jsonld: [...baseLd, itemListLd(PRODUCTS), breadcrumbLd([{ name: "Home", path: "/" }, { name: "Products", path: "/products/" }])]
   }, productsBody()));
@@ -935,7 +949,7 @@ function build() {
     const url = industryUrl(i);
     writePage("industries/" + i.slug, pageShell({
       title: `${i.name} Packaging | K P Packaging`,
-      desc: `${i.name} packaging from K P Packaging, ${i.blurb} Serving 425+ clients across 20+ countries.`,
+      desc: `${i.name} packaging from K P Packaging, ${i.blurb} Serving 500+ clients across 25+ countries.`,
       path: url, page: "industries",
       jsonld: [...baseLd, serviceLd(i), faqLd(industryFaqs(i)), breadcrumbLd([{ name: "Home", path: "/" }, { name: "Industries", path: "/industries/" }, { name: i.name, path: url }])]
     }, industryBody(i)));
@@ -945,7 +959,7 @@ function build() {
   // CONTACT
   writePage("contact", pageShell({
     title: "Contact K P Packaging | Mumbai & Silvassa",
-    desc: "Contact K P Packaging, corporate office in Lower Parel, Mumbai and manufacturing plant in Silvassa, India. Phone, email and enquiry form for quotes.",
+    desc: "Contact K P Packaging, corporate office in Lower Parel, Mumbai and manufacturing plant in Silvassa, India. Phone, email and inquiry form for quotes.",
     path: "/contact/", page: "contact",
     jsonld: [...baseLd, ...COMPANY.offices.map(localBusinessLd), { "@context": "https://schema.org", "@type": "ContactPage", url: BASE + "/contact/", about: { "@id": ORG_ID } }, breadcrumbLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }])]
   }, contactBody()));

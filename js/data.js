@@ -5,23 +5,26 @@
 
 const COMPANY = {
   name: "K P Packaging",
-  legal: "K P Packaging Ltd.",
+  legal: "KP Packaging",
   tagline: "Coated paper & flexible packaging, perfected over three decades.",
   stats: [
     { value: "30+", label: "Years of expertise" },
-    { value: "20+", label: "Countries served" },
-    { value: "425+", label: "Clients worldwide" }
+    { value: "25+", label: "Countries served" },
+    { value: "500+", label: "Clients worldwide" }
   ],
   clients: [
-    { name: "Wockhardt", logo: "/assets/logos/wockhardt.webp" },
+    // colour-coordinated order: blues, purple, multicolour, reds
     { name: "Cipla", logo: "/assets/logos/cipla.webp" },
+    { name: "Parksons", logo: "/assets/logos/parksons.webp" },
+    { name: "Reliance Polymers", logo: "/assets/logos/reliance.webp" },
     { name: "Dr. Reddy's", logo: "/assets/logos/dr-reddys.webp" },
     { name: "Godrej", logo: "/assets/logos/godrej.webp" },
     { name: "Wipro", logo: "/assets/logos/wipro.webp" },
     { name: "Zydus", logo: "/assets/logos/zydus.webp" },
     { name: "Amul", logo: "/assets/logos/amul.webp" },
-    { name: "Parksons", logo: "/assets/logos/parksons.webp" },
-    { name: "Intas", logo: "/assets/logos/intas.webp" }
+    { name: "Intas", logo: "/assets/logos/intas.webp" },
+    { name: "Dow Chemicals", logo: "/assets/logos/dow.webp" },
+    { name: "Wockhardt", logo: "/assets/logos/wockhardt.webp" }
   ],
   certs: [
     { name: "ISO Certified", logo: "/assets/certs/iso.webp" },
@@ -65,23 +68,23 @@ const COMPANY = {
   logo: "/assets/kp-logo.png",
   ogImage: "/assets/og-cover.png",
   sameAs: [],                      // add official LinkedIn/Instagram/Facebook URLs when available
-  summary: "K P Packaging Ltd. is a Mumbai-based manufacturer and distributor of coated papers and flexible packaging with over 30 years of experience. The company runs a Korean-built extrusion coating and lamination plant in Silvassa, India, and supplies pharmaceutical, food & beverage, FMCG and medical/surgical packaging to 425+ clients across 20+ countries.",
+  summary: "KP Packaging is a Mumbai-based manufacturer and distributor of coated papers and flexible packaging with over 30 years of experience. The company runs extrusion coating and lamination machines from Korea, China and America at its plant in Silvassa, India, and supplies pharmaceutical, food & beverage, FMCG and medical/surgical packaging to 500+ clients across 25+ countries.",
   why: [
     { title: "Three decades of converting expertise", text: "Over 30 years in coated paper and flexible packaging, from a PVC leather-cloth pioneer to a modern primary-packaging house." },
     { title: "Manufacturing + distribution under one roof", text: "In-house extrusion-coated laminates plus authorized distribution for leading Indian paper mills, source coating, printing and substrate from a single partner." },
-    { title: "State-of-the-art Korean coating line", text: "A modern extrusion lamination and coating plant in Silvassa, with rotogravure printing and multiple slitting & rewinding machines." },
-    { title: "Trusted by industry leaders", text: "Supplies Wockhardt, Cipla, Dr. Reddy's, Godrej, Wipro, Zydus, Amul, Parksons and Intas across 20+ countries." },
-    { title: "Pharma- and food-grade quality", text: "FSC- and FDA-aligned barrier papers for medicines, ORS sachets, blister packs, paper cups and food packaging." },
+    { title: "State-of-the-art coating lines", text: "A modern extrusion lamination and coating plant in Silvassa with rotogravure printing and multiple slitting, sheeting and rewinding machines." },
+    { title: "Trusted by industry leaders", text: "We supply to Wockhardt, Cipla, Dr. Reddy's, Godrej, Wipro, Zydus, Amul, Parksons and Intas across 25+ countries." },
+    { title: "Pharma- and food-grade quality", text: "FSC- and FDA-aligned barrier papers for medicines, ORS sachets, blister packs, paper cups, food packaging and lots more." },
     { title: "Custom laminates, made to spec", text: "We engineer bespoke coated and laminated structures to your exact barrier, print and substrate requirements, with reliable lead times." }
   ],
   faq: [
-    { q: "What does K P Packaging do?", a: "K P Packaging manufactures extrusion-coated paper laminates and distributes a wide range of mill-grade papers for primary and flexible packaging, serving the pharmaceutical, food & beverage, FMCG and medical/surgical industries." },
-    { q: "Where is K P Packaging located?", a: "Its corporate office is in Lower Parel, Mumbai, Maharashtra, and its manufacturing plant is in Silvassa, Dadra and Nagar Haveli, India." },
-    { q: "Is K P Packaging a manufacturer or a distributor?", a: "Both. K P Packaging manufactures extrusion-coated laminates in-house and is also an authorized distributor for multiple Indian paper mills." },
-    { q: "Does K P Packaging export internationally?", a: "Yes. K P Packaging serves 425+ clients across more than 20 countries and is actively expanding its international business." },
-    { q: "What types of coated paper does K P Packaging make?", a: "Glassine, MG Poster, Chromo, Cupstock, MG Kraft, 3-ply and 4-ply foil laminates, Folding Box Board, Duplex Board, Greaseproof, Maplitho, Non-Tearable, PE-coated stiffener, tissue, and medical Bactite and Grid Lacquer papers." },
-    { q: "Is K P Packaging's paper food-safe and pharma-grade?", a: "Yes. It supplies FDA- and FSC-aligned glassine and barrier papers for pharmaceuticals and food-safe cupstock and greaseproof papers for food and beverage packaging." },
-    { q: "How do I request a quote from K P Packaging?", a: "Contact the corporate office at prem@kppackaging.com or +91 85916 56966, the plant at sales@kppackaging.com or +91 85916 94328, or use the enquiry form on kppackaging.com." }
+    { q: "What does KP Packaging do?", a: "KP Packaging manufactures extrusion-coated paper laminates and distributes a wide range of mill-grade papers for primary and flexible packaging, serving the pharmaceutical, food & beverage, FMCG and medical/surgical industries." },
+    { q: "Where is KP Packaging located?", a: "Its corporate office is in Lower Parel, Mumbai, Maharashtra, and its manufacturing plant is in Silvassa, Dadra and Nagar Haveli, India." },
+    { q: "How do I request a quote from KP Packaging?", a: "Contact the corporate office at prem@kppackaging.com or +91 85916 56966, the plant at sales@kppackaging.com or +91 85916 94328, or use the inquiry form on kppackaging.com." },
+    { q: "Is KP Packaging a manufacturer or a distributor?", a: "Both. KP Packaging manufactures extrusion-coated laminates in-house and is also an authorized distributor for multiple Indian paper mills." },
+    { q: "Does KP Packaging export internationally?", a: "Yes. KP Packaging serves 500+ clients across more than 25 countries and is actively expanding its international business." },
+    { q: "What papers does KP Packaging make?", a: "KP Packaging supplies both coated and uncoated papers: glassine, MG poster, chromo, cupstock, MG kraft, 3-ply and 4-ply foil laminates, folding box board, duplex board, greaseproof, tissue, and medical Bactite and Grid Lacquer papers." },
+    { q: "Is KP Packaging's paper food-safe and pharma-grade?", a: "Yes. It supplies FDA- and FSC-aligned glassine and barrier papers for pharmaceuticals and food-safe cupstock and greaseproof papers for food and beverage packaging." }
   ]
 };
 
@@ -90,21 +93,21 @@ const CAPABILITIES = [
     slug: "extrusion-coating",
     title: "Extrusion Coating & Lamination",
     icon: "layers",
-    blurb: "Poly (PE) coating on printed & unprinted Paper, Board, PET, BOPP, Aluminium Foil and Fabric.",
-    detail: "Our state-of-the-art extrusion lamination and coating line, imported from Korea, applies LDPE and specialty polymer layers across a wide range of substrates to deliver moisture, grease and oxygen barriers for primary packaging."
+    blurb: "Poly (LDPE) coating on printed and unprinted paper, board and aluminium foil.",
+    detail: "Our three state-of-the-art extrusion lamination and coating machines, imported from Korea, China and America, apply LDPE and specialty polymer layers across a wide range of substrates to deliver moisture, grease and oxygen barriers for primary packaging."
   },
   {
     slug: "rotogravure-printing",
     title: "Rotogravure Printing",
     icon: "printer",
-    blurb: "High-resolution, multi-colour gravure printing for sharp, durable, on-brand packaging.",
-    detail: "Our rotogravure press delivers consistent, high-volume print quality on films, foils and papers, ideal for branded flexible packaging and pharmaceutical laminates."
+    blurb: "High-resolution 8-colour gravure printing for sharp, durable, on-brand packaging.",
+    detail: "Our 8-colour rotogravure press delivers consistent, high-volume print quality on films, foils and papers, ideal for branded flexible packaging and pharmaceutical laminates."
   },
   {
     slug: "slitting-rewinding",
     title: "Slitting & Rewinding",
     icon: "scissors",
-    blurb: "Multiple slitting and rewinding machines for precise reel widths to customer spec.",
+    blurb: "Multiple slitting, sheeting and rewinding machines for precise reel widths to customer specifications.",
     detail: "Jumbo rolls are converted into precise, customer-specified reel widths and lengths, plain or printed, with tight tolerance and clean edges."
   },
   {
@@ -114,6 +117,15 @@ const CAPABILITIES = [
     blurb: "Authorized distributor for leading Indian paper mills across a broad grade range.",
     detail: "Beyond manufacturing, we are authorized distributors for multiple Indian paper mills, supplying MG Poster, Maplitho, Cupstock, MG/MF Kraft, Greaseproof, Chromo, Glassine, Duplex, FBB, SBS and more."
   }
+];
+
+const INFRASTRUCTURE = [
+  { count: 3, name: "Extrusion lamination machines", origin: "Korean, Chinese & American" },
+  { count: 1, name: "8-colour rotogravure printing machine", origin: "Indian" },
+  { count: 3, name: "Slitting machines", origin: "Italian (Bimec)" },
+  { count: 1, name: "Slitting machine", origin: "German" },
+  { count: 2, name: "Slitting machines", origin: "Indian" },
+  { count: 1, name: "Sheet-cutting machine", origin: "Indian" }
 ];
 
 const INDUSTRIES = [
@@ -140,7 +152,7 @@ const INDUSTRIES = [
     name: "FMCG & Retail",
     art: "roll-art--cream",
     image: "/assets/industries/fmcg.webp",
-    blurb: "Printable, durable coated papers and boards for everyday branded products.",
+    blurb: "Printable, durable, coated papers and boards for everyday consumer solutions.",
     detail: "High-gloss, print-ready chromo and poster papers plus folding box board for retail packaging that needs shelf appeal and structural strength. From cartons and labels to sachets for tea, tobacco, gutka and personal-care products, our coated papers and boards pair sharp rotogravure printing with the stiffness and durability retail demands. We supply trusted FMCG names including Godrej, Wipro, Amul and Parksons.",
     products: ["chromo-paper", "mg-poster-paper", "folding-box-board", "duplex-board", "maplitho-paper"]
   },
@@ -149,7 +161,7 @@ const INDUSTRIES = [
     name: "Medical & Surgical",
     art: "roll-art",
     image: "/assets/industries/medical-surgical.webp",
-    blurb: "Sterilizable, bacterial-barrier papers for gloves, syringes and surgical disposables.",
+    blurb: "ETO sterilization, bacterial barrier papers for gloves, syringes and surgical disposables.",
     detail: "Steam-sterilizable Bactite and grid-lacquer papers with bacterial-barrier and self-sealing properties for medical gloves, syringes, catheters and surgical sutures. Free from optical brighteners and engineered for steam, EtO and gamma sterilization, these medical-grade papers hold a dependable bacterial barrier and a clean peel for surgical disposables. They are lint-free, fluid-repellent and high in dry and wet strength, trusted across hospital and device supply chains.",
     products: ["bactite", "grid-lacquer", "non-tearable-paper"]
   }
@@ -509,5 +521,5 @@ const FILTERS = {
 
 /* ---------- Node (build-time) export; no-op in the browser ---------- */
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { COMPANY, CAPABILITIES, INDUSTRIES, PRODUCTS, FILTERS };
+  module.exports = { COMPANY, CAPABILITIES, INDUSTRIES, INFRASTRUCTURE, PRODUCTS, FILTERS };
 }
