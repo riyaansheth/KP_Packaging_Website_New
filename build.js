@@ -475,7 +475,12 @@ function homeBody() {
   <section class="trustbar">
     <div class="container">
       <span class="tb-label">Trusted by leading brands</span>
-      <div class="tb-row">${clients}</div>
+      <div class="marquee">
+        <div class="marquee-track">
+          <div class="marquee-set">${clients}${clientsDup}</div>
+          <div class="marquee-set" aria-hidden="true">${clientsDup}${clientsDup}</div>
+        </div>
+      </div>
     </div>
   </section>
 
