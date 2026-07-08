@@ -61,7 +61,7 @@ Legend: [x] done · [ ] pending · 🖼 needs image/asset from owner or AI gener
 ## About page (Recording 33)
 - [x] Manufacturing box copy: "We manufacture extrusion coated laminates, poly (LDPE) coating on printed and unprinted paper, board, aluminium foil, PET, BOPP, fabric and other substrates."
 - [x] Machines line: "Our three state-of-the-art extrusion lamination machines are imported from Korea, China and America, supported by a rotogravure printing machine and multiple slitting, sheeting and rewinding machines."
-- [ ] 🖼 Replace both About images (1st: better alternative; 2nd: AI cleanup)
+- [x] Replace both About images (AI-generated: warehouse rolls + clean factory floor)
 - [x] Add colour to boxes on hover
 - [x] Remove entire "Areas of Expertise" section
 - [ ] 🖼 Replace all 3 team photos (PaperX shoot)
@@ -69,11 +69,11 @@ Legend: [x] done · [ ] pending · 🖼 needs image/asset from owner or AI gener
 ## Industries page (Recording 34)
 - [x] Reduce hero/header size
 - [x] Tagline: "The same converting expertise tuned to multiple different worlds. From sterile medical disposables to food contact cups"
-- [ ] 🖼 Pharma section photo = homepage pharma image, expanded/more detailed
+- [x] Pharma section photo = homepage pharma image (industries page shares the same image automatically)
 - [x] Centre the CTA button(s)
 - [x] Pharma page: rewrite description (kept same points, 3-ply kept) keeping same points; keep 3-ply
-- [ ] 🖼 Replace 3-ply image (brown/bag photo wrong) with paper/poly/aluminium pharma image
-- [ ] 🖼 Replace 4-ply image with foil-side-visible shot (owner to supply factory/white-box photos)
+- [x] Replace 3-ply image (AI paper/poly/aluminium, no bag)
+- [x] Replace 4-ply image (AI, foil side visible); owner factory photos can still upgrade it
 - [ ] 🖼 Crop good PaperX factory photo (left side off) → use in infrastructure section
 
 ## Jul 8 follow-ups (screenshots)
