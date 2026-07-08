@@ -374,12 +374,34 @@ function applyHeadingTitleCase(html) {
   });
 }
 
+// Version every /assets/ URL with a short content hash so replacing an image
+// (same filename) still busts the year-long immutable browser/CDN cache.
+const crypto = require("crypto");
+const ASSET_VER = {};
+function assetVer(sitePath) {
+  if (!(sitePath in ASSET_VER)) {
+    try {
+      const buf = fs.readFileSync(path.join(ROOT, sitePath.replace(/^\//, "")));
+      ASSET_VER[sitePath] = crypto.createHash("md5").update(buf).digest("hex").slice(0, 8);
+    } catch (e) {
+      ASSET_VER[sitePath] = BUILD_VER;
+    }
+  }
+  return ASSET_VER[sitePath];
+}
+function versionAssets(html) {
+  return html.replace(/((?:https:\/\/kppackaging\.com)?\/assets\/[A-Za-z0-9._/-]+\.(?:webp|png|jpe?g|svg))(?!\?)/g, (m, url) => {
+    const sitePath = url.replace(/^https:\/\/kppackaging\.com/, "");
+    return url + "?v=" + assetVer(sitePath);
+  });
+}
+
 function pageShell(meta, body) {
-  return applyHeadingTitleCase(stripDashesInText(head(meta) + header(meta.page) + body + footer() + quoteModal() + `
+  return versionAssets(applyHeadingTitleCase(stripDashesInText(head(meta) + header(meta.page) + body + footer() + quoteModal() + `
   <script src="/js/lenis.min.js?v=${BUILD_VER}" defer></script>
   <script src="/js/app.js?v=${BUILD_VER}" defer></script>
 </body>
-</html>`));
+</html>`)));
 }
 
 /* ---------- shared components ---------- */
