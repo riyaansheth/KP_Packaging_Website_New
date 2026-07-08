@@ -501,7 +501,11 @@ function homeBody() {
 
   <section class="section">
     <div class="container">
-      <div class="section-head reveal center"><h2 style="margin-top:1rem">Two verticals, one promise</h2><p class="tagline">Packaging you can rely on</p><p>We manufacture extrusion coated laminates and distribute a broad range of mill-grade papers so you can source coated, printed and plain papers from a single partner.</p></div>
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">Two verticals, one promise</h2><p class="tagline">Packaging you can rely on</p></div>
+      <div class="expertise-card reveal">
+        <h3>Areas of Expertise</h3>
+        <p>We coat and laminate on various grades of paper, paperboard, cupstock, polyester film, BOPP film, aluminium foils and fabrics. Our products pack medicines, gloves, yeast, sugar, salt, pepper, paper cups, boxes and tea. Our aluminium foil, plain and printed, pairs with rigid and flexible PVC films for blister and strip packing, condom laminates, surgical suture laminates and ORS salts. We also produce a full range of flexible packaging for chips, tea, coffee, salt, noodles, chocolates, detergents, soaps, oils and snacks.</p>
+      </div>
       <div class="grid grid-4">${capCards(false)}</div>
     </div>
   </section>
@@ -580,8 +584,8 @@ function aboutBody() {
   <section class="section bg-cream2">
     <div class="container">
       <div class="grid grid-2">
-        <div class="fcard reveal"><h3>Manufacturing</h3><p>We manufacture extrusion coated laminates, poly (LDPE) coating on printed and unprinted paper, board, aluminium foil, PET, BOPP, fabric and other substrates. Our three state-of-the-art extrusion lamination machines are imported from Korea, China and the United States of America, supported by a rotogravure printing machine and multiple slitting, sheeting and rewinding machines.</p></div>
-        <div class="fcard reveal"><h3>Distribution</h3><p>We are authorized distributors for multiple Indian paper mills, supplying MG Poster, Maplitho, Cupstock, MG/MF Kraft, Greaseproof (OGR), Chromo (C1S &amp; C2S), Glassine, OLB, Bible, Stiffener, Tissue, Duplex, Folding Box Board (FBB), Solid Bleached Sulphate (SBS), Backtite, LWC, Bleach Kraft and more.</p></div>
+        <div class="fcard fcard--dark reveal"><h3>Manufacturing</h3><p>We manufacture extrusion coated laminates by poly (LDPE) coating printed and unprinted paper, board, aluminium foil, PET, BOPP, fabric and other substrates. Our three state-of-the-art extrusion lamination machines, imported from Korea, China and the United States of America, are supported by an 8-colour rotogravure printing machine and multiple slitting, sheeting and rewinding machines.</p></div>
+        <div class="fcard fcard--dark reveal"><h3>Distribution</h3><p>We are authorized distributors for multiple Indian paper mills, supplying MG Poster, Maplitho, Cupstock, MG/MF Kraft, Greaseproof (OGR), Chromo (C1S &amp; C2S), Glassine, OLB, Bible, Stiffener, Tissue, Duplex, Folding Box Board (FBB), Solid Bleached Sulphate (SBS), Backtite, LWC, Bleach Kraft and more.</p></div>
       </div>
     </div>
   </section>
@@ -736,7 +740,7 @@ function industriesBody() {
     <div class="container">
 
       <h1>Built for the industries that depend on packaging.</h1>
-      <p>The same converting expertise, tuned to multiple different worlds. From sterile medical disposables to food contact cups.</p>
+      <p>The same converting expertise tuned to multiple different worlds. From sterile medical disposables to food contact cups.</p>
     </div>
   </section>
   <section class="section--tight"><div class="container">${blocks}</div></section>

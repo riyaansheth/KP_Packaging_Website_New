@@ -86,3 +86,16 @@ Legend: [x] done · [ ] pending · 🖼 needs image/asset from owner or AI gener
 - [x] Location maps (Mumbai office + Silvassa plant) embedded in the "Where is KP Packaging located?" FAQ
 - [x] Request a Quote: default product = Glassine Paper; only Name, Phone, Email compulsory
 - [ ] 🖼 AI images are v1 (Pollinations/Flux) — regenerate/replace if owner wants tweaks
+
+## Jul 8 — About/Home batch 2
+- [x] New AI image beside About hero (jumbo wrapped rolls in warehouse)
+- [x] "Generational business" image cleaned up (replaced with bright AI factory-floor image)
+- [x] All About page images replaced
+- [x] Manufacturing box copy reordered & cleaned
+- [x] About boxes: dark background + white font (Manufacturing & Distribution)
+- [x] Areas of Expertise consolidated on Home (home title kept + fuller 3–4 line description in a chip card; About section already removed)
+- [x] Header reduced (height 92→80px, inner width capped at 1320px)
+- [x] Comma after "expertise" removed (Industries tagline)
+- [x] 4-ply ("sopla") image replaced — foil side clearly visible
+- [x] 3-ply image replaced — pharma paper/poly/aluminium (regenerated to avoid bag photo)
+- [x] 425→500 audit: zero 425 references remain anywhere
