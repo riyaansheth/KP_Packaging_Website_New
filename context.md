@@ -26,7 +26,7 @@ docs/           ← project-log.md (day-wise log), kp-packaging-website-changes.
 prompt.md       ← original site audit + rebuild brief
 ```
 
-**Workflow for ANY change:** edit `js/data.js` (content) or `build.js` (templates) or `css/styles.css` → run `node build.js` → verify in `dist/` → `git add -A && git commit && git push origin main`. User preference: after completing requested changes, commit and push them automatically without asking for another confirmation.
+**Workflow for ANY change:** edit `js/data.js` (content) or `build.js` (templates) or `css/styles.css` → run `node build.js` → verify in `dist/` → `git add -A && git commit && git push origin main`. User preference: after completing requested changes, commit and push them automatically without asking for another confirmation. During implementation, make reasonable product/engineering choices independently and do not stop for optional mid-task permission or preference questions.
 
 **Context upkeep:** whenever project files are changed, update this `context.md` in the same turn with any new decisions, workflow notes, deployment facts, pending items, or gotchas that a future chat session would need. Keep it concise and do not duplicate the commit diff.
 
