@@ -243,7 +243,7 @@ em { font-style: italic; color: var(--green-500); }
 
 /* Infinite logo marquee */
 .marquee { width: 100%; overflow: hidden; }
-.marquee-track { display: flex; align-items: center; width: max-content; flex-wrap: nowrap; animation: marquee-scroll 20s linear infinite; }
+.marquee-track { display: flex; align-items: center; width: max-content; flex-wrap: nowrap; animation: marquee-scroll 40s linear infinite; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-set { display: flex; align-items: center; flex: 0 0 auto; }
 @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
