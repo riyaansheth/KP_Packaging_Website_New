@@ -48,6 +48,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - Hero: "…engineered for **sealing**, barrier, strength and print"
 - No eyebrow sub-labels above headings (all removed); headings have no trailing periods; box/card titles centered
 - All visible text and subtext should be centre-aligned across pages, including cards, forms, FAQ answers, contact rows, product drawers and product detail copy
+- Header/top nav uses a translucent glass treatment; keep it visibly see-through while preserving nav contrast
 - Form: minimal; only Name/Phone/Email required; quote modal defaults to Glassine Paper; has Coating (with PE/without PE) field; stiffener option displays "Stiffener Paper"
 - Git commits: **no "Claude"/AI attribution anywhere** (no Co-Authored-By lines)
 

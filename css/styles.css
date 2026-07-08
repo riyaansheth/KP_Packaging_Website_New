@@ -155,12 +155,13 @@ em { font-style: italic; color: var(--green-500); }
    =========================================================== */
 .site-header {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(247,247,251,.85);
-  backdrop-filter: saturate(140%) blur(10px);
-  border-bottom: 1px solid transparent;
-  transition: border-color .2s, background .2s;
+  background: rgba(247,247,251,.52);
+  backdrop-filter: saturate(180%) blur(18px);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+  border-bottom: 1px solid rgba(215,215,227,.42);
+  transition: border-color .2s, background .2s, backdrop-filter .2s;
 }
-.site-header.scrolled { border-color: var(--line); background: rgba(247,247,251,.95); }
+.site-header.scrolled { border-color: rgba(215,215,227,.62); background: rgba(247,247,251,.62); }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 80px; }
 .brand { display: flex; align-items: center; gap: .65rem; font-family: var(--font-display); font-size: 1.32rem; font-weight: 600; letter-spacing: -.02em; color: var(--ink); }
 .brand-logo { height: 46px; width: auto; display: block; }
