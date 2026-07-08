@@ -914,3 +914,8 @@ html.lenis, html.lenis body { height: auto; }
   .hero h1 { font-size: 4.6rem; }
   .pcard-media { aspect-ratio: 16/10; }
 }
+
+/* Hide the native scrollbar gutter so full-bleed sections truly reach the right
+   window edge (scrolling still works via wheel/trackpad/keys + Lenis). */
+html { scrollbar-width: none; }
+html::-webkit-scrollbar, body::-webkit-scrollbar { width: 0; height: 0; display: none; }
