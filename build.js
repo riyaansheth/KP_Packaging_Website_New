@@ -291,9 +291,11 @@ function footer() {
 }
 
 function quoteModal() {
+  // default selection: Glassine Paper
   const opts = PRODUCTS.map((p) => {
     const label = p.name === "Polyethylene Coated Stiffener Paper" ? "Stiffener Paper" : p.name;
-    return `<option value="${escAttr(label)}">${esc(label)}</option>`;
+    const sel = p.slug === "glassine-paper" ? " selected" : "";
+    return `<option value="${escAttr(label)}"${sel}>${esc(label)}</option>`;
   }).join("");
   return `
   <div class="modal-overlay" id="quote-modal">
@@ -312,7 +314,7 @@ function quoteModal() {
           </div>
           <div class="field-row">
             <div class="field"><label>Email</label><input type="email" name="email" required placeholder="you@company.com"></div>
-            <div class="field"><label>Phone</label><input name="phone" placeholder="+91 ..."></div>
+            <div class="field"><label>Phone</label><input name="phone" required placeholder="+91 ..."></div>
           </div>
           <div class="field-row">
             <div class="field"><label>Product of interest</label>
@@ -398,13 +400,17 @@ function productCard(p) {
         </div>
       </a>`;
 }
+function faqMaps() {
+  return `<div class="faq-maps">${COMPANY.offices.map((o) => `<figure><iframe src="https://www.google.com/maps?q=${encodeURIComponent(o.address)}&output=embed" loading="lazy" title="${escAttr(COMPANY.name + " " + o.tag)} map" referrerpolicy="no-referrer-when-downgrade"></iframe><figcaption>${esc(o.tag)}, ${esc(o.city)}</figcaption></figure>`).join("")}</div>`;
+}
+
 function faqSection(faqs, heading) {
   return `
   <section class="section${heading.bg ? " bg-cream2" : ""}">
     <div class="container">
       <div class="section-head reveal center"><h2 style="margin-top:1rem">${esc(heading.title)}</h2></div>
       <div class="faq" style="max-width:780px;margin-inline:auto">
-        ${faqs.map((f) => `<details class="faq-item"><summary>${esc(f.q)}</summary><div class="faq-a">${esc(f.a)}</div></details>`).join("\n        ")}
+        ${faqs.map((f) => `<details class="faq-item"><summary>${esc(f.q)}</summary><div class="faq-a">${esc(f.a)}${/located/i.test(f.q) ? faqMaps() : ""}</div></details>`).join("\n        ")}
       </div>
     </div>
   </section>`;
@@ -484,7 +490,7 @@ function homeBody() {
       </div>
       <div class="overview-body reveal reveal--right">
         <div class="overview-facts">
-          <div class="fact"><strong>Two arms</strong><span>In-house manufacturing + authorized mill distribution</span></div>
+          <div class="fact"><strong>Two verticals</strong><span>In-house manufacturing + authorized mill distribution</span></div>
           <div class="fact"><strong>25+ grades</strong><span>Coated papers, boards &amp; foil laminates</span></div>
           <div class="fact"><strong>Global machinery</strong><span>Korean, Chinese &amp; American extrusion coating lines</span></div>
           <div class="fact"><strong>Certified</strong><span>FSC, FDA &amp; ISO-aligned quality</span></div>
@@ -495,7 +501,7 @@ function homeBody() {
 
   <section class="section">
     <div class="container">
-      <div class="section-head reveal center"><h2 style="margin-top:1rem">Two arms, one promise</h2><p class="tagline">Packaging you can rely on</p><p>We manufacture extrusion coated laminates and distribute a broad range of mill-grade papers so you can source coated, printed and plain papers from a single partner.</p></div>
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">Two verticals, one promise</h2><p class="tagline">Packaging you can rely on</p><p>We manufacture extrusion coated laminates and distribute a broad range of mill-grade papers so you can source coated, printed and plain papers from a single partner.</p></div>
       <div class="grid grid-4">${capCards(false)}</div>
     </div>
   </section>
@@ -563,7 +569,7 @@ function aboutBody() {
           
           <h2 style="margin-top:1rem">A generational business</h2>
           <p>With over three decades of history, K P Packaging is a generational family business. The company is promoted by <strong>Mr. Ketan Vira</strong>, who, with rich experience in the packaging industry, has grown the business exponentially. Alongside him, his son <strong>Mr. Prem Vira</strong> has taken it upon himself to take K P Packaging international.</p>
-          <p>Today we operate across two complementary arms: in-house manufacturing of extrusion-coated laminates, and authorized distribution for leading Indian paper mills.</p>
+          <p>Today we operate across two complementary verticals: in-house manufacturing of extrusion-coated laminates, and authorized distribution for leading Indian paper mills.</p>
           <p>From our state-of-the-art coating and lamination plant in Silvassa to a distribution network spanning India's leading paper mills, we supply pharmaceutical, food, FMCG and medical customers in over 20 countries, the same care across every grade we make and move.</p>
           <p>What hasn't changed in three decades is how we work: dependable quality, honest pricing, and long-term relationships with the people we package for.</p>
         </div>
@@ -574,7 +580,7 @@ function aboutBody() {
   <section class="section bg-cream2">
     <div class="container">
       <div class="grid grid-2">
-        <div class="fcard reveal"><h3>Manufacturing</h3><p>We manufacture extrusion coated laminates, poly (LDPE) coating on printed and unprinted paper, board, aluminium foil, PET, BOPP, fabric and other substrates. Our three state-of-the-art extrusion lamination machines are imported from Korea, China and America, supported by a rotogravure printing machine and multiple slitting, sheeting and rewinding machines.</p></div>
+        <div class="fcard reveal"><h3>Manufacturing</h3><p>We manufacture extrusion coated laminates, poly (LDPE) coating on printed and unprinted paper, board, aluminium foil, PET, BOPP, fabric and other substrates. Our three state-of-the-art extrusion lamination machines are imported from Korea, China and the United States of America, supported by a rotogravure printing machine and multiple slitting, sheeting and rewinding machines.</p></div>
         <div class="fcard reveal"><h3>Distribution</h3><p>We are authorized distributors for multiple Indian paper mills, supplying MG Poster, Maplitho, Cupstock, MG/MF Kraft, Greaseproof (OGR), Chromo (C1S &amp; C2S), Glassine, OLB, Bible, Stiffener, Tissue, Duplex, Folding Box Board (FBB), Solid Bleached Sulphate (SBS), Backtite, LWC, Bleach Kraft and more.</p></div>
       </div>
     </div>

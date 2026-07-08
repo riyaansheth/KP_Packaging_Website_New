@@ -32,12 +32,12 @@ Legend: [x] done · [ ] pending · 🖼 needs image/asset from owner or AI gener
 - [ ] 🖼 Replace homepage hero/facility photo (current looks fake)
 
 ## Homepage — industry tiles (keep 4, no slider)
-- [ ] 🖼 Pharma: AI collage — medicine strips (Wockhardt/Dr Reddy's/Piramal/Saridon-style) + Electral cup
-- [ ] 🖼 F&B: person eating burger in paper-foil wrap + shawarma wrap, coffee cup w/ straw, sugar sachet, cutlery pouch (~5 products visible)
+- [x] Pharma: AI-generated collage (foil sachets + electrolyte cups) LIVE
+- [x] F&B: AI-generated image (person eating wrapped burger + cups/wrap/napkin) LIVE
 - [x] FMCG description → "Printable, durable, coated papers and boards for everyday consumer solutions"
-- [ ] 🖼 FMCG image: product-only collage (sachets, Amul family pack, food tray, brown+white paper bags)
+- [x] FMCG: AI-generated product-only collage LIVE
 - [x] Medical description → "ETO sterilization, bacterial barrier papers for gloves, syringes and surgical disposables"
-- [ ] 🖼 Medical image: surgeon-as-hero (ER poster reference) with gloves packet + wrapped scissors (bleached kraft top / CPP laminate back)
+- [x] Medical: AI-generated surgeon-as-hero poster LIVE
 
 ## New sections
 - [x] Infrastructure section on homepage: 3 extrusion lamination machines (Korean, Chinese, American), 1 Indian 8-colour rotogravure printer, 3 Italian slitting (Bimec), 1 German slitting, 2 Indian slitting, 1 Indian sheet-cutting
@@ -75,3 +75,14 @@ Legend: [x] done · [ ] pending · 🖼 needs image/asset from owner or AI gener
 - [ ] 🖼 Replace 3-ply image (brown/bag photo wrong) with paper/poly/aluminium pharma image
 - [ ] 🖼 Replace 4-ply image with foil-side-visible shot (owner to supply factory/white-box photos)
 - [ ] 🖼 Crop good PaperX factory photo (left side off) → use in infrastructure section
+
+## Jul 8 follow-ups (screenshots)
+- [x] Marquee seamless + full-bleed end to end (no cut at container edges)
+- [x] "Two arms" → "Two verticals" everywhere (section heading, fact box, About story)
+- [x] Capability card headings/subheadings aligned (equal title block height, centred)
+- [x] "United States of America" instead of "America" everywhere
+- [x] Centre-align all text and subtext in boxes/cards
+- [x] Overview paragraph: "around 500 clients across about 25 countries"
+- [x] Location maps (Mumbai office + Silvassa plant) embedded in the "Where is KP Packaging located?" FAQ
+- [x] Request a Quote: default product = Glassine Paper; only Name, Phone, Email compulsory
+- [ ] 🖼 AI images are v1 (Pollinations/Flux) — regenerate/replace if owner wants tweaks

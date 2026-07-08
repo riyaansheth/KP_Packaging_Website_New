@@ -68,7 +68,7 @@ const COMPANY = {
   logo: "/assets/kp-logo.png",
   ogImage: "/assets/og-cover.png",
   sameAs: [],                      // add official LinkedIn/Instagram/Facebook URLs when available
-  summary: "KP Packaging is a Mumbai-based manufacturer and distributor of coated papers and flexible packaging with over 30 years of experience. The company runs extrusion coating and lamination machines from Korea, China and America at its plant in Silvassa, India, and supplies pharmaceutical, food & beverage, FMCG and medical/surgical packaging to 500+ clients across 25+ countries.",
+  summary: "KP Packaging is a Mumbai-based manufacturer and distributor of coated papers and flexible packaging with over 30 years of experience. The company runs extrusion coating and lamination machines from Korea, China and the United States of America at its plant in Silvassa, India, and supplies pharmaceutical, food & beverage, FMCG and medical/surgical packaging to around 500 clients across about 25 countries.",
   why: [
     { title: "Three decades of converting expertise", text: "Over 30 years in coated paper and flexible packaging, from a PVC leather-cloth pioneer to a modern primary-packaging house." },
     { title: "Manufacturing + distribution under one roof", text: "In-house extrusion-coated laminates plus authorized distribution for leading Indian paper mills, source coating, printing and substrate from a single partner." },
@@ -94,7 +94,7 @@ const CAPABILITIES = [
     title: "Extrusion Coating & Lamination",
     icon: "layers",
     blurb: "Poly (LDPE) coating on printed and unprinted paper, board and aluminium foil.",
-    detail: "Our three state-of-the-art extrusion lamination and coating machines, imported from Korea, China and America, apply LDPE and specialty polymer layers across a wide range of substrates to deliver moisture, grease and oxygen barriers for primary packaging."
+    detail: "Our three state-of-the-art extrusion lamination and coating machines, imported from Korea, China and the United States of America, apply LDPE and specialty polymer layers across a wide range of substrates to deliver moisture, grease and oxygen barriers for primary packaging."
   },
   {
     slug: "rotogravure-printing",

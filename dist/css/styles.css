@@ -820,3 +820,27 @@ html.lenis, html.lenis body { height: auto; }
 /* Compact page hero (industries) */
 .page-hero--compact h1 { font-size: clamp(2rem, 3.6vw, 3rem); }
 .page-hero--compact { padding-block: clamp(32px, 4.5vw, 56px) clamp(20px, 2.6vw, 32px); }
+
+/* ===========================================================
+   Jul 8 feedback: full-bleed marquee, aligned card titles, centred card text
+   =========================================================== */
+/* marquee runs end-to-end across the viewport (no cut at container edges) */
+.trustbar .marquee { width: 100vw; margin-left: calc(50% - 50vw); }
+
+/* equal title block in capability cards so subheadings start at the same line */
+.fcard { text-align: center; }
+.fcard h3 { min-height: 2.3em; display: flex; align-items: center; justify-content: center; }
+.fcard p { text-align: center; }
+
+/* centre text + subtext inside every box */
+.industry-card .ic-body, .industry-card .ic-body p,
+.pcard-body, .pcard-body p,
+.overview-facts .fact, .overview-facts .fact span,
+.infra-card, .team-card, .team-card .role { text-align: center; }
+.pcard-body .link-arrow { align-self: center; }
+
+/* FAQ location maps */
+.faq-maps { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: 1rem; }
+.faq-maps iframe { width: 100%; height: 230px; border: 0; border-radius: 10px; }
+.faq-maps figcaption { font-size: .8rem; color: var(--muted-2); margin-top: .35rem; text-align: center; }
+@media (max-width: 640px) { .faq-maps { grid-template-columns: 1fr; } }
