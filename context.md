@@ -75,6 +75,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - Industry tiles display at **16:10** (`object-fit: cover`) — generate/crop images to 16:10 natively or they crop badly
 - House style for generated images: "bright airy natural light, soft cream white background, premium editorial commercial photography, no text no watermark"
 - ALWAYS visually verify downloaded/generated images before shipping (Read the file); reject watermarked/competitor-branded/dark images
+- About page `assets/about-hero.webp` and `assets/our-story.webp` are sourced from the original `kppackaging.com/about-us` images (`jumbo-rolls.jpg` and `PHOTO-2023-01-24-11-36-54.jpg`) via image proxy because the legacy custom domain times out from local shell.
 
 ## Verification habits (match previous quality bar)
 - `node -c build.js && node build.js` after edits; grep `dist/` to confirm changes landed
