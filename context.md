@@ -26,7 +26,7 @@ docs/           ← project-log.md (day-wise log), kp-packaging-website-changes.
 prompt.md       ← original site audit + rebuild brief
 ```
 
-**Workflow for ANY change:** edit `js/data.js` (content) or `build.js` (templates) or `css/styles.css` → run `node build.js` → verify in `dist/` → `git add -A && git commit && git push origin main`.
+**Workflow for ANY change:** edit `js/data.js` (content) or `build.js` (templates) or `css/styles.css` → run `node build.js` → verify in `dist/` → `git add -A && git commit && git push origin main`. User preference: after completing requested changes, commit and push them automatically without asking for another confirmation.
 
 **Context upkeep:** whenever project files are changed, update this `context.md` in the same turn with any new decisions, workflow notes, deployment facts, pending items, or gotchas that a future chat session would need. Keep it concise and do not duplicate the commit diff.
 
@@ -47,6 +47,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - Printing: "8-colour" in description only, not in the title
 - Hero: "…engineered for **sealing**, barrier, strength and print"
 - No eyebrow sub-labels above headings (all removed); headings have no trailing periods; box/card titles centered
+- All visible text and subtext should be centre-aligned across pages, including cards, forms, FAQ answers, contact rows, product drawers and product detail copy
 - Form: minimal; only Name/Phone/Email required; quote modal defaults to Glassine Paper; has Coating (with PE/without PE) field; stiffener option displays "Stiffener Paper"
 - Git commits: **no "Claude"/AI attribution anywhere** (no Co-Authored-By lines)
 

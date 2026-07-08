@@ -60,6 +60,7 @@ body {
   color: var(--ink);
   line-height: 1.6;
   font-size: 17px;
+  text-align: center;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -329,7 +330,7 @@ em { font-style: italic; color: var(--green-500); }
 .filter-group:last-child { border-bottom: none; }
 .filter-group h4 { font-family: var(--font-sans); font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: .85rem; }
 .filter-btn {
-  display: block; width: 100%; text-align: left; padding: .5rem .75rem; border-radius: 8px;
+  display: block; width: 100%; text-align: center; padding: .5rem .75rem; border-radius: 8px;
   font-size: .92rem; color: var(--muted); transition: background .15s, color .15s;
 }
 .filter-btn:hover { background: var(--cream-2); color: var(--ink); }
@@ -424,8 +425,8 @@ em { font-style: italic; color: var(--green-500); }
 .pdetail-info, .drawer-body { text-align: center; }
 .pdetail-info .desc, .drawer-body .desc { margin-inline: auto; }
 .pdetail-info .checklist, .pdetail-info .spec-table, .pdetail-info .two-col,
-.drawer-body .checklist, .drawer-body .spec-table { text-align: left; }
-.pdetail-info .checklist li, .drawer-body .checklist li { justify-content: flex-start; text-align: left; }
+.drawer-body .checklist, .drawer-body .spec-table { text-align: center; }
+.pdetail-info .checklist li, .drawer-body .checklist li { justify-content: center; text-align: center; }
 .pdetail-info .badges, .pdetail-info .taglist, .pdetail-info .pdetail-actions,
 .drawer-body .taglist, .drawer-actions { justify-content: center; }
 .pdetail-info .construction { display: inline-flex; align-items: center; gap: .6rem; background: var(--cream-2); border: 1px solid var(--line); border-radius: 10px; padding: .7rem 1rem; font-size: .9rem; margin-bottom: 1.6rem; }
@@ -666,6 +667,45 @@ html.lenis, html.lenis body { height: auto; }
 .muted { color: var(--muted); }
 
 /* ===========================================================
+   Global centre alignment
+   =========================================================== */
+h1, h2, h3, h4, p, li, label, summary, figcaption,
+.lead, .eyebrow, .section-head, .page-hero, .hero-copy,
+.overview-head, .split-body, .fcard, .pcard-body,
+.industry-card .ic-body, .overview-facts .fact,
+.infra-card, .team-card, .office-card, .form, .modal,
+.drawer-body, .pdetail-info, .footer-top, .footer-bottom,
+.footer-col, .footer-brand, .faq-a, .catalog-count,
+.catalog-empty { text-align: center; }
+
+.section-head p, .page-hero p, .hero .lead, .overview-head .lead,
+.split-body p, .expertise-card p, .footer-brand p,
+.pdetail-info .desc, .drawer-body .desc { margin-left: auto; margin-right: auto; }
+
+.eyebrow, .hero-actions, .btn-row, .chips, .taglist,
+.pdetail-info .badges, .pdetail-info .pdetail-actions,
+.drawer-actions, .split-body .taglist, .footer-brand .brand {
+  justify-content: center;
+}
+
+.fcard .ic, .pcard-body .link-arrow { margin-left: auto; margin-right: auto; }
+
+.filter-btn, .field input, .field select, .field textarea,
+.spec-table td, .spec-table th { text-align: center; }
+
+.office-card .row, .checklist li {
+  justify-content: center;
+  text-align: center;
+}
+
+.faq-item summary {
+  justify-content: center;
+  text-align: center;
+}
+
+.faq-item summary::after { margin-left: .35rem; }
+
+/* ===========================================================
    RESPONSIVE
    =========================================================== */
 @media (max-width: 960px) {
@@ -733,8 +773,8 @@ html.lenis, html.lenis body { height: auto; }
   .fcard .ic { margin-inline: auto; }
   /* product detail: centre headings but keep lists & spec tables left-aligned */
   .pdetail-info { text-align: center; }
-  .pdetail-info .checklist, .pdetail-info .spec-table, .pdetail-info .two-col { text-align: left; }
-  .pdetail-info .checklist li { justify-content: flex-start; text-align: left; }
+  .pdetail-info .checklist, .pdetail-info .spec-table, .pdetail-info .two-col { text-align: center; }
+  .pdetail-info .checklist li { justify-content: center; text-align: center; }
   .pdetail-info .badges, .pdetail-info .taglist, .pdetail-info .pdetail-actions { justify-content: center; }
 
   /* individual product page: tighter, comfortable mobile padding */
@@ -914,6 +954,16 @@ html.lenis, html.lenis body { height: auto; }
   .hero h1 { font-size: 4.6rem; }
   .pcard-media { aspect-ratio: 16/10; }
 }
+
+/* Final guard: keep copy and subcopy centred across every breakpoint. */
+.pdetail-info .checklist, .pdetail-info .spec-table, .pdetail-info .two-col,
+.drawer-body .checklist, .drawer-body .spec-table,
+.pdetail-info .checklist li, .drawer-body .checklist li,
+.office-card .row, .faq-a, .footer-col, .footer-bottom {
+  text-align: center;
+}
+.pdetail-info .checklist li, .drawer-body .checklist li,
+.office-card .row, .footer-bottom { justify-content: center; }
 
 /* Hide the native scrollbar gutter so full-bleed sections truly reach the right
    window edge (scrolling still works via wheel/trackpad/keys + Lenis). */
