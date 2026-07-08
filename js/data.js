@@ -68,7 +68,7 @@ const COMPANY = {
   logo: "/assets/kp-logo.png",
   ogImage: "/assets/og-cover.png",
   sameAs: [],                      // add official LinkedIn/Instagram/Facebook URLs when available
-  summary: "KP Packaging is a Mumbai-based manufacturer and distributor of coated papers and flexible packaging with over 30 years of experience. The company runs extrusion coating and lamination machines from Korea, China and the United States of America at its plant in Silvassa, India, and supplies pharmaceutical, food & beverage, FMCG and medical/surgical packaging to around 500 clients across about 25 countries.",
+  summary: "KP Packaging is a Mumbai-based manufacturer and distributor of coated papers and flexible packaging with over 30 years of experience. The company runs extrusion coating and lamination machines from Korea, China and the United States of America at its plant in Silvassa, India, and supplies pharmaceutical, food & beverage, FMCG and medical or surgical packaging to around 500 clients across about 25 countries.",
   why: [
     { title: "Three decades of converting expertise", text: "Over 30 years in coated paper and flexible packaging, from a PVC leather-cloth pioneer to a modern primary-packaging house." },
     { title: "Manufacturing + distribution under one roof", text: "In-house extrusion-coated laminates plus authorized distribution for leading Indian paper mills, source coating, printing and substrate from a single partner." },
@@ -78,7 +78,7 @@ const COMPANY = {
     { title: "Custom laminates, made to spec", text: "We engineer bespoke coated and laminated structures to your exact barrier, print and substrate requirements, with reliable lead times." }
   ],
   faq: [
-    { q: "What does KP Packaging do?", a: "KP Packaging manufactures extrusion-coated paper laminates and distributes a wide range of mill-grade papers for primary and flexible packaging, serving the pharmaceutical, food & beverage, FMCG and medical/surgical industries." },
+    { q: "What does KP Packaging do?", a: "KP Packaging manufactures extrusion-coated paper laminates and distributes a wide range of mill-grade papers for primary and flexible packaging, serving the pharmaceutical, food & beverage, FMCG and medical or surgical industries." },
     { q: "Where is KP Packaging located?", a: "Its corporate office is in Lower Parel, Mumbai, Maharashtra, and its manufacturing plant is in Silvassa, Dadra and Nagar Haveli, India." },
     { q: "How do I request a quote from KP Packaging?", a: "Contact the corporate office at prem@kppackaging.com or +91 85916 56966, the plant at sales@kppackaging.com or +91 85916 94328, or use the inquiry form on kppackaging.com." },
     { q: "Is KP Packaging a manufacturer or a distributor?", a: "Both. KP Packaging manufactures extrusion-coated laminates in-house and is also an authorized distributor for multiple Indian paper mills." },

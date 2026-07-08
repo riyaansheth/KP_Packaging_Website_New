@@ -42,6 +42,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - Spelling: **"inquiry"**, never "enquiry"
 - Stats: **30+ years, 25+ countries, 500+ clients, 25+ grades** (prose: "around 500 clients across about 25 countries")
 - Machines: **Korean + Chinese + American** — never "Korean" alone; spell **"United States of America"**, not "America"
+- Wording: use **"medical or surgical"** in prose, not "medical/surgical"
 - Section is **"Two verticals, one promise"** + tagline "Packaging you can rely on" (not "Two arms")
 - Extrusion capability: "Poly **(LDPE)** coating on printed and unprinted paper, board and aluminium foil" (no PET/BOPP/fabric in the homepage bubble; About page keeps the full substrate list)
 - Printing: "8-colour" in description only, not in the title

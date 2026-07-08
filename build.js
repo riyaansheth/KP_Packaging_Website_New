@@ -973,7 +973,7 @@ function build() {
   // INDUSTRIES overview
   writePage("industries", pageShell({
     title: "Industries We Serve | K P Packaging",
-    desc: "Packaging solutions for the pharmaceutical, food & beverage, FMCG and medical/surgical industries from K P Packaging, barrier papers, foil laminates, cupstock and sterilizable medical papers.",
+    desc: "Packaging solutions for the pharmaceutical, food & beverage, FMCG and medical or surgical industries from K P Packaging, barrier papers, foil laminates, cupstock and sterilizable medical papers.",
     path: "/industries/", page: "industries",
     jsonld: [...baseLd, breadcrumbLd([{ name: "Home", path: "/" }, { name: "Industries", path: "/industries/" }])]
   }, industriesBody()));
