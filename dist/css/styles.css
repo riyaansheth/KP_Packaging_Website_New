@@ -833,13 +833,10 @@ html.lenis, html.lenis body { height: auto; }
 /* ===========================================================
    Jul 8 feedback: full-bleed marquee, aligned card titles, centred card text
    =========================================================== */
-/* marquee runs end-to-end across the viewport; logos dissolve in/out at the
-   screen edges so they appear from nowhere instead of being hard-clipped */
-.trustbar .marquee {
-  width: 100vw; margin-left: calc(50% - 50vw);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
-          mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
-}
+/* static end-to-end logo row: every logo whole, first at left edge, last at right */
+.tb-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.6rem 1.8rem; width: 100%; }
+.tb-row .tb-logo { padding-right: 0; }
+@media (max-width: 960px) { .tb-row { justify-content: center; gap: 1.4rem 2.2rem; } }
 
 /* equal title block in capability cards so subheadings start at the same line */
 .fcard { text-align: center; }
