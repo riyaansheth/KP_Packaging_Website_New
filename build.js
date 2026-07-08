@@ -443,9 +443,9 @@ function capCards(detailed) {
    PAGE BODIES
    =========================================================== */
 function homeBody() {
-  const clients = COMPANY.clients.map((c) => `<span class="tb-logo"><img src="${c.logo}" alt="${escAttr(c.name)} logo" loading="lazy" decoding="async"></span>`).join("");
+  const clients = COMPANY.clients.map((c) => `<span class="tb-logo"><img src="${c.logo}" alt="${escAttr(c.name)} logo" loading="eager" decoding="async" width="190" height="50"></span>`).join("");
   // decorative repeat copies (empty alt) so the loop never runs out of content on wide screens
-  const clientsDup = COMPANY.clients.map((c) => `<span class="tb-logo"><img src="${c.logo}" alt="" loading="lazy" decoding="async"></span>`).join("");
+  const clientsDup = COMPANY.clients.map((c) => `<span class="tb-logo"><img src="${c.logo}" alt="" loading="eager" decoding="async" width="190" height="50"></span>`).join("");
   const industries = INDUSTRIES.map((i) => `
         <a class="industry-card reveal" href="${industryUrl(i)}">
           <div class="ic-media${i.image ? "" : " " + i.art + " roll-art"}">${i.image ? `<img src="${i.image}" alt="${escAttr(i.name)} packaging" loading="lazy">` : ""}</div>
