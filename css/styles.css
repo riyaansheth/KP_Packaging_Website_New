@@ -197,7 +197,7 @@ em { font-style: italic; color: var(--green-500); }
   to   { opacity: 1; clip-path: inset(0 0 0 0); transform: none; }
 }
 @media (prefers-reduced-motion: reduce) { .hero .eyebrow { animation: none; } }
-.hero .lead { max-width: none; margin-bottom: 3.4rem; }
+.hero .lead { max-width: none; margin-bottom: 3.4rem; text-align: center; margin-inline: auto; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-bottom: 2.6rem; justify-content: center; }
 .hero-copy .eyebrow { margin-bottom: 1.4rem; }
 .hero-stats { display: flex; gap: 3rem; justify-content: center; }
