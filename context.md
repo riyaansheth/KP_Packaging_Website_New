@@ -28,6 +28,8 @@ prompt.md       ← original site audit + rebuild brief
 
 **Workflow for ANY change:** edit `js/data.js` (content) or `build.js` (templates) or `css/styles.css` → run `node build.js` → verify in `dist/` → `git add -A && git commit && git push origin main`.
 
+**Context upkeep:** whenever project files are changed, update this `context.md` in the same turn with any new decisions, workflow notes, deployment facts, pending items, or gotchas that a future chat session would need. Keep it concise and do not duplicate the commit diff.
+
 ## Build-time post-processors (in `pageShell()`, applied in order — don't fight them)
 1. `stripDashesInText()` — removes hyphens/dashes from all visible text (between `>` and `<`), skipping script/style. Site-wide rule: **no em/en dashes or " - " in copy, ever** (owner requirement).
 2. `applyHeadingTitleCase()` — Title Case for all h1–h4 (minor words the/of/for/us stay lowercase; acronyms FMCG/MG/CE preserved) + **strips trailing full stops from headings**.
@@ -64,6 +66,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - `netlify.toml`: build config, www→apex 301s, **301 redirects from ALL old Webflow URLs** (e.g. /glassine-paper → /products/glassine-paper/) — preserves legacy SEO, never remove
 - Meta titles ≤60 chars; descriptions ≤160; PNG OG image (1200×630, `assets/og-cover.png`); geo meta (IN-MH); security headers
 - Forms wired to **Netlify Forms** (names: `contact`, `quote`; AJAX + honeypot). Owner must set notification emails in Netlify dashboard → Forms.
+- Website inquiry emails are also sent by Netlify Function `netlify/functions/send-inquiry.js` via Resend. Netlify env vars required: `RESEND_API_KEY`, `INQUIRY_FROM_EMAIL` (verified sender such as `KP Packaging <website@kppackaging.com>`), optional `INQUIRY_TO_EMAILS` (defaults to `prem@kppackaging.com,sales@kppackaging.com`). Visitor email is used as `Reply-To`, not literal `From`, to avoid SPF/DMARC failures.
 
 ## Image pipeline
 - Photos are WebP (PIL/Pillow available via `python3`, installed with `--break-system-packages`)
@@ -84,6 +87,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 ## Pending / blocked items (see docs/kp-packaging-website-changes.md for the full checklist)
 - 🖼 Owner assets needed: 3 team photos (PaperX shoot), PaperX factory photo (crop left side, use in infrastructure), Borkar Packaging + DCPL logos (Borkar site returns 503), FSC + PaperX + Food Grade cert logos, replacement hero/facility photo
 - 🖼 Network section: India domestic map + ~25-country export map (design/assets needed)
+- Email notifications: Resend function is coded, but Netlify env vars still need to be added before inquiry emails send (`RESEND_API_KEY`, `INQUIRY_FROM_EMAIL`; optional `INQUIRY_TO_EMAILS`).
 - Data to confirm from owner: exact founding year (currently "1990" estimate), social profile URLs for schema `sameAs` (currently empty), FAQ product terms "Bactite/Grid Lacquer" (mapped from garbled recording audio — confirm)
 - AI tile images are v1 (Pollinations) — owner may want art-directed replacements (branded strips collage, Amul pack, ER-poster-style surgeon)
 - Optional backlog: count-up/marquee etc. are done; remaining GEO work is OFF-site (Google Business Profile both locations, Search Console + Bing sitemap submission, directory/social profiles)

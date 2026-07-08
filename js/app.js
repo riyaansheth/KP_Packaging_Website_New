@@ -61,13 +61,28 @@
     });
   });
 
-  /* POST form data to Netlify Forms (always resolves so the UI still confirms) */
+  /* POST form data to Netlify Forms for storage, then trigger the email function. */
   function submitForm(form) {
+    var formData = new FormData(form);
+    var encoded = new URLSearchParams(formData).toString();
+    var payload = {};
+    formData.forEach(function (value, key) { payload[key] = value; });
+
     return fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(new FormData(form)).toString()
-    }).then(function () {}).catch(function () {});
+      body: encoded
+    }).catch(function () {}).then(function () {
+      return fetch("/.netlify/functions/send-inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }).then(function (res) {
+        if (!res.ok) throw new Error("Email notification failed");
+      }).catch(function (err) {
+        if (window.console && console.warn) console.warn(err);
+      });
+    });
   }
 
   /* ---------- Catalogue filtering (pre-rendered cards) ---------- */
