@@ -78,6 +78,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - House style for generated images: "bright airy natural light, soft cream white background, premium editorial commercial photography, no text no watermark"
 - ALWAYS visually verify downloaded/generated images before shipping (Read the file); reject watermarked/competitor-branded/dark images
 - About page `assets/about-hero.webp` and `assets/our-story.webp` are sourced from the original `kppackaging.com/about-us` images (`jumbo-rolls.jpg` and `PHOTO-2023-01-24-11-36-54.jpg`) via image proxy because the legacy custom domain times out from local shell.
+- Aug 2026 catalogue update added MF Craft Paper, Paper Lid, Anti-Skid Paper, Liquid Packaging Board, Butcher Paper, Medical Grade Paper and Butter Packaging. Grid Lacquer is now shown as Grid Coated Paper with the old `grid-lacquer` slug kept; Bactide Paper keeps the old `bactite` slug for URL stability. New generated product images live under `assets/products/` with matching slugs.
 
 ## Verification habits (match previous quality bar)
 - `node -c build.js && node build.js` after edits; grep `dist/` to confirm changes landed
