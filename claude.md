@@ -110,7 +110,7 @@ hash changes.
 ## Hard Content Rules
 
 - Brand name: `KP Packaging`
-- Do not use `K P Packaging Ltd.` or `Limited` in visible copy.
+- Do not use `K P Packaging`, `K P Packaging Ltd.` or `Limited` in visible copy.
 - Use `inquiry`, never `enquiry`.
 - Stats: 30+ years, 25+ countries, 500+ clients, 25+ grades.
 - Prose phrasing: `around 500 clients across about 25 countries`.
@@ -340,4 +340,6 @@ As of August 18, 2026:
   `23`
 - JSON-LD validation:
   `32 html files, 191 JSON-LD blocks parsed`
-
+- Follow-up cleanup after the catalogue commit removed stale `K P Packaging`
+  brand output, made the contact page phone field required, and removed literal
+  NUL marker bytes from `build.js`.

@@ -1,10 +1,10 @@
 /* ===========================================================
-   K P Packaging, Site Data
+   KP Packaging, Site Data
    Single source of truth for products, industries, capabilities.
    =========================================================== */
 
 const COMPANY = {
-  name: "K P Packaging",
+  name: "KP Packaging",
   legal: "KP Packaging",
   tagline: "Coated paper & flexible packaging, perfected over three decades.",
   stats: [
@@ -559,7 +559,7 @@ const PRODUCTS = [
     arm: "Distributed",
     featured: false,
     construction: "Wood-free, surface-sized",
-    desc: "Maplitho, meaning 'surface size-paper', is an eco-friendly, wood-free paper distributed by K P Packaging. The nature of the paper used for printing plays an important role in the quality of the final printed product, and Maplitho enables crisp embossing on both sides.",
+    desc: "Maplitho, meaning 'surface size-paper', is an eco-friendly, wood-free paper distributed by KP Packaging. The nature of the paper used for printing plays an important role in the quality of the final printed product, and Maplitho enables crisp embossing on both sides.",
     applications: ["Computer stationery", "Bills, invoices & cashbooks", "Leaflets & mailers", "Calendars & writing pads", "Label printing", "Braille printing", "Laser / inkjet / photocopy"],
     properties: ["Eco-friendly & wood-free", "Embossing on both sides", "Available in multiple sizes", "Available in two shades", "Recyclable"],
     variants: ["Two shades", "Multiple sizes", "Surface sized", "Coated", "Uncoated", "Roll and sheet"],

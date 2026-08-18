@@ -1,5 +1,5 @@
 /* ===========================================================
-   K P Packaging - interactions only (content is pre-rendered)
+   KP Packaging - interactions only (content is pre-rendered)
    =========================================================== */
 (function () {
   "use strict";

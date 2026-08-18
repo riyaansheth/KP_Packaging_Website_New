@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ===========================================================
-   K P Packaging, static site generator (GEO/AEO optimized)
+   KP Packaging, static site generator (GEO/AEO optimized)
    Reads js/data.js and emits a fully crawlable site into dist/.
    Run:  node build.js
    =========================================================== */
@@ -71,7 +71,7 @@ function postalAddress(o) {
 function orgLd() {
   return {
     "@context": "https://schema.org", "@type": "Organization", "@id": ORG_ID,
-    name: COMPANY.legal, alternateName: COMPANY.name, url: BASE + "/",
+    name: COMPANY.legal, alternateName: COMPANY.name !== COMPANY.legal ? COMPANY.name : undefined, url: BASE + "/",
     logo: BASE + COMPANY.logo, image: BASE + COMPANY.ogImage,
     description: COMPANY.summary, foundingDate: COMPANY.founded,
     slogan: COMPANY.tagline,
@@ -124,7 +124,7 @@ function productLd(p, url) {
 }
 function itemListLd(list) {
   return {
-    "@context": "https://schema.org", "@type": "ItemList", name: "K P Packaging Products",
+    "@context": "https://schema.org", "@type": "ItemList", name: "KP Packaging Products",
     itemListElement: list.map((p, i) => ({ "@type": "ListItem", position: i + 1, name: p.name, url: BASE + productUrl(p) }))
   };
 }
@@ -153,7 +153,7 @@ function productFaqs(p) {
   const apps = p.applications.map((a) => a.toLowerCase());
   const out = [
     { q: `What is ${p.name} used for?`, a: `${p.name} is used for ${apps.slice(0, 5).join(", ")}.` },
-    { q: `Does K P Packaging manufacture or distribute ${p.name}?`, a: p.arm === "Distributed" ? `K P Packaging is an authorized distributor of ${p.name}, sourced from leading Indian paper mills.` : p.arm === "Both" ? `K P Packaging both manufactures and distributes ${p.name}.` : `K P Packaging manufactures ${p.name} in-house at its Silvassa plant using extrusion coating and lamination.` }
+    { q: `Does KP Packaging manufacture or distribute ${p.name}?`, a: p.arm === "Distributed" ? `KP Packaging is an authorized distributor of ${p.name}, sourced from leading Indian paper mills.` : p.arm === "Both" ? `KP Packaging both manufactures and distributes ${p.name}.` : `KP Packaging manufactures ${p.name} in-house at its Silvassa plant using extrusion coating and lamination.` }
   ];
   if (p.certs && p.certs.length) out.push({ q: `Is ${p.name} certified?`, a: `Yes, ${p.name} is ${p.certs.join(", ")}.` });
   out.push({ q: `What are the key features of ${p.name}?`, a: `${p.properties.slice(0, 4).join("; ")}.` });
@@ -162,9 +162,9 @@ function productFaqs(p) {
 function industryFaqs(i) {
   const prods = i.products.map(productBySlug).filter(Boolean);
   return [
-    { q: `Who is a good ${i.name.toLowerCase()} packaging supplier in India?`, a: `K P Packaging is a Mumbai-based manufacturer and distributor supplying ${i.name.toLowerCase()} packaging, including ${prods.map((p) => p.name).slice(0, 4).join(", ")}, to clients across 25+ countries.` },
+    { q: `Who is a good ${i.name.toLowerCase()} packaging supplier in India?`, a: `KP Packaging is a Mumbai-based manufacturer and distributor supplying ${i.name.toLowerCase()} packaging, including ${prods.map((p) => p.name).slice(0, 4).join(", ")}, to clients across 25+ countries.` },
     { q: `What packaging materials does the ${i.name.toLowerCase()} industry use?`, a: `${i.detail}` },
-    { q: `Can K P Packaging supply ${i.name.toLowerCase()} packaging for export?`, a: `Yes. K P Packaging serves 500+ clients across more than 20 countries, including ${i.name.toLowerCase()} customers.` }
+    { q: `Can KP Packaging supply ${i.name.toLowerCase()} packaging for export?`, a: `Yes. KP Packaging serves 500+ clients across 25+ countries, including ${i.name.toLowerCase()} customers.` }
   ];
 }
 
@@ -204,7 +204,7 @@ function head(meta) {
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/png">
-  <meta property="og:image:alt" content="K P Packaging, coated paper and flexible packaging">
+  <meta property="og:image:alt" content="KP Packaging, coated paper and flexible packaging">
   <meta property="og:locale" content="en_IN">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escAttr(meta.title)}">
@@ -216,7 +216,7 @@ function head(meta) {
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="K P Packaging">
+  <meta name="apple-mobile-web-app-title" content="KP Packaging">
   <meta name="format-detection" content="telephone=no">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -257,7 +257,7 @@ function footer() {
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="/" class="brand"><span class="mark">KP</span><span>K P Packaging</span></a>
+          <a href="/" class="brand"><span class="mark">KP</span><span>KP Packaging</span></a>
           <p>A three-decade-old family business converting and distributing coated papers and flexible packaging for pharma, food and FMCG, in India and 25+ countries.</p>
         </div>
         <div class="footer-col">
@@ -293,7 +293,7 @@ function footer() {
 function quoteModal() {
   // default selection: Glassine Paper
   const opts = PRODUCTS.map((p) => {
-    const label = p.name === "Polyethylene Coated Stiffener Paper" ? "Stiffener Paper" : p.name;
+    const label = p.slug === "pe-coated-stiffener-paper" ? "Stiffener Paper" : p.name;
     const sel = p.slug === "glassine-paper" ? " selected" : "";
     return `<option value="${escAttr(label)}"${sel}>${esc(label)}</option>`;
   }).join("");
@@ -341,10 +341,10 @@ function stripDashesInText(html) {
   const blocks = [];
   html = html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, (m) => {
     blocks.push(m);
-    return ` ${blocks.length - 1} `;
+    return `__KP_BLOCK_${blocks.length - 1}__`;
   });
   html = html.replace(/>([^<]+)</g, (m, txt) => ">" + txt.replace(/[-‐-―]/g, " ").replace(/ {2,}/g, " ") + "<");
-  html = html.replace(/ (\d+) /g, (m, i) => blocks[+i]);
+  html = html.replace(/__KP_BLOCK_(\d+)__/g, (m, i) => blocks[+i]);
   return html;
 }
 
@@ -489,7 +489,7 @@ function homeBody() {
         </div>
       </div>
       <div class="hero-visual reveal in" data-tilt>
-        <img class="hero-img" src="/assets/hero.webp" alt="Jumbo paper roll on the extrusion coating and lamination line at K P Packaging's plant" fetchpriority="high" width="2560" height="1709">
+        <img class="hero-img" src="/assets/hero.webp" alt="Jumbo paper roll on the extrusion coating and lamination line at KP Packaging's plant" fetchpriority="high" width="2560" height="1709">
       </div>
     </div>
   </section>
@@ -583,22 +583,22 @@ function aboutBody() {
       <div class="page-hero-copy">
         
         <h1>Three decades of packaging, run by one family.</h1>
-        <p>From pioneers in the PVC leather cloth industry to a modern coated-paper and flexible-packaging house, K P Packaging has grown across generations while keeping quality and relationships at its core.</p>
+        <p>From pioneers in the PVC leather cloth industry to a modern coated-paper and flexible-packaging house, KP Packaging has grown across generations while keeping quality and relationships at its core.</p>
       </div>
-      <div class="page-hero-media"><img src="/assets/about-hero.webp" alt="Wrapped paper jumbo rolls at K P Packaging" loading="lazy" width="1100" height="884" data-parallax="0.08"></div>
+      <div class="page-hero-media"><img src="/assets/about-hero.webp" alt="Wrapped paper jumbo rolls at KP Packaging" loading="lazy" width="1100" height="884" data-parallax="0.08"></div>
     </div>
   </section>
 
   <section class="section--tight">
     <div class="container">
       <div class="split reveal">
-        <div class="split-media"><img src="/assets/our-story.webp" alt="Paper-making machine reflecting K P Packaging's decades of converting heritage" loading="lazy" data-parallax="0.08"></div>
+        <div class="split-media"><img src="/assets/our-story.webp" alt="Paper-making machine reflecting KP Packaging's decades of converting heritage" loading="lazy" data-parallax="0.08"></div>
         <div class="split-body">
           
           <h2 style="margin-top:1rem">A generational business</h2>
-          <p>With over three decades of history, K P Packaging is a generational family business. The company is promoted by <strong>Mr. Ketan Vira</strong>, who, with rich experience in the packaging industry, has grown the business exponentially. Alongside him, his son <strong>Mr. Prem Vira</strong> has taken it upon himself to take K P Packaging international.</p>
+          <p>With over three decades of history, KP Packaging is a generational family business. The company is promoted by <strong>Mr. Ketan Vira</strong>, who, with rich experience in the packaging industry, has grown the business exponentially. Alongside him, his son <strong>Mr. Prem Vira</strong> has taken it upon himself to take KP Packaging international.</p>
           <p>Today we operate across two complementary verticals: in-house manufacturing of extrusion-coated laminates, and authorized distribution for leading Indian paper mills.</p>
-          <p>From our state-of-the-art coating and lamination plant in Silvassa to a distribution network spanning India's leading paper mills, we supply pharmaceutical, food, FMCG and medical customers in over 20 countries, the same care across every grade we make and move.</p>
+          <p>From our state-of-the-art coating and lamination plant in Silvassa to a distribution network spanning India's leading paper mills, we supply pharmaceutical, food, FMCG and medical customers across about 25 countries, the same care across every grade we make and move.</p>
           <p>What hasn't changed in three decades is how we work: dependable quality, honest pricing, and long-term relationships with the people we package for.</p>
         </div>
       </div>
@@ -808,7 +808,7 @@ function contactBody() {
           <div class="row">${ICON.pin}<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(o.address)}">View on Google Maps ${ICON.arrow}</a></div>
         </div>`).join("");
   const opts = PRODUCTS.map((p) => {
-    const label = p.name === "Polyethylene Coated Stiffener Paper" ? "Stiffener Paper" : p.name;
+    const label = p.slug === "pe-coated-stiffener-paper" ? "Stiffener Paper" : p.name;
     return `<option value="${escAttr(label)}">${esc(label)}</option>`;
   }).join("");
   return `
@@ -835,7 +835,7 @@ function contactBody() {
             </div>
             <div class="field-row">
               <div class="field"><label>Email</label><input type="email" name="email" required placeholder="you@company.com"></div>
-              <div class="field"><label>Phone</label><input name="phone" placeholder="+91 ..."></div>
+              <div class="field"><label>Phone</label><input name="phone" required placeholder="+91 ..."></div>
             </div>
             <div class="field-row">
               <div class="field"><label>Product of interest</label><select name="product"><option value="">General inquiry</option>${opts}</select></div>
@@ -857,13 +857,13 @@ function contactBody() {
    ASSETS (placeholder logo / og / favicon as SVG)
    =========================================================== */
 function logoSvg() {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="240" height="64" viewBox="0 0 240 64"><rect width="64" height="64" rx="14" fill="#2E2C7E"/><text x="32" y="42" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">KP</text><text x="78" y="34" font-family="Georgia,serif" font-size="22" font-weight="600" fill="#1B1B2A">K P Packaging</text><text x="79" y="50" font-family="Inter,Arial,sans-serif" font-size="9" letter-spacing="2" fill="#6F7073">COATED PAPER · MUMBAI</text></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="240" height="64" viewBox="0 0 240 64"><rect width="64" height="64" rx="14" fill="#2E2C7E"/><text x="32" y="42" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">KP</text><text x="78" y="34" font-family="Georgia,serif" font-size="22" font-weight="600" fill="#1B1B2A">KP Packaging</text><text x="79" y="50" font-family="Inter,Arial,sans-serif" font-size="9" letter-spacing="2" fill="#6F7073">COATED PAPER · MUMBAI</text></svg>`;
 }
 function faviconSvg() {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#2E2C7E"/><text x="32" y="43" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="middle">KP</text></svg>`;
 }
 function ogSvg() {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><rect width="1200" height="630" fill="#F7F7FB"/><rect width="1200" height="630" fill="url(#g)" opacity="0.08"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E2C7E"/><stop offset="1" stop-color="#6F7073"/></linearGradient></defs><rect x="80" y="86" width="92" height="92" rx="20" fill="#2E2C7E"/><text x="126" y="148" font-family="Inter,Arial,sans-serif" font-size="40" font-weight="700" fill="#fff" text-anchor="middle">KP</text><text x="80" y="320" font-family="Georgia,serif" font-size="76" font-weight="600" fill="#1B1B2A">K P Packaging</text><text x="80" y="392" font-family="Inter,Arial,sans-serif" font-size="34" fill="#5C5D69">Coated paper &amp; flexible packaging · 30+ years</text><text x="80" y="452" font-family="Inter,Arial,sans-serif" font-size="26" fill="#6F7073">Pharma · Food &amp; Beverage · FMCG · Medical, 25+ countries</text></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><rect width="1200" height="630" fill="#F7F7FB"/><rect width="1200" height="630" fill="url(#g)" opacity="0.08"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E2C7E"/><stop offset="1" stop-color="#6F7073"/></linearGradient></defs><rect x="80" y="86" width="92" height="92" rx="20" fill="#2E2C7E"/><text x="126" y="148" font-family="Inter,Arial,sans-serif" font-size="40" font-weight="700" fill="#fff" text-anchor="middle">KP</text><text x="80" y="320" font-family="Georgia,serif" font-size="76" font-weight="600" fill="#1B1B2A">KP Packaging</text><text x="80" y="392" font-family="Inter,Arial,sans-serif" font-size="34" fill="#5C5D69">Coated paper &amp; flexible packaging · 30+ years</text><text x="80" y="452" font-family="Inter,Arial,sans-serif" font-size="26" fill="#6F7073">Pharma · Food &amp; Beverage · FMCG · Medical, 25+ countries</text></svg>`;
 }
 
 /* ===========================================================
@@ -871,7 +871,7 @@ function ogSvg() {
    =========================================================== */
 function robotsTxt() {
   const allow = ["Googlebot", "Bingbot", "DuckDuckBot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "anthropic-ai", "Claude-User", "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot", "Applebot-Extended", "Amazonbot", "Bytespider", "CCBot", "Meta-ExternalAgent"];
-  let out = "# K P Packaging, crawler policy\n# Search and AI assistants are welcome to index and cite this site.\n\n";
+  let out = "# KP Packaging, crawler policy\n# Search and AI assistants are welcome to index and cite this site.\n\n";
   for (const ua of allow) out += `User-agent: ${ua}\nAllow: /\n\n`;
   out += "User-agent: *\nAllow: /\n\n";
   out += `Sitemap: ${BASE}/sitemap.xml\n`;
@@ -882,7 +882,7 @@ function sitemapXml(urls) {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
 }
 function llmsTxt() {
-  let s = `# K P Packaging\n\n> ${COMPANY.summary}\n\n`;
+  let s = `# KP Packaging\n\n> ${COMPANY.summary}\n\n`;
   s += `Founded: ${COMPANY.founded}. Head office: ${COMPANY.offices[0].address}. Plant: ${COMPANY.offices[1].address}.\nContact: ${COMPANY.offices[0].email} / ${COMPANY.offices[0].phone}.\n\n`;
   s += `## Key pages\n- [Home](${BASE}/): overview\n- [About](${BASE}/about/): history, team, certifications\n- [Products](${BASE}/products/): full catalogue\n- [Industries](${BASE}/industries/): pharma, food & beverage, FMCG, medical\n- [Contact](${BASE}/contact/): offices & inquiry\n\n`;
   s += `## Products\n` + PRODUCTS.map((p) => `- [${p.name}](${BASE}${productUrl(p)}): ${p.tagline}`).join("\n") + "\n";
@@ -892,13 +892,13 @@ function llmsTxt() {
 
 // llms-full.txt: complete content dump so LLMs can ingest everything in one fetch
 function llmsFullTxt() {
-  let s = `# K P Packaging, Full Reference\n\n> ${COMPANY.summary}\n\n`;
+  let s = `# KP Packaging, Full Reference\n\n> ${COMPANY.summary}\n\n`;
   s += `Founded: ${COMPANY.founded}\nCorporate office: ${COMPANY.offices[0].address} | ${COMPANY.offices[0].phone} | ${COMPANY.offices[0].email}\n`;
   s += `Manufacturing plant: ${COMPANY.offices[1].address} | ${COMPANY.offices[1].phone} | ${COMPANY.offices[1].email}\n`;
   s += `Certifications: ${COMPANY.certs.map((c) => c.name).join(", ")}\n`;
   s += `Clients include: ${COMPANY.clients.map((c) => c.name).join(", ")}\n`;
   s += `Leadership: ${COMPANY.team.map((m) => m.name + " (" + m.role + ")").join(", ")}\n\n`;
-  s += `## Why K P Packaging\n` + COMPANY.why.map((w) => `- ${w.title}: ${w.text}`).join("\n") + "\n\n";
+  s += `## Why KP Packaging\n` + COMPANY.why.map((w) => `- ${w.title}: ${w.text}`).join("\n") + "\n\n";
   s += `## Capabilities\n` + CAPABILITIES.map((c) => `### ${c.title}\n${c.detail}`).join("\n\n") + "\n\n";
   s += `## Industries\n` + INDUSTRIES.map((i) => `### ${i.name} (${BASE}${industryUrl(i)})\n${i.detail}`).join("\n\n") + "\n\n";
   s += `## Products\n\n` + PRODUCTS.map((p) => {
@@ -935,24 +935,24 @@ function build() {
 
   // HOME
   writePage(".", pageShell({
-    title: "K P Packaging | Coated Paper & Flexible Packaging",
-    desc: "K P Packaging is a 30+ year Mumbai-based manufacturer & distributor of coated papers and flexible packaging for pharma, food and FMCG, serving 500+ clients across 25+ countries.",
+    title: "KP Packaging | Coated Paper & Flexible Packaging",
+    desc: "KP Packaging is a 30+ year Mumbai-based manufacturer & distributor of coated papers and flexible packaging for pharma, food and FMCG, serving 500+ clients across 25+ countries.",
     path: "/", page: "home",
     jsonld: [...baseLd, faqLd(COMPANY.faq), breadcrumbLd([{ name: "Home", path: "/" }])]
   }, homeBody()));
 
   // ABOUT
   writePage("about", pageShell({
-    title: "About K P Packaging | Coated Paper Manufacturer",
-    desc: "K P Packaging is a generational family business with 30+ years in coated paper and flexible packaging, manufacturing extrusion laminates and distributing mill-grade papers from Mumbai & Silvassa, India.",
+    title: "About KP Packaging | Coated Paper Manufacturer",
+    desc: "KP Packaging is a generational family business with 30+ years in coated paper and flexible packaging, manufacturing extrusion laminates and distributing mill-grade papers from Mumbai & Silvassa, India.",
     path: "/about/", page: "about", ogType: "website",
     jsonld: [...baseLd, { "@context": "https://schema.org", "@type": "AboutPage", url: BASE + "/about/", about: { "@id": ORG_ID } }, ...COMPANY.team.map(personLd), breadcrumbLd([{ name: "Home", path: "/" }, { name: "About", path: "/about/" }])]
   }, aboutBody()));
 
   // PRODUCTS listing
   writePage("products", pageShell({
-    title: "Coated Paper & Board Products | K P Packaging",
-    desc: "Browse 25+ grades of coated paper, board and foil laminates from K P Packaging, glassine, MG poster, chromo, cupstock, kraft, 3/4-ply foil and more. Filter by industry, construction and coating.",
+    title: "Coated Paper & Board Products | KP Packaging",
+    desc: "Browse 25+ grades of coated paper, board and foil laminates from KP Packaging, glassine, MG poster, chromo, cupstock, kraft, 3/4-ply foil and more. Filter by industry, construction and coating.",
     path: "/products/", page: "products",
     jsonld: [...baseLd, itemListLd(PRODUCTS), breadcrumbLd([{ name: "Home", path: "/" }, { name: "Products", path: "/products/" }])]
   }, productsBody()));
@@ -961,10 +961,10 @@ function build() {
   for (const p of PRODUCTS) {
     const url = productUrl(p);
     writePage("products/" + p.slug, pageShell({
-      title: `${p.name} | K P Packaging`,
-      desc: (`${p.name} (${p.aka}) from K P Packaging. ${p.tagline}`.length <= 160
-        ? `${p.name} (${p.aka}) from K P Packaging. ${p.tagline}`
-        : `${p.name} from K P Packaging. ${p.tagline}`).slice(0, 160),
+      title: `${p.name} | KP Packaging`,
+      desc: (`${p.name} (${p.aka}) from KP Packaging. ${p.tagline}`.length <= 160
+        ? `${p.name} (${p.aka}) from KP Packaging. ${p.tagline}`
+        : `${p.name} from KP Packaging. ${p.tagline}`).slice(0, 160),
       path: url, page: "products", ogType: "product",
       jsonld: [...baseLd, productLd(p, url), faqLd(productFaqs(p)), breadcrumbLd([{ name: "Home", path: "/" }, { name: "Products", path: "/products/" }, { name: p.name, path: url }])]
     }, productBody(p)));
@@ -972,8 +972,8 @@ function build() {
 
   // INDUSTRIES overview
   writePage("industries", pageShell({
-    title: "Industries We Serve | K P Packaging",
-    desc: "Packaging solutions for the pharmaceutical, food & beverage, FMCG and medical or surgical industries from K P Packaging, barrier papers, foil laminates, cupstock and sterilizable medical papers.",
+    title: "Industries We Serve | KP Packaging",
+    desc: "Packaging solutions for the pharmaceutical, food & beverage, FMCG and medical or surgical industries from KP Packaging, barrier papers, foil laminates, cupstock and sterilizable medical papers.",
     path: "/industries/", page: "industries",
     jsonld: [...baseLd, breadcrumbLd([{ name: "Home", path: "/" }, { name: "Industries", path: "/industries/" }])]
   }, industriesBody()));
@@ -982,8 +982,8 @@ function build() {
   for (const i of INDUSTRIES) {
     const url = industryUrl(i);
     writePage("industries/" + i.slug, pageShell({
-      title: `${i.name} Packaging | K P Packaging`,
-      desc: `${i.name} packaging from K P Packaging, ${i.blurb} Serving 500+ clients across 25+ countries.`,
+      title: `${i.name} Packaging | KP Packaging`,
+      desc: `${i.name} packaging from KP Packaging, ${i.blurb} Serving 500+ clients across 25+ countries.`,
       path: url, page: "industries",
       jsonld: [...baseLd, serviceLd(i), faqLd(industryFaqs(i)), breadcrumbLd([{ name: "Home", path: "/" }, { name: "Industries", path: "/industries/" }, { name: i.name, path: url }])]
     }, industryBody(i)));
@@ -992,8 +992,8 @@ function build() {
   // CAPABILITIES
   // CONTACT
   writePage("contact", pageShell({
-    title: "Contact K P Packaging | Mumbai & Silvassa",
-    desc: "Contact K P Packaging, corporate office in Lower Parel, Mumbai and manufacturing plant in Silvassa, India. Phone, email and inquiry form for quotes.",
+    title: "Contact KP Packaging | Mumbai & Silvassa",
+    desc: "Contact KP Packaging, corporate office in Lower Parel, Mumbai and manufacturing plant in Silvassa, India. Phone, email and inquiry form for quotes.",
     path: "/contact/", page: "contact",
     jsonld: [...baseLd, ...COMPANY.offices.map(localBusinessLd), { "@context": "https://schema.org", "@type": "ContactPage", url: BASE + "/contact/", about: { "@id": ORG_ID } }, breadcrumbLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }])]
   }, contactBody()));
@@ -1012,7 +1012,7 @@ function build() {
     </div>
   </section>`;
   writeFile("404.html", pageShell({
-    title: "Page Not Found, K P Packaging",
+    title: "Page Not Found, KP Packaging",
     desc: "The page you are looking for could not be found.",
     path: "/404/", page: "", noindex: true
   }, notFoundBody));
@@ -1033,7 +1033,7 @@ function build() {
   writeFile("llms-full.txt", llmsFullTxt());
   writeFile("manifest.webmanifest", JSON.stringify({
     name: COMPANY.legal,
-    short_name: "K P Packaging",
+    short_name: "KP Packaging",
     description: COMPANY.summary,
     start_url: "/",
     display: "standalone",

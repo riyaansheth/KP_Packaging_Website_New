@@ -40,7 +40,7 @@ prompt.md       ← original site audit + rebuild brief
 Write copy in sentence case with normal punctuation; the pipeline handles heading case/periods.
 
 ## Hard content rules (owner-mandated, do not regress)
-- Brand is **"KP Packaging"** — never "K P Packaging Ltd." / "Limited"
+- Brand is **"KP Packaging"** — never "K P Packaging" / "K P Packaging Ltd." / "Limited"
 - Spelling: **"inquiry"**, never "enquiry"
 - Stats: **30+ years, 25+ countries, 500+ clients, 25+ grades** (prose: "around 500 clients across about 25 countries")
 - Machines: **Korean + Chinese + American** — never "Korean" alone; spell **"United States of America"**, not "America"
@@ -66,7 +66,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 
 ## SEO / AEO / GEO layer (do not break)
 - All content server-rendered in HTML (AI crawlers don't run JS)
-- JSON-LD on every page (~150 blocks): Organization (+hasOfferCatalog, hasCredential), WebSite, WebPage w/ dateModified, Product ×16, FAQPage, LocalBusiness ×2, BreadcrumbList, ItemList, Person, Service
+- JSON-LD on every page (~190 blocks): Organization (+hasOfferCatalog, hasCredential), WebSite, WebPage w/ dateModified, Product ×23, FAQPage, LocalBusiness ×2, BreadcrumbList, ItemList, Person, Service
 - `robots.txt` explicitly allows GPTBot/ClaudeBot/PerplexityBot/etc; `sitemap.xml`; `llms.txt` + `llms-full.txt` (auto-generated from data.js)
 - `netlify.toml`: build config, www→apex 301s, **301 redirects from ALL old Webflow URLs** (e.g. /glassine-paper → /products/glassine-paper/) — preserves legacy SEO, never remove
 - Meta titles ≤60 chars; descriptions ≤160; PNG OG image (1200×630, `assets/og-cover.png`); geo meta (IN-MH); security headers
@@ -81,6 +81,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - ALWAYS visually verify downloaded/generated images before shipping (Read the file); reject watermarked/competitor-branded/dark images
 - About page `assets/about-hero.webp` and `assets/our-story.webp` are sourced from the original `kppackaging.com/about-us` images (`jumbo-rolls.jpg` and `PHOTO-2023-01-24-11-36-54.jpg`) via image proxy because the legacy custom domain times out from local shell.
 - Aug 2026 catalogue update added MF Craft Paper, Paper Lid, Anti-Skid Paper, Liquid Packaging Board, Butcher Paper, Medical Grade Paper and Butter Packaging. Grid Lacquer is now shown as Grid Coated Paper with the old `grid-lacquer` slug kept; Bactide Paper keeps the old `bactite` slug for URL stability. New generated product images live under `assets/products/` with matching slugs.
+- Aug 2026 cleanup after catalogue update: source and generated output should use `KP Packaging` consistently, contact form phone is required, and `build.js` should stay text-searchable with no literal NUL marker bytes.
 
 ## Verification habits (match previous quality bar)
 - `node -c build.js && node build.js` after edits; grep `dist/` to confirm changes landed
