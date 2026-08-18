@@ -345,5 +345,6 @@ As of August 18, 2026:
   NUL marker bytes from `build.js`.
 - Image performance update: generated raster `<img>` tags use Netlify Image CDN
   URLs with responsive `srcset`; keep using `imgTag()` in `build.js` for new
-  images. `copyDir()` skips `.DS_Store`, and Netlify cache headers include HTML
-  edge revalidation plus Image CDN transforms.
+  images. Transform URLs force `fm=webp` for compressed delivery. `copyDir()`
+  skips `.DS_Store`, and Netlify cache headers include HTML edge revalidation
+  plus Image CDN transforms.

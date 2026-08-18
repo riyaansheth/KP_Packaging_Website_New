@@ -70,7 +70,7 @@ function imageSize(sitePath) {
 function cdnImage(src, width, opts = {}) {
   if (!src || !src.startsWith("/assets/") || src.endsWith(".svg")) return src;
   const q = opts.quality || 78;
-  const params = [`url=${encodeURIComponent(src)}`, `w=${width}`, `q=${q}`];
+  const params = [`url=${encodeURIComponent(src)}`, `w=${width}`, "fm=webp", `q=${q}`];
   if (opts.height) params.push(`h=${opts.height}`);
   if (opts.fit) params.push(`fit=${opts.fit}`);
   if (opts.position) params.push(`position=${opts.position}`);
