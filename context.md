@@ -82,6 +82,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - About page `assets/about-hero.webp` and `assets/our-story.webp` are sourced from the original `kppackaging.com/about-us` images (`jumbo-rolls.jpg` and `PHOTO-2023-01-24-11-36-54.jpg`) via image proxy because the legacy custom domain times out from local shell.
 - Aug 2026 catalogue update added MF Craft Paper, Paper Lid, Anti-Skid Paper, Liquid Packaging Board, Butcher Paper, Medical Grade Paper and Butter Packaging. Grid Lacquer is now shown as Grid Coated Paper with the old `grid-lacquer` slug kept; Bactide Paper keeps the old `bactite` slug for URL stability. New generated product images live under `assets/products/` with matching slugs.
 - Aug 2026 cleanup after catalogue update: source and generated output should use `KP Packaging` consistently, contact form phone is required, and `build.js` should stay text-searchable with no literal NUL marker bytes.
+- Aug 2026 image performance update: `build.js` now routes raster `<img>` tags through Netlify Image CDN (`/.netlify/images?url=...&w=...&q=...`) with responsive `srcset` widths, skips `.DS_Store` during asset copy, and `netlify.toml` includes edge-cache headers for HTML and Image CDN transforms.
 
 ## Verification habits (match previous quality bar)
 - `node -c build.js && node build.js` after edits; grep `dist/` to confirm changes landed

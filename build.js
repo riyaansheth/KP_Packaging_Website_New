@@ -37,10 +37,65 @@ function writeFile(rel, content) {
 function copyDir(src, dest) {
   fs.mkdirSync(dest, { recursive: true });
   for (const e of fs.readdirSync(src, { withFileTypes: true })) {
+    if (e.name === ".DS_Store") continue;
     const s = path.join(src, e.name), d = path.join(dest, e.name);
     if (e.isDirectory()) copyDir(s, d);
     else fs.copyFileSync(s, d);
   }
+}
+
+const IMAGE_DIMS = new Map();
+function imageSize(sitePath) {
+  if (!sitePath || !sitePath.startsWith("/assets/")) return null;
+  if (!IMAGE_DIMS.has(sitePath)) {
+    try {
+      const buf = fs.readFileSync(path.join(ROOT, sitePath.replace(/^\//, "")));
+      if (buf.slice(0, 4).toString("hex") === "89504e47") {
+        IMAGE_DIMS.set(sitePath, { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) });
+      } else if (buf.slice(0, 4).toString("ascii") === "RIFF" && buf.slice(8, 12).toString("ascii") === "WEBP") {
+        const type = buf.slice(12, 16).toString("ascii");
+        if (type === "VP8X") IMAGE_DIMS.set(sitePath, { width: 1 + buf.readUIntLE(24, 3), height: 1 + buf.readUIntLE(27, 3) });
+        else if (type === "VP8 ") IMAGE_DIMS.set(sitePath, { width: buf.readUInt16LE(26) & 0x3fff, height: buf.readUInt16LE(28) & 0x3fff });
+        else if (type === "VP8L") {
+          const b0 = buf[21], b1 = buf[22], b2 = buf[23], b3 = buf[24];
+          IMAGE_DIMS.set(sitePath, { width: 1 + (((b1 & 0x3f) << 8) | b0), height: 1 + (((b3 & 0x0f) << 10) | (b2 << 2) | ((b1 & 0xc0) >> 6)) });
+        } else IMAGE_DIMS.set(sitePath, null);
+      } else IMAGE_DIMS.set(sitePath, null);
+    } catch (e) {
+      IMAGE_DIMS.set(sitePath, null);
+    }
+  }
+  return IMAGE_DIMS.get(sitePath);
+}
+function cdnImage(src, width, opts = {}) {
+  if (!src || !src.startsWith("/assets/") || src.endsWith(".svg")) return src;
+  const q = opts.quality || 78;
+  const params = [`url=${encodeURIComponent(src)}`, `w=${width}`, `q=${q}`];
+  if (opts.height) params.push(`h=${opts.height}`);
+  if (opts.fit) params.push(`fit=${opts.fit}`);
+  if (opts.position) params.push(`position=${opts.position}`);
+  return `/.netlify/images?${params.join("&")}`;
+}
+function imgTag(src, alt, opts = {}) {
+  const dims = imageSize(src);
+  const width = opts.width || (dims && dims.width) || 800;
+  const height = opts.height || (dims && dims.height ? Math.round(width * dims.height / dims.width) : undefined);
+  const widths = (opts.widths || [400, 800, 1200]).filter((w) => w <= Math.max(width, 400));
+  if (!widths.includes(width)) widths.push(width);
+  const attrs = [
+    `src="${cdnImage(src, Math.min(width, Math.max(...widths)), opts)}"`,
+    `alt="${escAttr(alt)}"`,
+    `width="${width}"`,
+    height ? `height="${height}"` : "",
+    widths.length > 1 ? `srcset="${widths.sort((a, b) => a - b).map((w) => `${cdnImage(src, w, opts)} ${w}w`).join(", ")}"` : "",
+    opts.sizes ? `sizes="${escAttr(opts.sizes)}"` : "",
+    opts.loading ? `loading="${opts.loading}"` : "",
+    opts.decoding ? `decoding="${opts.decoding}"` : `decoding="async"`,
+    opts.fetchpriority ? `fetchpriority="${opts.fetchpriority}"` : "",
+    opts.className ? `class="${escAttr(opts.className)}"` : "",
+    opts.extra || ""
+  ].filter(Boolean);
+  return `<img ${attrs.join(" ")}>`;
 }
 
 /* ---------- icons ---------- */
@@ -235,7 +290,7 @@ function header(active) {
   <header class="site-header">
     <div class="container nav">
       <a href="/" class="brand" aria-label="KP Packaging home">
-        <img src="/assets/kp-logo.png" alt="KP Packaging" class="brand-logo" width="224" height="122">
+        ${imgTag("/assets/kp-logo.png", "KP Packaging", { className: "brand-logo", width: 224, height: 122, widths: [224], loading: "eager" })}
       </a>
       <nav class="nav-links" aria-label="Primary">
         ${nav}
@@ -409,7 +464,7 @@ function productCard(p) {
   const inds = p.industries.map((s) => (industryBySlug(s) || {}).name).filter(Boolean).slice(0, 2);
   const data = `data-industry="${p.industries.join(" ")}" data-construction="${p.cats.construction}" data-coating="${p.cats.coating}" data-fn="${p.cats.fn.join(" ")}"`;
   const media = p.image
-    ? `<div class="pcard-media has-img"><img src="${p.image}" alt="${escAttr(p.name)}, ${escAttr(p.aka)}" loading="lazy" decoding="async"></div>`
+    ? `<div class="pcard-media has-img">${imgTag(p.image, `${p.name}, ${p.aka}`, { width: 520, widths: [320, 520, 720], sizes: "(max-width: 700px) 90vw, 33vw", loading: "lazy" })}</div>`
     : `<div class="pcard-media ${p.art} roll-art"></div>`;
   return `
       <a class="pcard reveal" href="${productUrl(p)}" data-slug="${p.slug}" ${data}>
@@ -465,12 +520,12 @@ function capCards(detailed) {
    PAGE BODIES
    =========================================================== */
 function homeBody() {
-  const clients = COMPANY.clients.map((c) => `<span class="tb-logo"><img src="${c.logo}" alt="${escAttr(c.name)} logo" loading="eager" decoding="async" width="190" height="50"></span>`).join("");
+  const clients = COMPANY.clients.map((c) => `<span class="tb-logo">${imgTag(c.logo, `${c.name} logo`, { width: 190, height: 50, widths: [190], loading: "eager" })}</span>`).join("");
   // decorative repeat copies (empty alt) so the loop never runs out of content on wide screens
-  const clientsDup = COMPANY.clients.map((c) => `<span class="tb-logo"><img src="${c.logo}" alt="" loading="eager" decoding="async" width="190" height="50"></span>`).join("");
+  const clientsDup = COMPANY.clients.map((c) => `<span class="tb-logo">${imgTag(c.logo, "", { width: 190, height: 50, widths: [190], loading: "eager" })}</span>`).join("");
   const industries = INDUSTRIES.map((i) => `
         <a class="industry-card reveal" href="${industryUrl(i)}">
-          <div class="ic-media${i.image ? "" : " " + i.art + " roll-art"}">${i.image ? `<img src="${i.image}" alt="${escAttr(i.name)} packaging" loading="lazy">` : ""}</div>
+          <div class="ic-media${i.image ? "" : " " + i.art + " roll-art"}">${i.image ? imgTag(i.image, `${i.name} packaging`, { width: 640, widths: [360, 640, 900], sizes: "(max-width: 700px) 90vw, 25vw", loading: "lazy", fit: "cover" }) : ""}</div>
           <div class="ic-body"><h3>${esc(i.name)}</h3><p>${esc(i.blurb)}</p></div>
         </a>`).join("");
   const featured = ["4-ply-paper", "mg-poster-paper", "glassine-paper"].map(productBySlug).map(productCard).join("");
@@ -489,7 +544,7 @@ function homeBody() {
         </div>
       </div>
       <div class="hero-visual reveal in" data-tilt>
-        <img class="hero-img" src="/assets/hero.webp" alt="Jumbo paper roll on the extrusion coating and lamination line at KP Packaging's plant" fetchpriority="high" width="2560" height="1709">
+        ${imgTag("/assets/hero.webp", "Jumbo paper roll on the extrusion coating and lamination line at KP Packaging's plant", { className: "hero-img", width: 1200, widths: [640, 960, 1200, 1600], sizes: "(max-width: 900px) 100vw, 50vw", loading: "eager", fetchpriority: "high" })}
       </div>
     </div>
   </section>
@@ -566,7 +621,7 @@ function homeBody() {
   </section>
 
   <section class="section--tight">
-    <div class="container"><div class="section-head reveal center"><span class="eyebrow">Globally certified</span></div><div class="cert-logos">${COMPANY.certs.map((c) => `<div class="cert-logo"><img src="${c.logo}" alt="${escAttr(c.name)} certification" loading="lazy"></div>`).join("")}</div></div>
+    <div class="container"><div class="section-head reveal center"><span class="eyebrow">Globally certified</span></div><div class="cert-logos">${COMPANY.certs.map((c) => `<div class="cert-logo">${imgTag(c.logo, `${c.name} certification`, { width: 240, widths: [160, 240], sizes: "160px", loading: "lazy" })}</div>`).join("")}</div></div>
   </section>
 
   ${faqSection(COMPANY.faq, { title: "Frequently asked questions", bg: true })}
@@ -576,7 +631,7 @@ function homeBody() {
 
 function aboutBody() {
   const team = COMPANY.team.map((m) => `
-        <div class="team-card reveal"><div class="avatar"><img src="${m.photo}" alt="${escAttr(m.name)}, ${escAttr(m.role)}" loading="lazy"></div><h3>${esc(m.name)}</h3><div class="role">${esc(m.role)}</div></div>`).join("");
+        <div class="team-card reveal"><div class="avatar">${imgTag(m.photo, `${m.name}, ${m.role}`, { width: 360, widths: [220, 360], sizes: "180px", loading: "lazy", fit: "cover" })}</div><h3>${esc(m.name)}</h3><div class="role">${esc(m.role)}</div></div>`).join("");
   return `
   <section class="page-hero">
     <div class="container page-hero-split">
@@ -585,14 +640,14 @@ function aboutBody() {
         <h1>Three decades of packaging, run by one family.</h1>
         <p>From pioneers in the PVC leather cloth industry to a modern coated-paper and flexible-packaging house, KP Packaging has grown across generations while keeping quality and relationships at its core.</p>
       </div>
-      <div class="page-hero-media"><img src="/assets/about-hero.webp" alt="Wrapped paper jumbo rolls at KP Packaging" loading="lazy" width="1100" height="884" data-parallax="0.08"></div>
+      <div class="page-hero-media">${imgTag("/assets/about-hero.webp", "Wrapped paper jumbo rolls at KP Packaging", { width: 900, widths: [480, 720, 900, 1200], sizes: "(max-width: 900px) 100vw, 46vw", loading: "eager", fetchpriority: "high", extra: 'data-parallax="0.08"' })}</div>
     </div>
   </section>
 
   <section class="section--tight">
     <div class="container">
       <div class="split reveal">
-        <div class="split-media"><img src="/assets/our-story.webp" alt="Paper-making machine reflecting KP Packaging's decades of converting heritage" loading="lazy" data-parallax="0.08"></div>
+        <div class="split-media">${imgTag("/assets/our-story.webp", "Paper-making machine reflecting KP Packaging's decades of converting heritage", { width: 820, widths: [480, 720, 900, 1200], sizes: "(max-width: 900px) 100vw, 46vw", loading: "lazy", extra: 'data-parallax="0.08"' })}</div>
         <div class="split-body">
           
           <h2 style="margin-top:1rem">A generational business</h2>
@@ -627,7 +682,7 @@ function drawerContent(p) {
   const inds = p.industries.map(industryBySlug).filter(Boolean);
   const specRows = Object.entries(p.specs || {}).map(([k, v]) => `<tr><td>${esc(titleCase(k))}</td><td>${esc(v)}</td></tr>`).join("");
   const media = p.image
-    ? `<div class="drawer-media"><img src="${p.image}" alt="${escAttr(p.name)}, ${escAttr(p.aka)}" loading="lazy"></div>`
+    ? `<div class="drawer-media">${imgTag(p.image, `${p.name}, ${p.aka}`, { width: 780, widths: [480, 780, 1100], sizes: "(max-width: 700px) 100vw, 48vw", loading: "lazy" })}</div>`
     : `<div class="drawer-media ${p.art} roll-art"></div>`;
   return `<div class="drawer-inner">
     <button class="drawer-close" data-drawer-close aria-label="Close details">${ICON.close}</button>
@@ -697,6 +752,7 @@ function productBody(p) {
   if (!related.length) related = PRODUCTS.filter((x) => x.slug !== p.slug).slice(0, 3);
   const specRows = Object.entries(p.specs || {}).map(([k, v]) => `<tr><td>${esc(titleCase(k))}</td><td>${esc(v)}</td></tr>`).join("");
   const faqs = productFaqs(p);
+  const productImage = p.image ? imgTag(p.image, `${p.name}, ${p.aka}`, { width: 920, widths: [480, 720, 920, 1200], sizes: "(max-width: 900px) 100vw, 48vw", loading: "eager", fetchpriority: "high" }) : "";
   return `
   <main id="product-detail">
     <div class="container">
@@ -704,7 +760,7 @@ function productBody(p) {
       <div class="pdetail">
         <div class="pdetail-media">
           ${p.image
-      ? `<div class="pdetail-hero has-img"><img src="${p.image}" alt="${escAttr(p.name)}, ${escAttr(p.aka)}"></div>`
+      ? `<div class="pdetail-hero has-img">${productImage}</div>`
       : `<div class="pdetail-hero ${p.art} roll-art"></div>
           <div class="pdetail-thumbs"><div class="th ${p.art} roll-art"></div><div class="th roll-art"></div><div class="th roll-art--kraft"></div></div>`}
         </div>
@@ -751,7 +807,7 @@ function industriesBody() {
     const prods = i.products.map(productBySlug).filter(Boolean);
     return `
       <div class="split ${idx % 2 ? "split--rev" : ""} reveal" style="margin-bottom:clamp(48px,7vw,96px)">
-        <a class="split-media${i.image ? "" : " " + i.art + " roll-art"}" href="${industryUrl(i)}" aria-label="${escAttr(i.name)}">${i.image ? `<img src="${i.image}" alt="${escAttr(i.name)} packaging" loading="lazy">` : ""}</a>
+        <a class="split-media${i.image ? "" : " " + i.art + " roll-art"}" href="${industryUrl(i)}" aria-label="${escAttr(i.name)}">${i.image ? imgTag(i.image, `${i.name} packaging`, { width: 900, widths: [480, 720, 900, 1200], sizes: "(max-width: 900px) 100vw, 48vw", loading: idx === 0 ? "eager" : "lazy", fetchpriority: idx === 0 ? "high" : "" }) : ""}</a>
         <div class="split-body">
           <h2><a href="${industryUrl(i)}">${esc(i.name)}</a></h2>
           <p>${esc(i.detail)}</p>

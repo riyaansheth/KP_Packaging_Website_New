@@ -343,3 +343,7 @@ As of August 18, 2026:
 - Follow-up cleanup after the catalogue commit removed stale `K P Packaging`
   brand output, made the contact page phone field required, and removed literal
   NUL marker bytes from `build.js`.
+- Image performance update: generated raster `<img>` tags use Netlify Image CDN
+  URLs with responsive `srcset`; keep using `imgTag()` in `build.js` for new
+  images. `copyDir()` skips `.DS_Store`, and Netlify cache headers include HTML
+  edge revalidation plus Image CDN transforms.

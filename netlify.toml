@@ -8,6 +8,17 @@
 [functions]
   directory = "netlify/functions"
 
+# HTML is revalidated at the CDN edge while browsers still check freshness.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Netlify-CDN-Cache-Control = "public, max-age=0, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/"
+  [headers.values]
+    Netlify-CDN-Cache-Control = "public, max-age=0, stale-while-revalidate=86400"
+
 # Canonicalisation: send the www variant to the primary apex domain (HTTPS is forced by Netlify)
 [[redirects]]
   from = "https://www.kppackaging.com/*"
@@ -24,6 +35,12 @@
 # Long-cache immutable static assets (images, fonts, icons)
 [[headers]]
   for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Netlify Image CDN transformations are generated from /assets/* and cached at the edge.
+[[headers]]
+  for = "/.netlify/images*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
