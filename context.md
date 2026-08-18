@@ -30,6 +30,8 @@ prompt.md       ← original site audit + rebuild brief
 
 **Context upkeep:** whenever project files are changed, update this `context.md` in the same turn with any new decisions, workflow notes, deployment facts, pending items, or gotchas that a future chat session would need. Keep it concise and do not duplicate the commit diff.
 
+**External handoff:** `claude.md` is a standalone handoff file for another coding assistant. Keep it aligned with this context when project architecture, workflow, deployment, product catalogue, or pending items materially change.
+
 ## Build-time post-processors (in `pageShell()`, applied in order — don't fight them)
 1. `stripDashesInText()` — removes hyphens/dashes from all visible text (between `>` and `<`), skipping script/style. Site-wide rule: **no em/en dashes or " - " in copy, ever** (owner requirement).
 2. `applyHeadingTitleCase()` — Title Case for all h1–h4 (minor words the/of/for/us stay lowercase; acronyms FMCG/MG/CE preserved) + **strips trailing full stops from headings**.
