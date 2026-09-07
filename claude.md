@@ -6,7 +6,7 @@ Read it before making any code, content, design, or deployment changes.
 ## Project Summary
 
 This repo is the production website for KP Packaging, a Mumbai based manufacturer
-and distributor of coated papers and flexible packaging with a plant in Silvassa.
+and distributor of extrusion coated papers and flexible packaging with a plant in Silvassa.
 The site is a static rebuild of the old Webflow website and is optimized for SEO,
 AEO, and GEO, meaning all important content is server rendered and available to
 search engines and AI crawlers.
@@ -144,9 +144,12 @@ hash changes.
 - Plant phone: +91 85916 94328
 - Plant email: sales@kppackaging.com
 - Leadership: Madhukant Vira, Chairman; Ketan Vira, CEO; Prem Vira, Director
-- Clients shown: Cipla, Parksons, Reliance Polymers, Dr. Reddy's, Godrej,
+- Clients shown: Cipla, Parksons, Reliance Industries Limited, Dr. Reddy's, Godrej,
   Wipro, Zydus, Amul, Intas, Dow Chemicals, Wockhardt
-- Certifications shown: ISO, AEO Indian Customs, Make in India, MSME, CE, IAF
+- Certifications shown: ISO, AEO Indian Customs, Make in India, MSME, CE, IAF,
+  GMP, FSC, FDA
+- GMP, FSC and FDA currently use neutral local badge artwork, not official
+  certification marks.
 - Infrastructure: 3 extrusion lamination machines from Korea, China and the
   United States of America; 1 Indian 8-colour rotogravure; 3 Italian Bimec,
   1 German and 2 Indian slitters; 1 Indian sheet-cutter
@@ -165,8 +168,8 @@ Products:
 - 3 Ply Paper
 - 4 Ply Paper
 - MG Kraft Paper
-- MF Craft Paper
-- Folding Box Board
+- MF Kraft Paper
+- FBB
 - Duplex Board
 - Non-Woven / Non-Tearable Paper
 - PE Stiffener Paper
@@ -187,12 +190,13 @@ Slug stability notes:
 - `bactite` slug is kept, but visible product name is `Bactide Paper`.
 - `grid-lacquer` slug is kept, but visible product name is `Grid Coated Paper`
   and subtopic is `Grid Lacquer`.
+- `folding-box-board` slug is kept, but visible product name is `FBB`.
 - `pe-coated-stiffener-paper` slug is kept, but visible product name is
   `PE Stiffener Paper`.
 
 Recent catalogue additions and product images:
 
-- MF Craft Paper uses existing MG Kraft image.
+- MF Kraft Paper uses existing MG Kraft image.
 - Paper Lid uses `assets/products/paper-lid.webp`.
 - Anti-Skid Paper uses `assets/products/anti-skid-paper.webp`.
 - Liquid Packaging Board uses `assets/products/liquid-packaging-board.webp`.
@@ -201,6 +205,12 @@ Recent catalogue additions and product images:
 - Butter Packaging uses `assets/products/butter-packaging.webp`.
 - Non-Woven / Non-Tearable Paper image was replaced at
   `assets/products/non-tearable-paper.webp`.
+- Sept 2026 refresh replaced the RIL client logo from the official Reliance
+  Industries Limited media kit at `assets/logos/reliance.webp`.
+- Sept 2026 refresh replaced FMCG, medical or surgical and OGR/Greaseproof
+  imagery. FMCG also has application tiles for sugar, salt, oregano, ice cream,
+  spoons, cutlery and toothpicks under
+  `assets/industries/fmcg-applications/`.
 
 ## Industries
 
@@ -213,6 +223,9 @@ The site has 4 industry pages:
 
 Industry product arrays live in `js/data.js`. Keep them in sync when adding or
 renaming products.
+
+Generic site copy should say `Extrusion Coated Paper`. The specific product
+name `Grid Coated Paper` is intentional unless the owner explicitly renames it.
 
 ## SEO, AEO and GEO
 

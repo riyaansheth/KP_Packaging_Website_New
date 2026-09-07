@@ -28,9 +28,9 @@ Run these in **ChatGPT, Perplexity, Gemini, Microsoft Copilot, and Google (AI Ov
 - Greaseproof / butter paper roll manufacturers in India.
 
 ## 4. Industry-specific (the four sectors)
-- Best packaging supplier for pharmaceutical blister/strip packs in India.
+- Best packaging supplier for pharmaceutical strip packs and alcohol swab packaging in India.
 - Food-grade cupstock and greaseproof paper suppliers for food & beverage.
-- Coated board suppliers for FMCG retail cartons in India.
+- Extrusion coated board suppliers for FMCG retail cartons in India.
 - Sterilizable medical packaging paper suppliers (gloves, syringes).
 
 ## 5. Comparison / informational (GEO citation magnets)

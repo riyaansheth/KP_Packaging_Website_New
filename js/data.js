@@ -6,7 +6,7 @@
 const COMPANY = {
   name: "KP Packaging",
   legal: "KP Packaging",
-  tagline: "Coated paper & flexible packaging, perfected over three decades.",
+  tagline: "Extrusion coated paper & flexible packaging, perfected over three decades.",
   stats: [
     { value: "30+", label: "Years of expertise" },
     { value: "25+", label: "Countries served" },
@@ -16,7 +16,7 @@ const COMPANY = {
     // colour-coordinated order: blues, purple, multicolour, reds
     { name: "Cipla", logo: "/assets/logos/cipla.webp" },
     { name: "Parksons", logo: "/assets/logos/parksons.webp" },
-    { name: "Reliance Polymers", logo: "/assets/logos/reliance.webp" },
+    { name: "Reliance Industries Limited", logo: "/assets/logos/reliance.webp" },
     { name: "Dr. Reddy's", logo: "/assets/logos/dr-reddys.webp" },
     { name: "Godrej", logo: "/assets/logos/godrej.webp" },
     { name: "Wipro", logo: "/assets/logos/wipro.webp" },
@@ -32,7 +32,10 @@ const COMPANY = {
     { name: "Make in India", logo: "/assets/certs/make-in-india.webp" },
     { name: "MSME", logo: "/assets/certs/msme.webp" },
     { name: "CE", logo: "/assets/certs/ce.webp" },
-    { name: "IAF", logo: "/assets/certs/iaf.webp" }
+    { name: "IAF", logo: "/assets/certs/iaf.webp" },
+    { name: "GMP", logo: "/assets/certs/gmp.webp" },
+    { name: "FSC", logo: "/assets/certs/fsc.webp" },
+    { name: "FDA", logo: "/assets/certs/fda.webp" }
   ],
   team: [
     { name: "Madhukant Vira", role: "Chairman", photo: "/assets/team/3.webp" },
@@ -68,13 +71,13 @@ const COMPANY = {
   logo: "/assets/kp-logo.png",
   ogImage: "/assets/og-cover.png",
   sameAs: [],                      // add official LinkedIn/Instagram/Facebook URLs when available
-  summary: "KP Packaging is a Mumbai-based manufacturer and distributor of coated papers and flexible packaging with over 30 years of experience. The company runs extrusion coating and lamination machines from Korea, China and the United States of America at its plant in Silvassa, India, and supplies pharmaceutical, food & beverage, FMCG and medical or surgical packaging to around 500 clients across about 25 countries.",
+  summary: "KP Packaging is a Mumbai-based manufacturer and distributor of extrusion coated papers and flexible packaging with over 30 years of experience. The company runs extrusion coating and lamination machines from Korea, China and the United States of America at its plant in Silvassa, India, and supplies pharmaceutical, food & beverage, FMCG and medical or surgical packaging to around 500 clients across about 25 countries.",
   why: [
-    { title: "Three decades of converting expertise", text: "Over 30 years in coated paper and flexible packaging, from a PVC leather-cloth pioneer to a modern primary-packaging house." },
+    { title: "Three decades of converting expertise", text: "Over 30 years in extrusion coated paper and flexible packaging, from a PVC leather-cloth pioneer to a modern primary-packaging house." },
     { title: "Manufacturing + distribution under one roof", text: "In-house extrusion-coated laminates plus authorized distribution for leading Indian paper mills, source coating, printing and substrate from a single partner." },
     { title: "State-of-the-art coating lines", text: "A modern extrusion lamination and coating plant in Silvassa with rotogravure printing and multiple slitting, sheeting and rewinding machines." },
     { title: "Trusted by industry leaders", text: "We supply to Wockhardt, Cipla, Dr. Reddy's, Godrej, Wipro, Zydus, Amul, Parksons and Intas across 25+ countries." },
-    { title: "Pharma- and food-grade quality", text: "FSC- and FDA-aligned barrier papers for medicines, ORS sachets, blister packs, paper cups, food packaging and lots more." },
+    { title: "Pharma- and food-grade quality", text: "GMP, FSC and FDA aligned barrier papers for medicines, ORS sachets, alcohol swab packaging, paper cups, food packaging and lots more." },
     { title: "Custom laminates, made to spec", text: "We engineer bespoke coated and laminated structures to your exact barrier, print and substrate requirements, with reliable lead times." }
   ],
   faq: [
@@ -83,18 +86,18 @@ const COMPANY = {
     { q: "How do I request a quote from KP Packaging?", a: "Contact the corporate office at prem@kppackaging.com or +91 85916 56966, the plant at sales@kppackaging.com or +91 85916 94328, or use the inquiry form on kppackaging.com." },
     { q: "Is KP Packaging a manufacturer or a distributor?", a: "Both. KP Packaging manufactures extrusion-coated laminates in-house and is also an authorized distributor for multiple Indian paper mills." },
     { q: "Does KP Packaging export internationally?", a: "Yes. KP Packaging serves 500+ clients across more than 25 countries and is actively expanding its international business." },
-    { q: "What papers does KP Packaging make?", a: "KP Packaging supplies both coated and uncoated papers: glassine, MG poster, chromo, cupstock, MG kraft, MF craft, 3-ply and 4-ply foil laminates, folding box board, duplex board, greaseproof, tissue, medical grade, Bactide and grid coated papers." },
-    { q: "Is KP Packaging's paper food-safe and pharma-grade?", a: "Yes. It supplies FDA- and FSC-aligned glassine and barrier papers for pharmaceuticals and food-safe cupstock and greaseproof papers for food and beverage packaging." }
+    { q: "What papers does KP Packaging make?", a: "KP Packaging supplies both extrusion coated and uncoated papers: glassine, MG poster, chromo, cupstock, MG kraft, MF kraft, 3-ply and 4-ply foil laminates, FBB, duplex board, greaseproof, tissue, medical grade, Bactide and grid coated papers." },
+    { q: "Is KP Packaging's paper food-safe and pharma-grade?", a: "Yes. It supplies GMP, FDA and FSC aligned glassine and barrier papers for pharmaceuticals and food-safe cupstock and greaseproof papers for food and beverage packaging." }
   ]
 };
 
 const CAPABILITIES = [
   {
     slug: "extrusion-coating",
-    title: "Extrusion Coating & Lamination",
+    title: "Extrusion Coated Paper",
     icon: "layers",
-    blurb: "Poly (LDPE) coating on printed and unprinted paper, board and aluminium foil.",
-    detail: "Our three state-of-the-art extrusion lamination and coating machines, imported from Korea, China and the United States of America, apply LDPE and specialty polymer layers across a wide range of substrates to deliver moisture, grease and oxygen barriers for primary packaging."
+    blurb: "Poly (LDPE) and specialty polymer coating on printed and unprinted paper, board and aluminium foil.",
+    detail: "Our extrusion coated paper capability applies controlled LDPE and specialty polymer layers on paper, board and aluminium foil to create sealability, moisture resistance, grease resistance and oxygen barrier performance for primary packaging. The Silvassa line supports food, pharmaceutical, FMCG and medical or surgical formats with consistent seal strength, print compatibility and roll-to-roll converting reliability."
   },
   {
     slug: "rotogravure-printing",
@@ -134,8 +137,8 @@ const INDUSTRIES = [
     name: "Pharmaceutical",
     art: "roll-art",
     image: "/assets/industries/pharmaceutical.webp",
-    blurb: "Barrier papers and foil laminates for tablet strips, ORS sachets and blister packs.",
-    detail: "We supply the barrier-grade papers and aluminium foil laminates that protect medicines from moisture, light and air, from glassine sachets to 4-ply foil laminates used by leading pharma brands. Our pharmaceutical-grade substrates safeguard tablet strips, ORS powders, blister and strip packs, condom laminates and surgical sutures, preserving potency and extending shelf life. With FDA- and FSC-aligned quality and consistent print and seal performance, we supply names such as Wockhardt, Cipla, Dr. Reddy's, Zydus and Intas.",
+    blurb: "Barrier papers and foil laminates for tablet strips, ORS sachets and alcohol swab packaging.",
+    detail: "We supply barrier-grade papers and aluminium foil laminates that protect medicines from moisture, light and air, from glassine sachets to 4-ply foil laminates used by leading pharma brands. Our pharmaceutical-grade substrates safeguard tablet strips, ORS powders, alcohol swab packaging, strip packs, condom laminates and surgical sutures, preserving potency and extending shelf life. With GMP, FDA and FSC aligned quality and consistent print and seal performance, we supply names such as Wockhardt, Cipla, Dr. Reddy's, Zydus and Intas.",
     products: ["glassine-paper", "4-ply-paper", "3-ply-paper", "folding-box-board", "medical-grade-paper", "non-tearable-paper"]
   },
   {
@@ -152,17 +155,27 @@ const INDUSTRIES = [
     name: "FMCG & Retail",
     art: "roll-art--cream",
     image: "/assets/industries/fmcg.webp",
-    blurb: "Printable, durable, coated papers and boards for everyday consumer solutions.",
-    detail: "High-gloss, print-ready chromo and poster papers plus folding box board for retail packaging that needs shelf appeal and structural strength. From cartons and labels to sachets for tea, tobacco, gutka and personal-care products, our coated papers and boards pair sharp rotogravure printing with the stiffness and durability retail demands. We supply trusted FMCG names including Godrej, Wipro, Amul and Parksons.",
+    blurb: "Printable, durable extrusion coated papers and boards for everyday consumer packaging.",
+    detail: "High-gloss, print-ready chromo and poster papers plus FBB for retail packaging that needs shelf appeal and structural strength. From cartons and labels to sachets for sugar, salt, oregano, tea and personal-care products, our extrusion coated papers and boards pair sharp rotogravure printing with the stiffness and durability retail demands. We also support ice cream cups, wrapped spoons, cutlery packs and toothpick sachets for high-volume FMCG lines.",
     products: ["chromo-paper", "mg-poster-paper", "folding-box-board", "duplex-board", "maplitho-paper", "mf-craft-paper", "anti-skid-paper"]
+    ,
+    gallery: [
+      { title: "Sugar", image: "/assets/industries/fmcg-applications/fmcg-sugar.webp" },
+      { title: "Salt", image: "/assets/industries/fmcg-applications/fmcg-salt.webp" },
+      { title: "Oregano", image: "/assets/industries/fmcg-applications/fmcg-oregano.webp" },
+      { title: "Ice Cream", image: "/assets/industries/fmcg-applications/fmcg-ice-cream.webp" },
+      { title: "Spoons", image: "/assets/industries/fmcg-applications/fmcg-spoons.webp" },
+      { title: "Cutlery", image: "/assets/industries/fmcg-applications/fmcg-cutlery.webp" },
+      { title: "Toothpicks", image: "/assets/industries/fmcg-applications/fmcg-toothpicks.webp" }
+    ]
   },
   {
     slug: "medical-surgical",
     name: "Medical & Surgical",
     art: "roll-art",
     image: "/assets/industries/medical-surgical.webp",
-    blurb: "ETO sterilization, bacterial barrier papers for gloves, syringes and surgical disposables.",
-    detail: "Steam-sterilizable Bactide, medical grade and grid coated papers with bacterial-barrier and heat-sealing properties for medical gloves, syringes, catheters and surgical sutures. Free from optical brighteners and engineered for steam, EtO and gamma sterilization, these medical-grade papers hold a dependable bacterial barrier and a clean peel for surgical disposables. They are lint-free, fluid-repellent and high in dry and wet strength, trusted across hospital and device supply chains.",
+    blurb: "Sterilization-compatible bacterial barrier papers for medical pouches and surgical disposables.",
+    detail: "Medical or surgical packaging from KP Packaging supports surgical glove pouches, alcohol swab packaging, gauze swab packaging, medical device packaging and sterilization packaging. Bactide, medical grade and grid coated papers deliver bacterial barrier performance, heat sealability, clean peel behaviour, lint-free handling and high dry and wet strength for sterile device and hospital supply chains.",
     products: ["bactite", "medical-grade-paper", "grid-lacquer", "non-tearable-paper"]
   }
 ];
@@ -194,12 +207,12 @@ const PRODUCTS = [
     image: "/assets/products/mg-poster-paper.webp",
     name: "MG Poster Paper",
     aka: "Machine Glazed / Sandwich Paper",
-    tagline: "Glossy, high-strength poly-coated paper, a best-seller for primary packaging.",
+    tagline: "Glossy, high-strength extrusion coated paper, a best-seller for primary packaging.",
     art: "roll-art--kraft",
     arm: "Manufactured",
     featured: true,
     construction: "Poster paper + LDPE coating",
-    desc: "MG Poster Paper, Machine Glazed Poster Paper, known overseas as poly coated poster paper or 'Sandwich Paper', is one of our best-selling and most sought-after products for primary packaging. Coated with a layer of LDPE during production, it has an extremely glossy appearance, a smooth exterior, high tensile strength and good stiffness. It is an affordable alternative to chromo paper.",
+    desc: "MG Poster Paper, Machine Glazed Poster Paper, known overseas as extrusion coated poster paper or 'Sandwich Paper', is one of our best-selling and most sought-after products for primary packaging. Coated with a layer of LDPE during production, it has an extremely glossy appearance, a smooth exterior, high tensile strength and good stiffness. It is an affordable alternative to chromo paper.",
     applications: ["Heat-sealable wrapping", "Pouches", "Inner lining in carton boxes", "Food item packaging", "Apparel & glass wrapping", "Sugar & salt packaging", "Band-aid packaging", "Glove pouches"],
     properties: ["High tensile strength", "Stiff construction", "Glossy appearance", "Smooth exterior finish", "Affordable alternative to chromo"],
     variants: ["Coated", "Uncoated", "Custom specifications"],
@@ -214,7 +227,7 @@ const PRODUCTS = [
     image: "/assets/products/chromo-paper.webp",
     name: "Chromo Paper",
     aka: "Poly Coated Chromo Paper",
-    tagline: "Water-resistant, high-gloss coated paper built for premium print.",
+    tagline: "Water-resistant, high-gloss extrusion coated paper built for premium print.",
     art: "roll-art--cream",
     arm: "Manufactured",
     featured: true,
@@ -299,7 +312,7 @@ const PRODUCTS = [
     arm: "Both",
     featured: true,
     construction: "Kraft base + optional polymer coating",
-    desc: "MG Kraft paper is a machine-glazed coated kraft paper that stands out for high tensile strength owing to a greater paper density. It has a natural brown appearance with a high-gloss finish on the top side and is eco-friendly. It can be further coated with polymer layers for enhanced performance.",
+    desc: "MG Kraft paper is a machine-glazed extrusion coated kraft paper that stands out for high tensile strength owing to a greater paper density. It has a natural brown appearance with a high-gloss finish on the top side and is eco-friendly. It can be further coated with polymer layers for enhanced performance.",
     applications: ["Food packaging", "Paper bags", "Envelopes", "Box manufacturing"],
     properties: ["High tensile strength", "Machine-glazed finish", "Natural brown colour & texture", "High MG gloss on top surface", "Strong bursting factor (BF)", "Notable tearing & tensile strength"],
     variants: ["Uncoated", "Polymer coated"],
@@ -312,14 +325,14 @@ const PRODUCTS = [
   {
     slug: "mf-craft-paper",
     image: "/assets/products/mg-kraft.webp",
-    name: "MF Craft Paper",
+    name: "MF Kraft Paper",
     aka: "Machine Finished",
     tagline: "Cost-efficient kraft with rough machine-finished texture on both sides.",
     art: "roll-art--kraft",
     arm: "Distributed",
     featured: false,
     construction: "Machine-finished kraft paper",
-    desc: "MF Craft Paper is a machine-finished kraft grade with high tensile strength at a lower cost than MG Kraft. It is rough on both sides for better adhesion and is available across BF options from as low as 12.",
+    desc: "MF Kraft Paper is a machine-finished kraft grade with high tensile strength at a lower cost than MG Kraft. It is rough on both sides for better adhesion and is available across BF options from as low as 12.",
     applications: ["Food packaging", "Paper bags", "Envelopes", "Box manufacturing"],
     properties: ["Rough finish on both sides", "Better adhesion", "Natural brown, rose gold and gold shades", "Low to high BF range", "Relatively cheaper than MG"],
     variants: ["Uncoated", "Polymer coated", "Printed"],
@@ -332,14 +345,14 @@ const PRODUCTS = [
   {
     slug: "folding-box-board",
     image: "/assets/products/folding-box-board.webp",
-    name: "Folding Box Board",
-    aka: "FBB",
+    name: "FBB",
+    aka: "Folding Box Board",
     tagline: "Low-density, high-stiffness board with a superb print surface.",
     art: "roll-art--cream",
     arm: "Distributed",
     featured: false,
     construction: "Chemical pulp / mechanical pulp / chemical pulp layers",
-    desc: "Folding Box Board is a multi-layer board with mechanical pulp between chemical pulp layers. It has low density, high stiffness, a bleached surface, a yellowish centre and a bleached inner layer, giving cartons thickness, brightness and reliable print performance.",
+    desc: "FBB is a multi-layer board with mechanical pulp between chemical pulp layers. It has low density, high stiffness, a bleached surface, a yellowish centre and a bleached inner layer, giving cartons thickness, brightness and reliable print performance.",
     applications: ["Health and beauty", "Frozen foods", "Confectionery", "Pharma cartons", "Cigarette packing"],
     properties: ["Low density", "High stiffness", "Smooth surface for print and foil stamping", "High thickness and brightness", "Eco-friendly"],
     variants: ["FBB only", "FBB + PE", "FBB + PE + aluminium foil", "Sheets and rolls"],

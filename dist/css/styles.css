@@ -322,6 +322,41 @@ em { font-style: italic; color: var(--green-500); }
 .chiplink:hover { border-color: var(--green); background: var(--green-50); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 .chiplink:hover::after { transform: translateX(3px); }
 
+.application-gallery {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 1rem;
+}
+.application-tile {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.application-media {
+  aspect-ratio: 4 / 3;
+  background: var(--cream-2);
+  overflow: hidden;
+}
+.application-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.application-tile h3 {
+  min-height: 3.6rem;
+  display: grid;
+  place-items: center;
+  padding: .75rem .55rem;
+  font-family: var(--font-sans);
+  font-size: .95rem;
+  font-weight: 700;
+  text-align: center;
+}
+@media (max-width: 1120px) { .application-gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .application-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; } }
+
 /* ===========================================================
    PRODUCT CATALOGUE (filters)
    =========================================================== */

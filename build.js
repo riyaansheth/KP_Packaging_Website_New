@@ -131,12 +131,12 @@ function orgLd() {
     description: COMPANY.summary, foundingDate: COMPANY.founded,
     slogan: COMPANY.tagline,
     sameAs: COMPANY.sameAs && COMPANY.sameAs.length ? COMPANY.sameAs : undefined,
-    knowsAbout: ["Coated paper", "Flexible packaging", "Extrusion coating & lamination", "Rotogravure printing", "Pharmaceutical packaging", "Food packaging"],
+    knowsAbout: ["Extrusion coated paper", "Flexible packaging", "Extrusion coating & lamination", "Rotogravure printing", "Pharmaceutical packaging", "Food packaging"],
     areaServed: { "@type": "Place", name: "Worldwide (25+ countries)" },
     foundingLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "Mumbai", addressRegion: "Maharashtra", addressCountry: "IN" } },
     hasCredential: COMPANY.certs.map((c) => ({ "@type": "EducationalOccupationalCredential", credentialCategory: "certification", name: c.name })),
     hasOfferCatalog: {
-      "@type": "OfferCatalog", name: "Coated Papers, Boards & Laminates",
+      "@type": "OfferCatalog", name: "Extrusion Coated Papers, Boards & Laminates",
       itemListElement: PRODUCTS.map((p) => ({ "@type": "Offer", itemOffered: { "@type": "Product", name: p.name, url: BASE + productUrl(p) } }))
     },
     contactPoint: COMPANY.offices.map((o) => ({
@@ -259,7 +259,7 @@ function head(meta) {
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/png">
-  <meta property="og:image:alt" content="KP Packaging, coated paper and flexible packaging">
+  <meta property="og:image:alt" content="KP Packaging, extrusion coated paper and flexible packaging">
   <meta property="og:locale" content="en_IN">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escAttr(meta.title)}">
@@ -313,7 +313,7 @@ function footer() {
       <div class="footer-top">
         <div class="footer-brand">
           <a href="/" class="brand"><span class="mark">KP</span><span>KP Packaging</span></a>
-          <p>A three-decade-old family business converting and distributing coated papers and flexible packaging for pharma, food and FMCG, in India and 25+ countries.</p>
+          <p>A three-decade-old family business converting and distributing extrusion coated papers and flexible packaging for pharma, food and FMCG, in India and 25+ countries.</p>
         </div>
         <div class="footer-col">
           <h4>Explore</h4>
@@ -451,12 +451,16 @@ function versionAssets(html) {
   });
 }
 
+function trimTrailingWhitespace(html) {
+  return html.replace(/[ \t]+$/gm, "");
+}
+
 function pageShell(meta, body) {
-  return versionAssets(applyHeadingTitleCase(stripDashesInText(head(meta) + header(meta.page) + body + footer() + quoteModal() + `
+  return trimTrailingWhitespace(versionAssets(applyHeadingTitleCase(stripDashesInText(head(meta) + header(meta.page) + body + footer() + quoteModal() + `
   <script src="/js/lenis.min.js?v=${BUILD_VER}" defer></script>
   <script src="/js/app.js?v=${BUILD_VER}" defer></script>
 </body>
-</html>`)));
+</html>`))));
 }
 
 /* ---------- shared components ---------- */
@@ -536,7 +540,7 @@ function homeBody() {
     <div class="container hero-inner">
       <div class="hero-copy reveal in">
         <h1>Packaging that <em>protects</em> what matters.</h1>
-        <p class="lead">A three-decade-old family business converting and distributing coated papers and flexible laminates for pharmaceuticals, food and FMCG, engineered for sealing, barrier, strength and print.</p>
+        <p class="lead">A three-decade-old family business converting and distributing extrusion coated papers and flexible laminates for pharmaceuticals, food and FMCG, engineered for sealing, barrier, strength and print.</p>
         <div class="hero-stats">
           <div class="stat"><strong>30+</strong><span>Years of expertise</span></div>
           <div class="stat"><strong>25+</strong><span>Countries served</span></div>
@@ -564,15 +568,15 @@ function homeBody() {
   <section class="section--tight">
     <div class="container overview-split">
       <div class="overview-head reveal reveal--left">
-                <h2 style="margin-top:1rem">Coated paper &amp; flexible packaging, made in India.</h2>
+                <h2 style="margin-top:1rem">Extrusion coated paper &amp; flexible packaging, made in India.</h2>
         <p class="lead" style="margin-top:1.3rem">${esc(COMPANY.summary)}</p>
       </div>
       <div class="overview-body reveal reveal--right">
         <div class="overview-facts">
           <div class="fact"><strong>Two verticals</strong><span>In-house manufacturing + authorized mill distribution</span></div>
-          <div class="fact"><strong>25+ grades</strong><span>Coated papers, boards &amp; foil laminates</span></div>
+          <div class="fact"><strong>25+ grades</strong><span>Extrusion coated papers, boards &amp; foil laminates</span></div>
           <div class="fact"><strong>Global machinery</strong><span>Korean, Chinese &amp; American extrusion coating lines</span></div>
-          <div class="fact"><strong>Certified</strong><span>FSC, FDA &amp; ISO-aligned quality</span></div>
+          <div class="fact"><strong>Certified</strong><span>GMP, FSC, FDA &amp; ISO-aligned quality</span></div>
         </div>
       </div>
     </div>
@@ -583,7 +587,7 @@ function homeBody() {
       <div class="section-head reveal center"><h2 style="margin-top:1rem">Two verticals, one promise</h2><p class="tagline">Packaging you can rely on</p></div>
       <div class="expertise-card reveal">
         <h3>Areas of Expertise</h3>
-        <p>We coat and laminate on various grades of paper, paperboard, cupstock, polyester film, BOPP film, aluminium foils and fabrics. Our products pack medicines, gloves, yeast, sugar, salt, pepper, paper cups, boxes and tea. Our aluminium foil, plain and printed, pairs with rigid and flexible PVC films for blister and strip packing, condom laminates, surgical suture laminates and ORS salts. We also produce a full range of flexible packaging for chips, tea, coffee, salt, noodles, chocolates, detergents, soaps, oils and snacks.</p>
+        <p>We engineer extrusion coated paper, paperboard, cupstock, polyester film, BOPP film, aluminium foil and fabric laminates for sealability, barrier performance and production reliability. Our products support medicines, gloves, yeast, sugar, salt, pepper, paper cups, boxes, tea, alcohol swab packaging and canisters packaging. Plain and printed aluminium foil pairs with rigid and flexible PVC films for strip packing, condom laminates, surgical suture laminates and ORS salts. We also produce flexible packaging for tea, coffee, salt, noodles, chocolates, detergents, soaps, oils, snacks and canisters.</p>
       </div>
       <div class="grid grid-4">${capCards(false)}</div>
     </div>
@@ -598,7 +602,7 @@ function homeBody() {
 
   <section class="section">
     <div class="container">
-      <div class="section-head reveal center"><h2 style="margin-top:1rem">Coated papers, boards & laminates.</h2><p>A snapshot of our best-selling grades, explore the full catalogue for specs and applications.</p></div>
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">Extrusion coated papers, boards & laminates.</h2><p>A snapshot of our best-selling grades, explore the full catalogue for specs and applications.</p></div>
       <div class="grid grid-3">${featured}</div>
       <div class="center" style="margin-top:1.4rem"><a href="/products/" class="btn btn--primary btn--lg">View all products</a></div>
     </div>
@@ -606,7 +610,7 @@ function homeBody() {
 
   <section class="section hide-mobile">
     <div class="container">
-      <div class="section-head reveal center"><h2 style="margin-top:1rem">Why companies choose us.</h2></div>
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">Why Choose Us</h2></div>
       <div class="grid grid-3">${why}</div>
     </div>
   </section>
@@ -638,7 +642,7 @@ function aboutBody() {
       <div class="page-hero-copy">
         
         <h1>Three decades of packaging, run by one family.</h1>
-        <p>From pioneers in the PVC leather cloth industry to a modern coated-paper and flexible-packaging house, KP Packaging has grown across generations while keeping quality and relationships at its core.</p>
+        <p>From pioneers in the PVC leather cloth industry to a modern extrusion coated paper and flexible packaging house, KP Packaging has grown across generations while keeping quality and relationships at its core.</p>
       </div>
       <div class="page-hero-media">${imgTag("/assets/about-hero.webp", "Wrapped paper jumbo rolls at KP Packaging", { width: 900, widths: [480, 720, 900, 1200], sizes: "(max-width: 900px) 100vw, 46vw", loading: "eager", fetchpriority: "high", extra: 'data-parallax="0.08"' })}</div>
     </div>
@@ -664,7 +668,7 @@ function aboutBody() {
     <div class="container">
       <div class="grid grid-2">
         <div class="fcard fcard--dark reveal"><h3>Manufacturing</h3><p>We manufacture extrusion coated laminates by poly (LDPE) coating printed and unprinted paper, board, aluminium foil, PET, BOPP, fabric and other substrates. Our three state-of-the-art extrusion lamination machines, imported from Korea, China and the United States of America, are supported by an 8-colour rotogravure printing machine and multiple slitting, sheeting and rewinding machines.</p></div>
-        <div class="fcard fcard--dark reveal"><h3>Distribution</h3><p>We are authorized distributors for multiple Indian paper mills, supplying MG Poster, Maplitho, Cupstock, MG/MF Kraft, Greaseproof (OGR), Chromo (C1S &amp; C2S), Glassine, OLB, Bible, Stiffener, Tissue, Duplex, Folding Box Board (FBB), Solid Bleached Sulphate (SBS), Backtite, LWC, Bleach Kraft and more.</p></div>
+        <div class="fcard fcard--dark reveal"><h3>Distribution</h3><p>We are authorized distributors for multiple Indian paper mills, supplying MG Poster, Maplitho, Cupstock, MG/MF Kraft, Greaseproof (OGR), Chromo (C1S &amp; C2S), Glassine, OLB, Bible, Stiffener, Tissue, Duplex, FBB, Solid Bleached Sulphate (SBS), Backtite, LWC, Bleach Kraft and more.</p></div>
       </div>
     </div>
   </section>
@@ -672,7 +676,7 @@ function aboutBody() {
 
   <section class="section bg-cream2">
     <div class="container">
-      <div class="section-head reveal center"><h2 style="margin-top:1rem">Meet the team</h2></div>
+      <div class="section-head reveal center"><h2 style="margin-top:1rem">Meet the Directors</h2></div>
       <div class="grid grid-3">${team}</div>
     </div>
   </section>`;
@@ -719,7 +723,7 @@ function productsBody() {
   <section class="page-hero">
     <div class="container">
       
-      <h1>Coated papers, boards & laminates.</h1>
+      <h1>Extrusion coated papers, boards & laminates.</h1>
       <p>25+ grades engineered for sealing, barrier, strength and print, from pharmaceutical glassine to food-safe cupstock. Click any product for instant details, or filter to find your match.</p>
     </div>
   </section>
@@ -830,6 +834,18 @@ function industriesBody() {
 function industryBody(i) {
   const prods = i.products.map(productBySlug).filter(Boolean);
   const faqs = industryFaqs(i);
+  const gallery = Array.isArray(i.gallery) && i.gallery.length ? `<section class="section">
+    <div class="container">
+      <div class="section-head reveal center"><span class="eyebrow">Applications</span><h2 style="margin-top:1rem">${esc(i.name)} packaging applications</h2></div>
+      <div class="application-gallery">
+        ${i.gallery.map((item) => `
+        <div class="application-tile reveal">
+          <div class="application-media">${imgTag(item.image, `${item.title} packaging`, { width: 640, widths: [320, 480, 640], sizes: "(max-width: 700px) 45vw, 14vw", loading: "lazy", fit: "cover" })}</div>
+          <h3>${esc(item.title)}</h3>
+        </div>`).join("")}
+      </div>
+    </div>
+  </section>` : "";
   return `
   <section class="page-hero">
     <div class="container">
@@ -848,7 +864,7 @@ function industryBody(i) {
     </div>
   </section>
 
-  ${faqSection(faqs, { title: esc(i.name) + " packaging, FAQ", bg: true })}
+  ${gallery ? gallery + "\n\n  " : ""}${faqSection(faqs, { title: esc(i.name) + " packaging, FAQ", bg: true })}
   `;
 }
 
@@ -913,7 +929,7 @@ function contactBody() {
    ASSETS (placeholder logo / og / favicon as SVG)
    =========================================================== */
 function logoSvg() {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="240" height="64" viewBox="0 0 240 64"><rect width="64" height="64" rx="14" fill="#2E2C7E"/><text x="32" y="42" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">KP</text><text x="78" y="34" font-family="Georgia,serif" font-size="22" font-weight="600" fill="#1B1B2A">KP Packaging</text><text x="79" y="50" font-family="Inter,Arial,sans-serif" font-size="9" letter-spacing="2" fill="#6F7073">COATED PAPER · MUMBAI</text></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="240" height="64" viewBox="0 0 240 64"><rect width="64" height="64" rx="14" fill="#2E2C7E"/><text x="32" y="42" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">KP</text><text x="78" y="34" font-family="Georgia,serif" font-size="22" font-weight="600" fill="#1B1B2A">KP Packaging</text><text x="79" y="50" font-family="Inter,Arial,sans-serif" font-size="8" letter-spacing="1.3" fill="#6F7073">EXTRUSION COATED PAPER</text></svg>`;
 }
 function faviconSvg() {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#2E2C7E"/><text x="32" y="43" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="middle">KP</text></svg>`;
@@ -991,24 +1007,24 @@ function build() {
 
   // HOME
   writePage(".", pageShell({
-    title: "KP Packaging | Coated Paper & Flexible Packaging",
-    desc: "KP Packaging is a 30+ year Mumbai-based manufacturer & distributor of coated papers and flexible packaging for pharma, food and FMCG, serving 500+ clients across 25+ countries.",
+    title: "KP Packaging | Extrusion Coated Paper",
+    desc: "KP Packaging is a 30+ year Mumbai-based manufacturer and distributor of extrusion coated papers and flexible packaging for pharma, food and FMCG.",
     path: "/", page: "home",
     jsonld: [...baseLd, faqLd(COMPANY.faq), breadcrumbLd([{ name: "Home", path: "/" }])]
   }, homeBody()));
 
   // ABOUT
   writePage("about", pageShell({
-    title: "About KP Packaging | Coated Paper Manufacturer",
-    desc: "KP Packaging is a generational family business with 30+ years in coated paper and flexible packaging, manufacturing extrusion laminates and distributing mill-grade papers from Mumbai & Silvassa, India.",
+    title: "About KP Packaging | Extrusion Coated Paper",
+    desc: "KP Packaging is a generational family business with 30+ years in extrusion coated paper and flexible packaging from Mumbai and Silvassa, India.",
     path: "/about/", page: "about", ogType: "website",
     jsonld: [...baseLd, { "@context": "https://schema.org", "@type": "AboutPage", url: BASE + "/about/", about: { "@id": ORG_ID } }, ...COMPANY.team.map(personLd), breadcrumbLd([{ name: "Home", path: "/" }, { name: "About", path: "/about/" }])]
   }, aboutBody()));
 
   // PRODUCTS listing
   writePage("products", pageShell({
-    title: "Coated Paper & Board Products | KP Packaging",
-    desc: "Browse 25+ grades of coated paper, board and foil laminates from KP Packaging, glassine, MG poster, chromo, cupstock, kraft, 3/4-ply foil and more. Filter by industry, construction and coating.",
+    title: "Extrusion Coated Paper Products | KP Packaging",
+    desc: "Browse 25+ grades of extrusion coated paper, board and foil laminates from KP Packaging, including glassine, MG poster, chromo, cupstock and kraft.",
     path: "/products/", page: "products",
     jsonld: [...baseLd, itemListLd(PRODUCTS), breadcrumbLd([{ name: "Home", path: "/" }, { name: "Products", path: "/products/" }])]
   }, productsBody()));
