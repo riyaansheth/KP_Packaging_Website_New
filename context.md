@@ -60,7 +60,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - Plant: **792, Apple Insulated, Nr Crown Tapes, Vaibhav Laxmi, Silvassa, India 396193** · +91 85916 94328 · sales@kppackaging.com
 - Leadership: Madhukant Vira (Chairman), Ketan Vira (CEO), Prem Vira (Director)
 - Clients shown (color-coordinated marquee order): Cipla, Parksons, Reliance Industries Limited, Dr. Reddy's, Godrej, Wipro, Zydus, Amul, Intas, Dow Chemicals, Wockhardt
-- Certs: ISO, AEO Indian Customs, Make in India, MSME, CE, IAF, GMP, FSC, FDA. GMP/FSC/FDA currently use neutral local badge artwork, not official certification marks.
+- Certs: ISO, AEO Indian Customs, Make in India, MSME, CE, IAF, GMP, FSC, FDA. GMP uses an NQA GMP Food Safety logo, FSC uses a public FSC site logo image, and FDA uses a public FDA logo image from NIST.
 - Infrastructure: 3 extrusion lamination machines (Korean/Chinese/American), 1 Indian 8-colour rotogravure, 3 Italian Bimec + 1 German + 2 Indian slitters, 1 Indian sheet-cutter
 - Best-selling trio on homepage: 4-Ply, MG Poster, Glassine
 
@@ -80,10 +80,10 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - House style for generated images: "bright airy natural light, soft cream white background, premium editorial commercial photography, no text no watermark"
 - ALWAYS visually verify downloaded/generated images before shipping (Read the file); reject watermarked/competitor-branded/dark images
 - About page `assets/about-hero.webp` and `assets/our-story.webp` are sourced from the original `kppackaging.com/about-us` images (`jumbo-rolls.jpg` and `PHOTO-2023-01-24-11-36-54.jpg`) via image proxy because the legacy custom domain times out from local shell.
-- Aug 2026 catalogue update added MF Kraft Paper, Paper Lid, Anti-Skid Paper, Liquid Packaging Board, Butcher Paper, Medical Grade Paper and Butter Packaging. Grid Lacquer is now shown as Grid Coated Paper with the old `grid-lacquer` slug kept; Bactide Paper keeps the old `bactite` slug for URL stability. FBB uses the old `folding-box-board` slug but visible product name is `FBB`. New generated product images live under `assets/products/` with matching slugs.
+- Aug 2026 catalogue update added MF Kraft Paper, Paper Lid, Anti-Skid Paper, Liquid Packaging Board, Butcher Paper, Medical Grade Paper and Butter Packaging. Grid Lacquer is now shown as Grid Extrusion Coated Paper with the old `grid-lacquer` slug kept; Bactide Paper keeps the old `bactite` slug for URL stability. FBB uses the old `folding-box-board` slug but visible product name is `FBB`. New generated product images live under `assets/products/` with matching slugs.
 - Aug 2026 cleanup after catalogue update: source and generated output should use `KP Packaging` consistently, contact form phone is required, and `build.js` should stay text-searchable with no literal NUL marker bytes.
 - Aug 2026 image performance update: `build.js` now routes raster `<img>` tags through Netlify Image CDN (`/.netlify/images?url=...&w=...&fm=webp&q=...`) with responsive `srcset` widths, skips `.DS_Store` during asset copy, and `netlify.toml` includes edge-cache headers for HTML and Image CDN transforms.
-- Sept 2026 content/image refresh: generic site copy now says `Extrusion Coated Paper`; the specific `Grid Coated Paper` product name remains intentional. Official RIL master logo was sourced from the Reliance Industries Limited media kit and converted to `assets/logos/reliance.webp`. Generated replacement images were added for FMCG, medical or surgical packaging and OGR/Greaseproof Paper; FMCG page has a seven-image application gallery for sugar, salt, oregano, ice cream, spoons, cutlery and toothpicks.
+- Sept 2026 content/image refresh: site copy now says `Extrusion Coated Paper`, including the renamed `Grid Extrusion Coated Paper` product. Official RIL master logo was sourced from the Reliance Industries Limited media kit, business-approved by owner, and converted to `assets/logos/reliance.webp`. Generated replacement images were added for FMCG, medical or surgical packaging and OGR/Greaseproof Paper; FMCG page has a seven-image application gallery for sugar, salt, oregano, ice cream, spoons, cutlery and toothpicks.
 
 ## Verification habits (match previous quality bar)
 - `node -c build.js && node build.js` after edits; grep `dist/` to confirm changes landed
@@ -95,7 +95,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - Cloud routine "KP Packaging — daily project log (5 PM IST)" appends the day's commits to `docs/project-log.md` and pushes (id: trig_01MJWhWr8qN1uaEb7kTurUE7)
 
 ## Pending / blocked items (see docs/kp-packaging-website-changes.md for the full checklist)
-- 🖼 Owner assets needed: 3 team photos (PaperX shoot), PaperX factory photo (crop left side, use in infrastructure), Borkar Packaging + DCPL logos (Borkar site returns 503), official certification artwork/usage confirmation for GMP/FSC/FDA, replacement hero/facility photo
+- 🖼 Owner assets needed: 3 team photos (PaperX shoot), PaperX factory photo (crop left side, use in infrastructure), Borkar Packaging + DCPL logos (Borkar site returns 503), replacement hero/facility photo
 - 🖼 Network section: India domestic map + ~25-country export map (design/assets needed)
 - Email notifications: Resend function is coded, but Netlify env vars still need to be added before inquiry emails send (`RESEND_API_KEY`, `INQUIRY_FROM_EMAIL`; optional `INQUIRY_TO_EMAILS`).
 - Data to confirm from owner: exact founding year (currently "1990" estimate), social profile URLs for schema `sameAs` (currently empty), FAQ product terms "Bactite/Grid Lacquer" (mapped from garbled recording audio — confirm)

@@ -148,8 +148,8 @@ hash changes.
   Wipro, Zydus, Amul, Intas, Dow Chemicals, Wockhardt
 - Certifications shown: ISO, AEO Indian Customs, Make in India, MSME, CE, IAF,
   GMP, FSC, FDA
-- GMP, FSC and FDA currently use neutral local badge artwork, not official
-  certification marks.
+- GMP uses an NQA GMP Food Safety logo, FSC uses a public FSC site logo image,
+  and FDA uses a public FDA logo image from NIST.
 - Infrastructure: 3 extrusion lamination machines from Korea, China and the
   United States of America; 1 Indian 8-colour rotogravure; 3 Italian Bimec,
   1 German and 2 Indian slitters; 1 Indian sheet-cutter
@@ -183,13 +183,13 @@ Products:
 - Maplitho Paper
 - Tissue Paper
 - Bactide Paper
-- Grid Coated Paper
+- Grid Extrusion Coated Paper
 
 Slug stability notes:
 
 - `bactite` slug is kept, but visible product name is `Bactide Paper`.
-- `grid-lacquer` slug is kept, but visible product name is `Grid Coated Paper`
-  and subtopic is `Grid Lacquer`.
+- `grid-lacquer` slug is kept, but visible product name is
+  `Grid Extrusion Coated Paper` and subtopic is `Grid Lacquer`.
 - `folding-box-board` slug is kept, but visible product name is `FBB`.
 - `pe-coated-stiffener-paper` slug is kept, but visible product name is
   `PE Stiffener Paper`.
@@ -206,7 +206,8 @@ Recent catalogue additions and product images:
 - Non-Woven / Non-Tearable Paper image was replaced at
   `assets/products/non-tearable-paper.webp`.
 - Sept 2026 refresh replaced the RIL client logo from the official Reliance
-  Industries Limited media kit at `assets/logos/reliance.webp`.
+  Industries Limited media kit at `assets/logos/reliance.webp`; owner confirmed
+  business approval.
 - Sept 2026 refresh replaced FMCG, medical or surgical and OGR/Greaseproof
   imagery. FMCG also has application tiles for sugar, salt, oregano, ice cream,
   spoons, cutlery and toothpicks under
@@ -224,8 +225,8 @@ The site has 4 industry pages:
 Industry product arrays live in `js/data.js`. Keep them in sync when adding or
 renaming products.
 
-Generic site copy should say `Extrusion Coated Paper`. The specific product
-name `Grid Coated Paper` is intentional unless the owner explicitly renames it.
+Generic site copy should say `Extrusion Coated Paper`. The grid lacquer product
+is displayed as `Grid Extrusion Coated Paper`.
 
 ## SEO, AEO and GEO
 
@@ -330,8 +331,8 @@ See `docs/kp-packaging-website-changes.md` for the full checklist.
 Known pending or blocked items:
 
 - Owner assets needed: 3 team photos, PaperX factory photo, Borkar Packaging
-  logo, DCPL logo, FSC logo, PaperX logo, Food Grade cert logo and replacement
-  hero or facility photo.
+  logo, DCPL logo, PaperX logo, Food Grade cert logo and replacement hero or
+  facility photo.
 - Network section still needs India domestic map and around 25-country export
   map.
 - Netlify env vars for Resend still need to be added before inquiry emails send.

@@ -35,7 +35,7 @@ Contact: prem@kppackaging.com / +91 85916 56966.
 - [Maplitho Paper](https://kppackaging.com/products/maplitho-paper/): Eco-friendly, wood-free printing & writing paper.
 - [Tissue Paper](https://kppackaging.com/products/tissue-paper/): Soft, absorbent, hygienic tissue from recycled pulp.
 - [Bactide Paper](https://kppackaging.com/products/bactite/): Steam-sterilizable, bacterial-barrier paper for medical packaging.
-- [Grid Coated Paper](https://kppackaging.com/products/grid-lacquer/): Breathable grid-coated medical paper for heat-seal sterile packs.
+- [Grid Extrusion Coated Paper](https://kppackaging.com/products/grid-lacquer/): Breathable grid extrusion coated medical paper for heat-seal sterile packs.
 
 ## Full content
 For complete product and company details see [llms-full.txt](https://kppackaging.com/llms-full.txt).
