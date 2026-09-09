@@ -35,7 +35,7 @@ prompt.md       ← original site audit + rebuild brief
 ## Build-time post-processors (in `pageShell()`, applied in order — don't fight them)
 1. `stripDashesInText()` — removes hyphens/dashes from all visible text (between `>` and `<`), skipping script/style. Site-wide rule: **no em/en dashes or " - " in copy, ever** (owner requirement).
 2. `applyHeadingTitleCase()` — Title Case for all h1–h4 (minor words the/of/for/us stay lowercase; acronyms FMCG/MG/CE preserved) + **strips trailing full stops from headings**.
-3. `versionAssets()` — appends `?v=<md5-8>` content hash to every `/assets/*` URL. **Critical:** `/assets/*` is served with `Cache-Control: immutable, 1yr`; replacing an image under the same filename is fine because the hash changes automatically. Never remove this.
+3. `versionAssets()` — appends `?v=<md5-8>` content hash to every `/assets/*` URL. **Critical:** `/assets/*` is served with `Cache-Control: immutable, 1yr`; replacing an image under the same filename is fine because the hash changes automatically. Never remove this. CSS/JS cache-buster hashes are deterministic from file contents so verification builds should not create pointless `dist/` diffs.
 
 Write copy in sentence case with normal punctuation; the pipeline handles heading case/periods.
 
@@ -60,7 +60,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - Plant: **792, Apple Insulated, Nr Crown Tapes, Vaibhav Laxmi, Silvassa, India 396193** · +91 85916 94328 · sales@kppackaging.com
 - Leadership: Madhukant Vira (Chairman), Ketan Vira (CEO), Prem Vira (Director)
 - Clients shown (color-coordinated marquee order): Cipla, Parksons, Reliance Industries Limited, Dr. Reddy's, Godrej, Wipro, Zydus, Amul, Intas, Dow Chemicals, Wockhardt
-- Certs: ISO, AEO Indian Customs, Make in India, MSME, CE, IAF, GMP, FSC, FDA. GMP uses an NQA GMP Food Safety logo, FSC uses a public FSC site logo image, and FDA uses a public FDA logo image from NIST.
+- Certs: ISO, AEO Indian Customs, Make in India, MSME, CE, IAF, GMP, FSC, FDA. GMP uses a web-sourced Good Manufacturing Practice image from SeekLogo, FSC uses a public FSC site logo image, and FDA uses a public FDA logo image from NIST.
 - Infrastructure: 3 extrusion lamination machines (Korean/Chinese/American), 1 Indian 8-colour rotogravure, 3 Italian Bimec + 1 German + 2 Indian slitters, 1 Indian sheet-cutter
 - Best-selling trio on homepage: 4-Ply, MG Poster, Glassine
 
@@ -90,6 +90,11 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - JSON-LD validity check: parse every `<script type="application/ld+json">` block across dist
 - Filter/drawer logic testable headlessly with jsdom (`npm i jsdom --no-save`)
 - NOTE: plain `grep` (ugrep) is flaky on this machine for some patterns — prefer `perl -ne 'print if /…/'`
+- After every push, run a 3-agent verification before final response:
+  - Agent 1, Content QA: compare every requested wording/content change against `js/data.js`, `build.js`, generated `dist/`, `llms.txt`/`llms-full.txt`, and JSON-LD-visible text; flag stale or missing copy.
+  - Agent 2, Visual/Asset QA: verify required images/logos/certs exist in source and `dist/`, are legible, use the expected paths, and are emitted through Netlify Image CDN where applicable.
+  - Agent 3, Build/Deploy QA: verify syntax, `node build.js`, JSON-LD parse, clean git state, pushed commit, and live Netlify output when network is available.
+  - If any agent finds an issue, fix it before final response or explicitly flag the unresolved item.
 
 ## Automation
 - Cloud routine "KP Packaging — daily project log (5 PM IST)" appends the day's commits to `docs/project-log.md` and pushes (id: trig_01MJWhWr8qN1uaEb7kTurUE7)

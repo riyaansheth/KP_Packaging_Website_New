@@ -86,7 +86,7 @@ const COMPANY = {
     { q: "How do I request a quote from KP Packaging?", a: "Contact the corporate office at prem@kppackaging.com or +91 85916 56966, the plant at sales@kppackaging.com or +91 85916 94328, or use the inquiry form on kppackaging.com." },
     { q: "Is KP Packaging a manufacturer or a distributor?", a: "Both. KP Packaging manufactures extrusion-coated laminates in-house and is also an authorized distributor for multiple Indian paper mills." },
     { q: "Does KP Packaging export internationally?", a: "Yes. KP Packaging serves 500+ clients across more than 25 countries and is actively expanding its international business." },
-    { q: "What papers does KP Packaging make?", a: "KP Packaging supplies both extrusion coated and uncoated papers: glassine, MG poster, chromo, cupstock, MG kraft, MF kraft, 3-ply and 4-ply foil laminates, FBB, duplex board, greaseproof, tissue, medical grade, Bactide and grid coated papers." },
+    { q: "What papers does KP Packaging make?", a: "KP Packaging supplies both extrusion coated and uncoated papers: glassine, MG poster, chromo, cupstock, MG kraft, MF kraft, 3-ply and 4-ply foil laminates, FBB, duplex board, greaseproof, tissue, medical grade, Bactide and grid extrusion coated papers." },
     { q: "Is KP Packaging's paper food-safe and pharma-grade?", a: "Yes. It supplies GMP, FDA and FSC aligned glassine and barrier papers for pharmaceuticals and food-safe cupstock and greaseproof papers for food and beverage packaging." }
   ]
 };
@@ -175,7 +175,7 @@ const INDUSTRIES = [
     art: "roll-art",
     image: "/assets/industries/medical-surgical.webp",
     blurb: "Sterilization-compatible bacterial barrier papers for medical pouches and surgical disposables.",
-    detail: "Medical or surgical packaging from KP Packaging supports surgical glove pouches, alcohol swab packaging, gauze swab packaging, medical device packaging and sterilization packaging. Bactide, medical grade and grid coated papers deliver bacterial barrier performance, heat sealability, clean peel behaviour, lint-free handling and high dry and wet strength for sterile device and hospital supply chains.",
+    detail: "Medical or surgical packaging from KP Packaging supports surgical glove pouches, alcohol swab packaging, gauze swab packaging, medical device packaging and sterilization packaging. Bactide, medical grade and grid extrusion coated papers deliver bacterial barrier performance, heat sealability, clean peel behaviour, lint-free handling and high dry and wet strength for sterile device and hospital supply chains.",
     products: ["bactite", "medical-grade-paper", "grid-lacquer", "non-tearable-paper"]
   }
 ];

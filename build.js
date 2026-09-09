@@ -7,13 +7,22 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 const { COMPANY, CAPABILITIES, INDUSTRIES, INFRASTRUCTURE, PRODUCTS, FILTERS } = require("./js/data.js");
 
 const ROOT = __dirname;
 const OUT = path.join(ROOT, "dist");
 const BASE = COMPANY.url.replace(/\/$/, "");
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
-const BUILD_VER = Date.now().toString(36); // cache-bust assets each build
+function sourceHash(files) {
+  const hash = crypto.createHash("md5");
+  for (const rel of files) {
+    hash.update(rel);
+    hash.update(fs.readFileSync(path.join(ROOT, rel)));
+  }
+  return hash.digest("hex").slice(0, 8);
+}
+const BUILD_VER = sourceHash(["css/styles.css", "js/app.js", "js/lenis.min.js"]);
 
 /* ---------- helpers ---------- */
 const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -165,7 +174,7 @@ function productLd(p, url) {
   return {
     "@context": "https://schema.org", "@type": "Product",
     name: p.name, alternateName: p.aka, description: p.desc,
-    category: "Coated paper / Packaging material",
+    category: "Extrusion coated paper / Packaging material",
     image: BASE + (p.image || COMPANY.ogImage), url: BASE + url,
     brand: { "@type": "Brand", name: COMPANY.name },
     manufacturer: { "@id": ORG_ID },
@@ -431,7 +440,6 @@ function applyHeadingTitleCase(html) {
 
 // Version every /assets/ URL with a short content hash so replacing an image
 // (same filename) still busts the year-long immutable browser/CDN cache.
-const crypto = require("crypto");
 const ASSET_VER = {};
 function assetVer(sitePath) {
   if (!(sitePath in ASSET_VER)) {

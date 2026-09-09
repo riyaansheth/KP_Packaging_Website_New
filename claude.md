@@ -148,8 +148,9 @@ hash changes.
   Wipro, Zydus, Amul, Intas, Dow Chemicals, Wockhardt
 - Certifications shown: ISO, AEO Indian Customs, Make in India, MSME, CE, IAF,
   GMP, FSC, FDA
-- GMP uses an NQA GMP Food Safety logo, FSC uses a public FSC site logo image,
-  and FDA uses a public FDA logo image from NIST.
+- GMP uses a web-sourced Good Manufacturing Practice image from SeekLogo, FSC
+  uses a public FSC site logo image, and FDA uses a public FDA logo image from
+  NIST.
 - Infrastructure: 3 extrusion lamination machines from Korea, China and the
   United States of America; 1 Indian 8-colour rotogravure; 3 Italian Bimec,
   1 German and 2 Indian slitters; 1 Indian sheet-cutter
@@ -323,6 +324,22 @@ git diff --stat
 
 Use `rg` for searching. On this machine, plain `grep` can be flaky for some
 patterns, so `perl -ne 'print if /pattern/'` is a reliable fallback.
+
+After every push, run a 3-agent verification before final response:
+
+- Agent 1, Content QA: compare every requested wording/content change against
+  `js/data.js`, `build.js`, generated `dist/`, `llms.txt`/`llms-full.txt`, and
+  JSON-LD-visible text; flag stale or missing copy.
+- Agent 2, Visual/Asset QA: verify required images/logos/certs exist in source
+  and `dist/`, are legible, use the expected paths, and are emitted through
+  Netlify Image CDN where applicable.
+- Agent 3, Build/Deploy QA: verify syntax, `node build.js`, JSON-LD parse,
+  clean git state, pushed commit, and live Netlify output when network is
+  available.
+- If any agent finds an issue, fix it before final response or explicitly flag
+  the unresolved item.
+- CSS/JS cache-buster hashes are deterministic from file contents, so repeated
+  verification builds should not dirty `dist/` unless source files changed.
 
 ## Current Pending Items
 
