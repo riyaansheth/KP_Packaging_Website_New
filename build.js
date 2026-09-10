@@ -78,12 +78,10 @@ function imageSize(sitePath) {
 }
 function cdnImage(src, width, opts = {}) {
   if (!src || !src.startsWith("/assets/") || src.endsWith(".svg")) return src;
-  const q = opts.quality || 78;
-  const params = [`url=${encodeURIComponent(src)}`, `w=${width}`, "fm=webp", `q=${q}`];
-  if (opts.height) params.push(`h=${opts.height}`);
-  if (opts.fit) params.push(`fit=${opts.fit}`);
-  if (opts.position) params.push(`position=${opts.position}`);
-  return `/.netlify/images?${params.join("&")}`;
+  // Use the source asset URL so the same generated HTML works on Netlify and
+  // the FTP-hosted custom domain. Both hosts serve static assets through CDN
+  // edges; Netlify-only image transformation URLs break on the FTP host.
+  return src;
 }
 function imgTag(src, alt, opts = {}) {
   const dims = imageSize(src);
