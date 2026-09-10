@@ -65,6 +65,11 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - Certs: ISO, AEO Indian Customs, Make in India, MSME, CE, IAF, GMP, FSC, FDA. GMP uses a web-sourced Good Manufacturing Practice image from SeekLogo, FSC uses a public FSC site logo image, and FDA uses a public FDA logo image from NIST.
 - Infrastructure: 3 extrusion lamination machines (Korean/Chinese/American), 1 Indian 8-colour rotogravure, 3 Italian Bimec + 1 German + 2 Indian slitters, 1 Indian sheet-cutter
 - Best-selling trio on homepage: 4-Ply, MG Poster, Glassine
+- Latest product copy refresh: Glassine Paper, MG Poster Paper, Chromo Paper,
+  MG Kraft Paper, and MF Kraft Paper now use the September 10, 2026 client copy
+  for taglines, descriptions, applications, properties, variants, coatings, and
+  specifications. Cup Stock Paper remains unchanged because its submitted copy
+  was incomplete.
 
 ## SEO / AEO / GEO layer (do not break)
 - All content server-rendered in HTML (AI crawlers don't run JS)
