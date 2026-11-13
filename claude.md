@@ -14,12 +14,12 @@ search engines and AI crawlers.
 - Local repo: `/Users/riyaansheth/kp`
 - GitHub repo: `github.com/riyaansheth/KP_Packaging_Website_New`
 - Branch: `main`
-- Hosting: Netlify
+- Hosting: Hostinger (LiteSpeed), manual FTP upload of local `dist/`. Netlify site deleted 2026-11-13
 - Build command: `node build.js`
 - Publish directory: `dist/`
 - Production domain: `kppackaging.com`
 
-Push directly to `main`. Netlify deploys automatically after push.
+Push directly to `main`. Pushing does not deploy: run `node build.js` and upload `dist/` over FTP. Netlify-only features (netlify.toml redirects/headers, Netlify Forms, functions) are not live.
 
 ## User Preferences
 

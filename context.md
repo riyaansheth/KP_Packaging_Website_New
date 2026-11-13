@@ -6,7 +6,7 @@ Self-contained briefing for any AI assistant (or developer) continuing work on t
 Marketing website for **KP Packaging** (kppackaging.com), a Mumbai-based manufacturer + distributor of extrusion coated papers and flexible packaging (est. ~1990, plant in Silvassa). Complete rebuild of their old Webflow site, optimized for SEO + AEO/GEO (being recommended/cited by AI engines like ChatGPT/Perplexity/Gemini).
 
 - **Repo:** github.com/riyaansheth/KP_Packaging_Website_New, branch `main` (push directly to main, no PRs)
-- **Hosting:** Netlify (auto-deploys on push; build command `node build.js`, publish dir `dist/` — see `netlify.toml`)
+- **Hosting:** Hostinger shared hosting (LiteSpeed), uploaded over FTP from local `dist/` after `node build.js`; the FTP root is the site root. The Netlify site (kppackaging.netlify.app) was deleted on 2026-11-13, so `netlify.toml` redirects/headers, Netlify Forms and `netlify/functions/send-inquiry.js` are NOT live. Pushing to GitHub does not deploy.
 - **Local dir:** `/Users/riyaansheth/kp`
 
 ## Architecture (static site generator, zero dependencies)
