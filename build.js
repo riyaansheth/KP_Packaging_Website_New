@@ -1004,6 +1004,7 @@ function build() {
   fs.mkdirSync(path.join(OUT, "js"), { recursive: true });
   fs.copyFileSync(path.join(ROOT, "js", "app.js"), path.join(OUT, "js", "app.js"));
   fs.copyFileSync(path.join(ROOT, "js", "lenis.min.js"), path.join(OUT, "js", "lenis.min.js"));
+  copyDir(path.join(ROOT, "server"), OUT); // .htaccess + send-inquiry.php for Hostinger
   if (fs.existsSync(path.join(ROOT, "assets"))) copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
   writeFile("assets/logo.svg", logoSvg());
   writeFile("assets/favicon.svg", faviconSvg());

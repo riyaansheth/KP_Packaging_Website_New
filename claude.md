@@ -241,10 +241,10 @@ The generated site includes:
 - `robots.txt` with explicit allowances for major AI crawlers.
 - `sitemap.xml`.
 - `llms.txt` and `llms-full.txt`, generated from `js/data.js`.
-- Legacy Webflow redirects in `netlify.toml`.
+- Legacy Webflow redirects in `server/.htaccess`.
 - PNG Open Graph image at `assets/og-cover.png`.
 - Geo metadata for India and Maharashtra.
-- Security headers in `netlify.toml`.
+- Security headers in `server/.htaccess`.
 
 After content or template changes, parse JSON-LD across `dist/` before shipping.
 
@@ -256,31 +256,20 @@ node -e "const fs=require('fs'),path=require('path');let files=[];function walk(
 
 ## Forms and Email
 
-Forms are wired to Netlify Forms:
+The `contact` and `quote` forms POST via AJAX (`submitForm()` in `js/app.js`) to
+`server/send-inquiry.php`, which build.js copies to `dist/`. It checks the
+honeypot and required fields, appends every inquiry to `inquiries/inquiries.csv`
+on the server (web access blocked; read it in Hostinger File Manager), then
+emails `prem@kppackaging.com, sales@kppackaging.com` with PHP `mail()`. The
+visitor email is `Reply-To`, never `From`. If the request fails, the visitor
+gets an alert with the phone and email instead of a fake success.
 
-- `contact`
-- `quote`
+Domain email is on Rediffmail Pro and SPF only allows Rediff, so mail sent from
+Hostinger may land in spam until SPF includes Hostinger.
 
-AJAX submission and honeypot handling live in the frontend.
-
-Inquiry email sending is also implemented through:
-
-```text
-netlify/functions/send-inquiry.js
-```
-
-It uses Resend. Required Netlify environment variables:
-
-- `RESEND_API_KEY`
-- `INQUIRY_FROM_EMAIL`, a verified sender such as
-  `KP Packaging <website@kppackaging.com>`
-
-Optional:
-
-- `INQUIRY_TO_EMAILS`, defaults to `prem@kppackaging.com,sales@kppackaging.com`
-
-The visitor email must be used as `Reply-To`, not literal `From`, otherwise
-SPF/DMARC will fail.
+`server/.htaccess` (also copied to `dist/`) holds the old Webflow 301
+redirects, https/www canonicalisation, the 404 page, security headers and
+cache headers.
 
 ## Image Pipeline
 
@@ -310,7 +299,6 @@ For most changes:
 node -c js/data.js
 node -c build.js
 node -c js/app.js
-node -c netlify/functions/send-inquiry.js
 node build.js
 ```
 
@@ -352,7 +340,7 @@ Known pending or blocked items:
   facility photo.
 - Network section still needs India domestic map and around 25-country export
   map.
-- Netlify env vars for Resend still need to be added before inquiry emails send.
+- Confirm inquiry emails from `send-inquiry.php` arrive (not in spam); SPF may need Hostinger added.
 - Confirm exact founding year. It is currently estimated as 1990.
 - Confirm schema `sameAs` social profile URLs. They are currently empty.
 - AI tile images are v1 and may need art-directed replacements.

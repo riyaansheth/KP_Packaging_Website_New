@@ -61,28 +61,14 @@
     });
   });
 
-  /* POST form data to Netlify Forms for storage, then trigger the email function. */
+  /* POST to the PHP handler on Hostinger; it saves the inquiry and emails the team. */
   function submitForm(form) {
-    var formData = new FormData(form);
-    var encoded = new URLSearchParams(formData).toString();
-    var payload = {};
-    formData.forEach(function (value, key) { payload[key] = value; });
-
-    return fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encoded
-    }).catch(function () {}).then(function () {
-      return fetch("/.netlify/functions/send-inquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      }).then(function (res) {
-        if (!res.ok) throw new Error("Email notification failed");
-      }).catch(function (err) {
-        if (window.console && console.warn) console.warn(err);
+    return fetch("/send-inquiry.php", { method: "POST", body: new FormData(form) })
+      .then(function (res) { if (!res.ok) throw new Error("Inquiry failed: " + res.status); })
+      .catch(function (err) {
+        alert("Sorry, your inquiry could not be sent. Please email prem@kppackaging.com or call +91 85916 56966.");
+        throw err;
       });
-    });
   }
 
   /* ---------- Catalogue filtering (pre-rendered cards) ---------- */

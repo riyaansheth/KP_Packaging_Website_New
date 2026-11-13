@@ -75,10 +75,9 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 - All content server-rendered in HTML (AI crawlers don't run JS)
 - JSON-LD on every page (~190 blocks): Organization (+hasOfferCatalog, hasCredential), WebSite, WebPage w/ dateModified, Product ×23, FAQPage, LocalBusiness ×2, BreadcrumbList, ItemList, Person, Service
 - `robots.txt` explicitly allows GPTBot/ClaudeBot/PerplexityBot/etc; `sitemap.xml`; `llms.txt` + `llms-full.txt` (auto-generated from data.js)
-- `netlify.toml`: build config, www→apex 301s, **301 redirects from ALL old Webflow URLs** (e.g. /glassine-paper → /products/glassine-paper/) — preserves legacy SEO, never remove
+- `server/.htaccess` (copied to dist/): https + www→apex 301s, **301 redirects from ALL old Webflow URLs** (e.g. /glassine-paper → /products/glassine-paper/), 410 for leftover Webflow `*_files` folders and `backup1`, 404 page, security and cache headers — preserves legacy SEO, never remove
 - Meta titles ≤60 chars; descriptions ≤160; PNG OG image (1200×630, `assets/og-cover.png`); geo meta (IN-MH); security headers
-- Forms wired to **Netlify Forms** (names: `contact`, `quote`; AJAX + honeypot). Owner must set notification emails in Netlify dashboard → Forms.
-- Website inquiry emails are also sent by Netlify Function `netlify/functions/send-inquiry.js` via Resend. Netlify env vars required: `RESEND_API_KEY`, `INQUIRY_FROM_EMAIL` (verified sender such as `KP Packaging <website@kppackaging.com>`), optional `INQUIRY_TO_EMAILS` (defaults to `prem@kppackaging.com,sales@kppackaging.com`). Visitor email is used as `Reply-To`, not literal `From`, to avoid SPF/DMARC failures.
+- Forms (`contact`, `quote`; AJAX + honeypot) POST to `server/send-inquiry.php`: saves each inquiry to `inquiries/inquiries.csv` on the server (web-blocked) and emails prem@ + sales@ via PHP mail(). Failures show an alert with phone/email.
 
 ## Image pipeline
 - Photos are WebP (PIL/Pillow available via `python3`, installed with `--break-system-packages`)
@@ -111,7 +110,7 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
 ## Pending / blocked items (see docs/kp-packaging-website-changes.md for the full checklist)
 - 🖼 Owner assets needed: 3 team photos (PaperX shoot), PaperX factory photo (crop left side, use in infrastructure), Borkar Packaging + DCPL logos (Borkar site returns 503), replacement hero/facility photo
 - 🖼 Network section: India domestic map + ~25-country export map (design/assets needed)
-- Email notifications: Resend function is coded, but Netlify env vars still need to be added before inquiry emails send (`RESEND_API_KEY`, `INQUIRY_FROM_EMAIL`; optional `INQUIRY_TO_EMAILS`).
+- Email notifications: confirm `send-inquiry.php` mail reaches prem@/sales@ (domain SPF allows only Rediffmail, so Hostinger mail may go to spam).
 - Data to confirm from owner: exact founding year (currently "1990" estimate), social profile URLs for schema `sameAs` (currently empty), FAQ product terms "Bactite/Grid Lacquer" (mapped from garbled recording audio — confirm)
 - AI tile images are v1 (Pollinations) — owner may want art-directed replacements (branded strips collage, Amul pack, ER-poster-style surgeon)
 - Optional backlog: count-up/marquee etc. are done; remaining GEO work is OFF-site (Google Business Profile both locations, Search Console + Bing sitemap submission, directory/social profiles)
