@@ -6,6 +6,8 @@
 const COMPANY = {
   name: "KP Packaging",
   legal: "KP Packaging",
+  // Spellings AI models and directories use; tells crawlers they are the same company
+  aliases: ["K P Packaging", "KP Packaging Ltd"],
   tagline: "Extrusion coated paper & flexible packaging, perfected over three decades.",
   stats: [
     { value: "30+", label: "Years of expertise" },

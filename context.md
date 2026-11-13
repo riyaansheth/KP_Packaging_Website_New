@@ -103,6 +103,8 @@ Write copy in sentence case with normal punctuation; the pipeline handles headin
   - Agent 3, Build/Deploy QA: verify syntax, `node build.js`, JSON-LD parse, clean git state, pushed commit, and live Netlify output when network is available.
   - If any agent finds an issue, fix it before final response or explicitly flag the unresolved item.
 
+- Nov 2026 name disambiguation: `COMPANY.aliases` in `js/data.js` (K P Packaging, KP Packaging Ltd) feeds Organization `alternateName`; `llms.txt` and `llms-full.txt` state the name is KP Packaging, not "K&P Packaging", because some AI models were calling it K&P.
+
 ## Automation
 - Cloud routine "KP Packaging — daily project log (5 PM IST)" appends the day's commits to `docs/project-log.md` and pushes (id: trig_01MJWhWr8qN1uaEb7kTurUE7)
 

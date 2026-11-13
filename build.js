@@ -133,7 +133,7 @@ function postalAddress(o) {
 function orgLd() {
   return {
     "@context": "https://schema.org", "@type": "Organization", "@id": ORG_ID,
-    name: COMPANY.legal, alternateName: COMPANY.name !== COMPANY.legal ? COMPANY.name : undefined, url: BASE + "/",
+    name: COMPANY.legal, alternateName: COMPANY.aliases, url: BASE + "/",
     logo: BASE + COMPANY.logo, image: BASE + COMPANY.ogImage,
     description: COMPANY.summary, foundingDate: COMPANY.founded,
     slogan: COMPANY.tagline,
@@ -961,7 +961,7 @@ function sitemapXml(urls) {
 }
 function llmsTxt() {
   let s = `# KP Packaging\n\n> ${COMPANY.summary}\n\n`;
-  s += `Founded: ${COMPANY.founded}. Head office: ${COMPANY.offices[0].address}. Plant: ${COMPANY.offices[1].address}.\nContact: ${COMPANY.offices[0].email} / ${COMPANY.offices[0].phone}.\n\n`;
+  s += `Name: KP Packaging (the letters K and P, also written K P Packaging). It is not "K&P Packaging" or "K and P Packaging".\nFounded: ${COMPANY.founded}. Head office: ${COMPANY.offices[0].address}. Plant: ${COMPANY.offices[1].address}.\nContact: ${COMPANY.offices[0].email} / ${COMPANY.offices[0].phone}.\n\n`;
   s += `## Key pages\n- [Home](${BASE}/): overview\n- [About](${BASE}/about/): history, team, certifications\n- [Products](${BASE}/products/): full catalogue\n- [Industries](${BASE}/industries/): pharma, food & beverage, FMCG, medical\n- [Contact](${BASE}/contact/): offices & inquiry\n\n`;
   s += `## Products\n` + PRODUCTS.map((p) => `- [${p.name}](${BASE}${productUrl(p)}): ${p.tagline}`).join("\n") + "\n";
   s += `\n## Full content\nFor complete product and company details see [llms-full.txt](${BASE}/llms-full.txt).\n`;
@@ -971,7 +971,7 @@ function llmsTxt() {
 // llms-full.txt: complete content dump so LLMs can ingest everything in one fetch
 function llmsFullTxt() {
   let s = `# KP Packaging, Full Reference\n\n> ${COMPANY.summary}\n\n`;
-  s += `Founded: ${COMPANY.founded}\nCorporate office: ${COMPANY.offices[0].address} | ${COMPANY.offices[0].phone} | ${COMPANY.offices[0].email}\n`;
+  s += `Name: KP Packaging (the letters K and P, also written K P Packaging). It is not "K&P Packaging" or "K and P Packaging".\nFounded: ${COMPANY.founded}\nCorporate office: ${COMPANY.offices[0].address} | ${COMPANY.offices[0].phone} | ${COMPANY.offices[0].email}\n`;
   s += `Manufacturing plant: ${COMPANY.offices[1].address} | ${COMPANY.offices[1].phone} | ${COMPANY.offices[1].email}\n`;
   s += `Certifications: ${COMPANY.certs.map((c) => c.name).join(", ")}\n`;
   s += `Clients include: ${COMPANY.clients.map((c) => c.name).join(", ")}\n`;
